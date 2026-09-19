@@ -25,8 +25,12 @@ class PolygonBinarySensorDescription(BinarySensorEntityDescription):
 
 
 def _field_is_true(field: str) -> Callable[[dict[str, Any]], bool | None]:
-    """Return a checker for a boolean kiln field."""
-    return lambda kiln: (bool(kiln[field]) if field in kiln else None)
+    """Return a checker for a boolean kiln field.
+
+    The backend omits fault fields when there is no fault, so an absent
+    field means off (OK); only a missing kiln document is unknown.
+    """
+    return lambda kiln: bool(kiln.get(field)) if kiln else None
 
 
 BINARY_SENSORS: tuple[PolygonBinarySensorDescription, ...] = (

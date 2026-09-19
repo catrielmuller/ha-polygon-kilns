@@ -274,3 +274,19 @@ async def test_state_sensor_accepts_backend_states_outside_known_list(
     state_sensor = hass.states.get("sensor.gar_kilnn_state")
     assert state_sensor is not None
     assert state_sensor.state == "Horneando"
+
+
+async def test_fault_binary_sensor_absent_field_means_no_fault(
+    hass: HomeAssistant, mock_config_entry, mock_httpx_client
+) -> None:
+    """The backend omits fault fields (e.g. thermocoupleError) when there is
+    no fault; the binary sensor must read off (OK), not unknown."""
+    del mock_httpx_client.kilns[0]["fields"]["thermocoupleError"]
+
+    mock_config_entry.add_to_hass(hass)
+    assert await hass.config_entries.async_setup(mock_config_entry.entry_id)
+    await hass.async_block_till_done()
+
+    thermocouple = hass.states.get("binary_sensor.gar_kilnn_thermocouple_error")
+    assert thermocouple is not None
+    assert thermocouple.state == "off"
