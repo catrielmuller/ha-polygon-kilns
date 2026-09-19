@@ -258,3 +258,19 @@ async def test_unload_keeps_services_while_other_entry_loaded(
     await hass.async_block_till_done()
     for service in ALL_SERVICES:
         assert not hass.services.has_service(DOMAIN, service)
+
+
+async def test_state_sensor_accepts_backend_states_outside_known_list(
+    hass: HomeAssistant, mock_config_entry, mock_httpx_client
+) -> None:
+    """A real firing reports states (e.g. 'Horneando') beyond the known list;
+    the state sensor must still update instead of crashing every refresh."""
+    mock_httpx_client.kilns[0]["fields"]["state"] = {"stringValue": "Horneando"}
+
+    mock_config_entry.add_to_hass(hass)
+    assert await hass.config_entries.async_setup(mock_config_entry.entry_id)
+    await hass.async_block_till_done()
+
+    state_sensor = hass.states.get("sensor.gar_kilnn_state")
+    assert state_sensor is not None
+    assert state_sensor.state == "Horneando"

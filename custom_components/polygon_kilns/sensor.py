@@ -27,13 +27,6 @@ from homeassistant.util import dt as dt_util
 from .coordinator import PolygonConfigEntry, PolygonKilnsCoordinator
 from .entity import PolygonKilnEntity
 
-# Kiln states observed from the backend (Spanish) plus the English variants the
-# firmware has reported; keep in sync with STARTABLE_STATES in const.py.
-STATE_OPTIONS = ["En espera", "Enfriamiento", "Terminado", "idle", "finished"]
-
-# Segment phases reported by the kiln while running a program.
-SEGMENT_PHASE_OPTIONS = ["ramp", "hold"]
-
 
 @dataclass(frozen=True, kw_only=True)
 class PolygonSensorDescription(SensorEntityDescription):
@@ -115,8 +108,9 @@ SENSORS: tuple[PolygonSensorDescription, ...] = (
     PolygonSensorDescription(
         key="state",
         translation_key="state",
-        device_class=SensorDeviceClass.ENUM,
-        options=STATE_OPTIONS,
+        # Not ENUM: the backend's state vocabulary is open-ended (e.g.
+        # "Horneando" appeared during a real firing) and ENUM sensors raise
+        # ValueError on unlisted values, killing the entity.
         value_fn=lambda kiln: kiln.get("state"),
     ),
     PolygonSensorDescription(
@@ -127,8 +121,6 @@ SENSORS: tuple[PolygonSensorDescription, ...] = (
     PolygonSensorDescription(
         key="segment_phase",
         translation_key="segment_phase",
-        device_class=SensorDeviceClass.ENUM,
-        options=SEGMENT_PHASE_OPTIONS,
         value_fn=lambda kiln: kiln.get("segmentPhase"),
         entity_registry_enabled_default=False,
     ),
