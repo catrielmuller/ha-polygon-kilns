@@ -1,0 +1,12 @@
+{
+  "domain": "polygon_kilns",
+  "name": "Polygon Kilns",
+  "codeowners": ["@catrielmuller"],
+  "config_flow": true,
+  "documentation": "https://github.com/catrielmuller/ha-polygon-kilns",
+  "integration_type": "hub",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/catrielmuller/ha-polygon-kilns/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}

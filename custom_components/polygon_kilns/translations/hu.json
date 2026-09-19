@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Csatlakozás a Polygonhoz",
+        "description": "Használja a Polygon alkalmazásbeli fiókjának e-mail-címét és jelszavát. Azoknak a fiókoknak, amelyek csak Google- vagy Apple-bejelentkezést használnak, először jelszót kell beállítaniuk.",
+        "data": {
+          "email": "E-mail",
+          "password": "Jelszó"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Munkamenet megújítása",
+        "description": "A Polygon munkamenet lejárt. Adja meg újra a hitelesítő adatait.",
+        "data": {
+          "email": "E-mail",
+          "password": "Jelszó"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Sikertelen csatlakozás",
+      "invalid_auth": "Érvénytelen hitelesítés",
+      "unknown": "Ismeretlen hiba történt"
+    },
+    "abort": {
+      "already_configured": "A fiók már konfigurálva van",
+      "reauth_successful": "Az újrahitelesítés sikeres volt"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns beállítások",
+        "data": {
+          "poll_interval": "Frissítési gyakoriság (másodperc)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Hőmérséklet" },
+      "setpoint": { "name": "Célhőmérséklet" },
+      "state": { "name": "Állapot" },
+      "stage": { "name": "Szakasz" },
+      "segment_phase": { "name": "Szegmensfázis" },
+      "progress": { "name": "Előrehaladás" },
+      "eta": { "name": "Várható befejezés" },
+      "elapsed": { "name": "Eltelt idő" },
+      "energy": { "name": "Energia" },
+      "cost": { "name": "Költség" },
+      "wifi_signal": { "name": "WiFi jel" },
+      "last_seen": { "name": "Utolsó kapcsolat" },
+      "last_firing": { "name": "Utolsó égetés" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Online" },
+      "thermocouple_error": { "name": "Hőelemhiba" },
+      "sensor_fault": { "name": "Szenzorhiba" },
+      "overheat_fault": { "name": "Túlmelegedés" }
+    },
+    "select": {
+      "program": { "name": "Indítandó program" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Ütemezett indítás" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Ütemezett indítás aktiválva" }
+    },
+    "button": {
+      "start": { "name": "Program indítása" },
+      "stop": { "name": "Kemence leállítása" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Program indítása",
+      "description": "Égetési programot indít egy kemencén, most vagy egy jövőbeli dátumon/időpontban.",
+      "fields": {
+        "device_id": { "name": "Kemence", "description": "A kemence eszköz." },
+        "kiln_id": { "name": "Kemence ID", "description": "Alternatíva az eszköz helyett: a kemence dokumentumazonosítója (pl. K1117)." },
+        "sched_num": { "name": "Program száma", "description": "A program száma (schedNum)." },
+        "schedule_name": { "name": "Program neve", "description": "Program neve, alternatíva a szám helyett." },
+        "start_time": { "name": "Indítási idő", "description": "Ha meg van adva, az indítás az adott dátumra/időpontra lesz ütemezve az azonnali futtatás helyett." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Kemence leállítása",
+      "description": "A folyamatban lévő égetés leállítását kéri.",
+      "fields": {
+        "device_id": { "name": "Kemence", "description": "A kemence eszköz." },
+        "kiln_id": { "name": "Kemence ID", "description": "Alternatíva az eszköz helyett." }
+      }
+    },
+    "create_schedule": {
+      "name": "Program létrehozása",
+      "description": "Égetési programot hoz létre a kemence gyűjteményében.",
+      "fields": {
+        "device_id": { "name": "Kemence", "description": "A kemence eszköz." },
+        "kiln_id": { "name": "Kemence ID", "description": "Alternatíva az eszköz helyett." },
+        "schedule_name": { "name": "Név", "description": "Program neve." },
+        "sched_num": { "name": "Program száma", "description": "A szám, amellyel a kemence azonosítja a programot." },
+        "stages": { "name": "Szakaszok", "description": "Szakaszok listája rámpával (°C/óra), hőmérséklettel (°C) és tartással (perc)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Program frissítése",
+      "description": "Meglévő program nevét és/vagy szakaszait módosítja.",
+      "fields": {
+        "device_id": { "name": "Kemence", "description": "A kemence eszköz." },
+        "kiln_id": { "name": "Kemence ID", "description": "Alternatíva az eszköz helyett." },
+        "sched_num": { "name": "Program száma", "description": "A módosítandó program." },
+        "schedule_name": { "name": "Program neve", "description": "A módosítandó program, név szerint." },
+        "name": { "name": "Új név", "description": "Új programnév." },
+        "stages": { "name": "Szakaszok", "description": "Szakaszok új listája rámpával, hőmérséklettel és tartással." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Program törlése",
+      "description": "Töröl egy égetési programot.",
+      "fields": {
+        "device_id": { "name": "Kemence", "description": "A kemence eszköz." },
+        "kiln_id": { "name": "Kemence ID", "description": "Alternatíva az eszköz helyett." },
+        "sched_num": { "name": "Program száma", "description": "A törlendő program." },
+        "schedule_name": { "name": "Program neve", "description": "A törlendő program, név szerint." }
+      }
+    }
+  }
+}

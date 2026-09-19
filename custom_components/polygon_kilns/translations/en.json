@@ -1,0 +1,242 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to Polygon",
+        "description": "Use the email and password of your Polygon app account. Accounts that only use Google or Apple Sign-In must set a password first.",
+        "data": {
+          "email": "Email",
+          "password": "Password"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Renew session",
+        "description": "The Polygon session expired. Enter your credentials again.",
+        "data": {
+          "email": "Email",
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect",
+      "invalid_auth": "Invalid authentication",
+      "reauth_account_mismatch": "These credentials belong to a different account; sign in with the original account",
+      "unknown": "Unknown error occurred"
+    },
+    "abort": {
+      "already_configured": "Account is already configured",
+      "reauth_successful": "Re-authentication was successful"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns options",
+        "data": {
+          "poll_interval": "Update interval (seconds)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": {
+        "name": "Temperature"
+      },
+      "setpoint": {
+        "name": "Setpoint"
+      },
+      "state": {
+        "name": "State"
+      },
+      "stage": {
+        "name": "Stage"
+      },
+      "segment_phase": {
+        "name": "Segment phase"
+      },
+      "progress": {
+        "name": "Progress"
+      },
+      "eta": {
+        "name": "Estimated completion"
+      },
+      "elapsed": {
+        "name": "Elapsed time"
+      },
+      "energy": {
+        "name": "Energy"
+      },
+      "cost": {
+        "name": "Cost"
+      },
+      "wifi_signal": {
+        "name": "WiFi signal"
+      },
+      "last_seen": {
+        "name": "Last contact"
+      },
+      "last_firing": {
+        "name": "Last firing"
+      }
+    },
+    "binary_sensor": {
+      "online": {
+        "name": "Online"
+      },
+      "thermocouple_error": {
+        "name": "Thermocouple error"
+      },
+      "sensor_fault": {
+        "name": "Sensor fault"
+      },
+      "overheat_fault": {
+        "name": "Overheat"
+      }
+    },
+    "select": {
+      "program": {
+        "name": "Program to start"
+      }
+    },
+    "datetime": {
+      "scheduled_start": {
+        "name": "Scheduled start"
+      }
+    },
+    "switch": {
+      "scheduled_start_armed": {
+        "name": "Scheduled start armed"
+      }
+    },
+    "button": {
+      "start": {
+        "name": "Start program"
+      },
+      "stop": {
+        "name": "Stop kiln"
+      }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Start program",
+      "description": "Starts a firing program on a kiln, now or at a future date/time.",
+      "fields": {
+        "device_id": {
+          "name": "Kiln",
+          "description": "The kiln device."
+        },
+        "kiln_id": {
+          "name": "Kiln ID",
+          "description": "Alternative to device: the kiln document ID (e.g. K1117)."
+        },
+        "sched_num": {
+          "name": "Program number",
+          "description": "The program number (schedNum)."
+        },
+        "schedule_name": {
+          "name": "Program name",
+          "description": "Program name, alternative to the number."
+        },
+        "start_time": {
+          "name": "Start time",
+          "description": "If set, the start is scheduled for that date/time instead of running now."
+        }
+      }
+    },
+    "stop_schedule": {
+      "name": "Stop kiln",
+      "description": "Requests a stop of the ongoing firing.",
+      "fields": {
+        "device_id": {
+          "name": "Kiln",
+          "description": "The kiln device."
+        },
+        "kiln_id": {
+          "name": "Kiln ID",
+          "description": "Alternative to device."
+        }
+      }
+    },
+    "create_schedule": {
+      "name": "Create program",
+      "description": "Creates a firing program in the kiln's collection.",
+      "fields": {
+        "device_id": {
+          "name": "Kiln",
+          "description": "The kiln device."
+        },
+        "kiln_id": {
+          "name": "Kiln ID",
+          "description": "Alternative to device."
+        },
+        "schedule_name": {
+          "name": "Name",
+          "description": "Program name."
+        },
+        "sched_num": {
+          "name": "Program number",
+          "description": "Number the kiln uses to identify the program."
+        },
+        "stages": {
+          "name": "Stages",
+          "description": "List of stages with ramp (°C/h), temp (°C) and hold (minutes)."
+        }
+      }
+    },
+    "update_schedule": {
+      "name": "Update program",
+      "description": "Modifies the name and/or stages of an existing program.",
+      "fields": {
+        "device_id": {
+          "name": "Kiln",
+          "description": "The kiln device."
+        },
+        "kiln_id": {
+          "name": "Kiln ID",
+          "description": "Alternative to device."
+        },
+        "sched_num": {
+          "name": "Program number",
+          "description": "Program to modify."
+        },
+        "schedule_name": {
+          "name": "Program name",
+          "description": "Program to modify, by name."
+        },
+        "name": {
+          "name": "New name",
+          "description": "New program name."
+        },
+        "stages": {
+          "name": "Stages",
+          "description": "New list of stages with ramp, temp and hold."
+        }
+      }
+    },
+    "delete_schedule": {
+      "name": "Delete program",
+      "description": "Deletes a firing program.",
+      "fields": {
+        "device_id": {
+          "name": "Kiln",
+          "description": "The kiln device."
+        },
+        "kiln_id": {
+          "name": "Kiln ID",
+          "description": "Alternative to device."
+        },
+        "sched_num": {
+          "name": "Program number",
+          "description": "Program to delete."
+        },
+        "schedule_name": {
+          "name": "Program name",
+          "description": "Program to delete, by name."
+        }
+      }
+    }
+  }
+}

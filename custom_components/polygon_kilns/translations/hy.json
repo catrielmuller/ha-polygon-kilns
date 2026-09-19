@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Միացում Polygon-ին",
+        "description": "Օգտագործեք ձեր Polygon հավելվածի հաշվի էլ. փոստը և գաղտնաբառը: Հաշիվները, որոնք օգտագործում են միայն Google կամ Apple մուտք, նախ պետք է սահմանեն գաղտնաբառ:",
+        "data": {
+          "email": "Էլ. փոստ",
+          "password": "Գաղտնաբառ"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Թարմացնել սեսիան",
+        "description": "Polygon-ի սեսիան սպառվել է: Կրկին մուտքագրեք ձեր մուտքային տվյալները:",
+        "data": {
+          "email": "Էլ. փոստ",
+          "password": "Գաղտնաբառ"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Չհաջողվեց միացումը",
+      "invalid_auth": "Սխալ նույնականացում",
+      "unknown": "Տեղի ունեցավ անհայտ սխալ"
+    },
+    "abort": {
+      "already_configured": "Հաշիվը արդեն կազմաձևված է",
+      "reauth_successful": "Վերանույնականացումը հաջող էր"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns ընտրանքներ",
+        "data": {
+          "poll_interval": "Թարմացման միջակայք (վայրկյան)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Ջերմաստիճան" },
+      "setpoint": { "name": "Թիրախային արժեք" },
+      "state": { "name": "Վիճակ" },
+      "stage": { "name": "Փուլ" },
+      "segment_phase": { "name": "Հատվածի փուլ" },
+      "progress": { "name": "Առաջընթաց" },
+      "eta": { "name": "Գնահատված ավարտ" },
+      "elapsed": { "name": "Անցած ժամանակ" },
+      "energy": { "name": "Էներգիա" },
+      "cost": { "name": "Ծախս" },
+      "wifi_signal": { "name": "WiFi ազդանշան" },
+      "last_seen": { "name": "Վերջին կապ" },
+      "last_firing": { "name": "Վերջին թրծում" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Առցանց" },
+      "thermocouple_error": { "name": "Ջերմազույգի սխալ" },
+      "sensor_fault": { "name": "Սենսորի խափանում" },
+      "overheat_fault": { "name": "Գերտաքացում" }
+    },
+    "select": {
+      "program": { "name": "Մեկնարկելիք ծրագիր" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Պլանավորված մեկնարկ" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Պլանավորված մեկնարկը ակտիվացված է" }
+    },
+    "button": {
+      "start": { "name": "Սկսել ծրագիրը" },
+      "stop": { "name": "Դադարեցնել վառարանը" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Սկսել ծրագիրը",
+      "description": "Մեկնարկում է թրծման ծրագիր վառարանում՝ հիմա կամ ապագա ամսաթվին/ժամին:",
+      "fields": {
+        "device_id": { "name": "Վառարան", "description": "Վառարանի սարքը:" },
+        "kiln_id": { "name": "Վառարանի ID", "description": "Սարքի այլընտրանք՝ վառարանի փաստաթղթի ID-ն (օր. K1117):" },
+        "sched_num": { "name": "Ծրագրի համար", "description": "Ծրագրի համարը (schedNum):" },
+        "schedule_name": { "name": "Ծրագրի անուն", "description": "Ծրագրի անունը, համարի այլընտրանք:" },
+        "start_time": { "name": "Մեկնարկի ժամանակ", "description": "Եթե սահմանված է, մեկնարկը պլանավորվում է այդ ամսաթվի/ժամի համար՝ հիմա գործարկելու փոխարեն:" }
+      }
+    },
+    "stop_schedule": {
+      "name": "Դադարեցնել վառարանը",
+      "description": "Պահանջում է ընթացող թրծման դադարեցում:",
+      "fields": {
+        "device_id": { "name": "Վառարան", "description": "Վառարանի սարքը:" },
+        "kiln_id": { "name": "Վառարանի ID", "description": "Սարքի այլընտրանք:" }
+      }
+    },
+    "create_schedule": {
+      "name": "Ստեղծել ծրագիր",
+      "description": "Ստեղծում է թրծման ծրագիր վառարանի հավաքածուում:",
+      "fields": {
+        "device_id": { "name": "Վառարան", "description": "Վառարանի սարքը:" },
+        "kiln_id": { "name": "Վառարանի ID", "description": "Սարքի այլընտրանք:" },
+        "schedule_name": { "name": "Անուն", "description": "Ծրագրի անունը:" },
+        "sched_num": { "name": "Ծրագրի համար", "description": "Համարը, որով վառարանը նույնացնում է ծրագիրը:" },
+        "stages": { "name": "Փուլեր", "description": "Փուլերի ցանկ՝ թեքությամբ (°C/ժ), ջերմաստիճանով (°C) և պահպանումով (րոպե):" }
+      }
+    },
+    "update_schedule": {
+      "name": "Թարմացնել ծրագիրը",
+      "description": "Փոխում է գործող ծրագրի անունը և/կամ փուլերը:",
+      "fields": {
+        "device_id": { "name": "Վառարան", "description": "Վառարանի սարքը:" },
+        "kiln_id": { "name": "Վառարանի ID", "description": "Սարքի այլընտրանք:" },
+        "sched_num": { "name": "Ծրագրի համար", "description": "Թարմացվելիք ծրագիրը:" },
+        "schedule_name": { "name": "Ծրագրի անուն", "description": "Թարմացվելիք ծրագիրը, ըստ անվան:" },
+        "name": { "name": "Նոր անուն", "description": "Ծրագրի նոր անունը:" },
+        "stages": { "name": "Փուլեր", "description": "Փուլերի նոր ցանկ՝ թեքությամբ, ջերմաստիճանով և պահպանումով:" }
+      }
+    },
+    "delete_schedule": {
+      "name": "Ջնջել ծրագիրը",
+      "description": "Ջնջում է թրծման ծրագիրը:",
+      "fields": {
+        "device_id": { "name": "Վառարան", "description": "Վառարանի սարքը:" },
+        "kiln_id": { "name": "Վառարանի ID", "description": "Սարքի այլընտրանք:" },
+        "sched_num": { "name": "Ծրագրի համար", "description": "Ջնջվելիք ծրագիրը:" },
+        "schedule_name": { "name": "Ծրագրի անուն", "description": "Ջնջվելիք ծրագիրը, ըստ անվան:" }
+      }
+    }
+  }
+}

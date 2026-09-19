@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Повежите се са Polygon",
+        "description": "Користите имејл и лозинку вашег Polygon налога у апликацији. Налози који користе само Google или Apple пријаву морају прво да поставе лозинку.",
+        "data": {
+          "email": "Имејл",
+          "password": "Лозинка"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Обновите сесију",
+        "description": "Polygon сесија је истекла. Поново унесите своје креденцијале.",
+        "data": {
+          "email": "Имејл",
+          "password": "Лозинка"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Повезивање није успело",
+      "invalid_auth": "Неисправна аутентификација",
+      "unknown": "Дошло је до непознате грешке"
+    },
+    "abort": {
+      "already_configured": "Налог је већ конфигурисан",
+      "reauth_successful": "Поновна аутентификација је успела"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Опције Polygon пећи",
+        "data": {
+          "poll_interval": "Интервал ажурирања (секунде)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Температура" },
+      "setpoint": { "name": "Задата температура" },
+      "state": { "name": "Стање" },
+      "stage": { "name": "Етапа" },
+      "segment_phase": { "name": "Фаза сегмента" },
+      "progress": { "name": "Напредак" },
+      "eta": { "name": "Процењено време завршетка" },
+      "elapsed": { "name": "Протекло време" },
+      "energy": { "name": "Енергија" },
+      "cost": { "name": "Трошак" },
+      "wifi_signal": { "name": "WiFi сигнал" },
+      "last_seen": { "name": "Последњи контакт" },
+      "last_firing": { "name": "Последње печење" }
+    },
+    "binary_sensor": {
+      "online": { "name": "На мрежи" },
+      "thermocouple_error": { "name": "Грешка термопара" },
+      "sensor_fault": { "name": "Квар сензора" },
+      "overheat_fault": { "name": "Прегревање" }
+    },
+    "select": {
+      "program": { "name": "Програм за покретање" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Заказано покретање" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Заказано покретање активирано" }
+    },
+    "button": {
+      "start": { "name": "Покрени програм" },
+      "stop": { "name": "Заустави пећ" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Покрени програм",
+      "description": "Покреће програм печења на пећи, одмах или у неком будућем датуму/времену.",
+      "fields": {
+        "device_id": { "name": "Пећ", "description": "Уређај пећи." },
+        "kiln_id": { "name": "ID пећи", "description": "Алтернатива уређају: ID документа пећи (нпр. K1117)." },
+        "sched_num": { "name": "Број програма", "description": "Број програма (schedNum)." },
+        "schedule_name": { "name": "Назив програма", "description": "Назив програма, алтернатива броју." },
+        "start_time": { "name": "Време почетка", "description": "Ако је постављено, почетак се заказује за тај датум/време уместо покретања одмах." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Заустави пећ",
+      "description": "Захтева заустављање текућег печења.",
+      "fields": {
+        "device_id": { "name": "Пећ", "description": "Уређај пећи." },
+        "kiln_id": { "name": "ID пећи", "description": "Алтернатива уређају." }
+      }
+    },
+    "create_schedule": {
+      "name": "Креирај програм",
+      "description": "Креира програм печења у колекцији пећи.",
+      "fields": {
+        "device_id": { "name": "Пећ", "description": "Уређај пећи." },
+        "kiln_id": { "name": "ID пећи", "description": "Алтернатива уређају." },
+        "schedule_name": { "name": "Назив", "description": "Назив програма." },
+        "sched_num": { "name": "Број програма", "description": "Број који пећ користи за идентификацију програма." },
+        "stages": { "name": "Етапе", "description": "Листа етапа са рампом (°C/h), температуром (°C) и задржавањем (минути)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Ажурирај програм",
+      "description": "Мења назив и/или етапе постојећег програма.",
+      "fields": {
+        "device_id": { "name": "Пећ", "description": "Уређај пећи." },
+        "kiln_id": { "name": "ID пећи", "description": "Алтернатива уређају." },
+        "sched_num": { "name": "Број програма", "description": "Програм за измену." },
+        "schedule_name": { "name": "Назив програма", "description": "Програм за измену, по називу." },
+        "name": { "name": "Нови назив", "description": "Нови назив програма." },
+        "stages": { "name": "Етапе", "description": "Нова листа етапа са рампом, температуром и задржавањем." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Обриши програм",
+      "description": "Брише програм печења.",
+      "fields": {
+        "device_id": { "name": "Пећ", "description": "Уређај пећи." },
+        "kiln_id": { "name": "ID пећи", "description": "Алтернатива уређају." },
+        "sched_num": { "name": "Број програма", "description": "Програм за брисање." },
+        "schedule_name": { "name": "Назив програма", "description": "Програм за брисање, по називу." }
+      }
+    }
+  }
+}

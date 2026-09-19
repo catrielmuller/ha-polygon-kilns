@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Polygon-এর সাথে সংযোগ করুন",
+        "description": "আপনার Polygon অ্যাপ অ্যাকাউন্টের ইমেইল ও পাসওয়ার্ড ব্যবহার করুন। যে অ্যাকাউন্টগুলি শুধুমাত্র Google বা Apple সাইন-ইন ব্যবহার করে, সেগুলিকে আগে একটি পাসওয়ার্ড সেট করতে হবে।",
+        "data": {
+          "email": "ইমেইল",
+          "password": "পাসওয়ার্ড"
+        }
+      },
+      "reauth_confirm": {
+        "title": "সেশন পুনর্নবীকরণ করুন",
+        "description": "Polygon সেশনের মেয়াদ শেষ হয়েছে। আপনার শংসাপত্র আবার লিখুন।",
+        "data": {
+          "email": "ইমেইল",
+          "password": "পাসওয়ার্ড"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "সংযোগ করতে ব্যর্থ",
+      "invalid_auth": "অবৈধ প্রমাণীকরণ",
+      "unknown": "অজানা ত্রুটি ঘটেছে"
+    },
+    "abort": {
+      "already_configured": "অ্যাকাউন্টটি ইতিমধ্যে কনফিগার করা আছে",
+      "reauth_successful": "পুনঃপ্রমাণীকরণ সফল হয়েছে"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns বিকল্প",
+        "data": {
+          "poll_interval": "আপডেট ব্যবধান (সেকেন্ড)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "তাপমাত্রা" },
+      "setpoint": { "name": "সেটপয়েন্ট" },
+      "state": { "name": "অবস্থা" },
+      "stage": { "name": "পর্যায়" },
+      "segment_phase": { "name": "সেগমেন্টের পর্যায়" },
+      "progress": { "name": "অগ্রগতি" },
+      "eta": { "name": "আনুমানিক সমাপ্তি" },
+      "elapsed": { "name": "অতিবাহিত সময়" },
+      "energy": { "name": "শক্তি" },
+      "cost": { "name": "খরচ" },
+      "wifi_signal": { "name": "WiFi সংকেত" },
+      "last_seen": { "name": "সর্বশেষ যোগাযোগ" },
+      "last_firing": { "name": "সর্বশেষ পোড়ানো" }
+    },
+    "binary_sensor": {
+      "online": { "name": "অনলাইন" },
+      "thermocouple_error": { "name": "থার্মোকাপল ত্রুটি" },
+      "sensor_fault": { "name": "সেন্সর ত্রুটি" },
+      "overheat_fault": { "name": "অতিরিক্ত গরম হওয়া" }
+    },
+    "select": {
+      "program": { "name": "শুরু করার জন্য প্রোগ্রাম" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "নির্ধারিত শুরু" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "নির্ধারিত শুরু সক্রিয়" }
+    },
+    "button": {
+      "start": { "name": "প্রোগ্রাম শুরু করুন" },
+      "stop": { "name": "ভাটি বন্ধ করুন" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "প্রোগ্রাম শুরু করুন",
+      "description": "একটি ভাটিতে পোড়ানোর প্রোগ্রাম শুরু করে, এখন বা ভবিষ্যতের কোনো তারিখ/সময়ে।",
+      "fields": {
+        "device_id": { "name": "ভাটি", "description": "ভাটি ডিভাইসটি।" },
+        "kiln_id": { "name": "ভাটি আইডি", "description": "ডিভাইসের বিকল্প: ভাটির ডকুমেন্ট আইডি (যেমন K1117)।" },
+        "sched_num": { "name": "প্রোগ্রাম নম্বর", "description": "প্রোগ্রাম নম্বর (schedNum)।" },
+        "schedule_name": { "name": "প্রোগ্রামের নাম", "description": "প্রোগ্রামের নাম, নম্বরের বিকল্প।" },
+        "start_time": { "name": "শুরুর সময়", "description": "সেট করা থাকলে, এখন চালানোর পরিবর্তে সেই তারিখ/সময়ের জন্য শুরু নির্ধারিত হবে।" }
+      }
+    },
+    "stop_schedule": {
+      "name": "ভাটি বন্ধ করুন",
+      "description": "চলমান পোড়ানো বন্ধ করার অনুরোধ করে।",
+      "fields": {
+        "device_id": { "name": "ভাটি", "description": "ভাটি ডিভাইসটি।" },
+        "kiln_id": { "name": "ভাটি আইডি", "description": "ডিভাইসের বিকল্প।" }
+      }
+    },
+    "create_schedule": {
+      "name": "প্রোগ্রাম তৈরি করুন",
+      "description": "ভাটির সংগ্রহে একটি পোড়ানোর প্রোগ্রাম তৈরি করে।",
+      "fields": {
+        "device_id": { "name": "ভাটি", "description": "ভাটি ডিভাইসটি।" },
+        "kiln_id": { "name": "ভাটি আইডি", "description": "ডিভাইসের বিকল্প।" },
+        "schedule_name": { "name": "নাম", "description": "প্রোগ্রামের নাম।" },
+        "sched_num": { "name": "প্রোগ্রাম নম্বর", "description": "ভাটি প্রোগ্রাম শনাক্ত করতে যে নম্বর ব্যবহার করে।" },
+        "stages": { "name": "পর্যায়সমূহ", "description": "র‌্যাম্প (°C/ঘণ্টা), তাপমাত্রা (°C) এবং হোল্ড (মিনিট) সহ পর্যায়ের তালিকা।" }
+      }
+    },
+    "update_schedule": {
+      "name": "প্রোগ্রাম আপডেট করুন",
+      "description": "বিদ্যমান প্রোগ্রামের নাম এবং/অথবা পর্যায় পরিবর্তন করে।",
+      "fields": {
+        "device_id": { "name": "ভাটি", "description": "ভাটি ডিভাইসটি।" },
+        "kiln_id": { "name": "ভাটি আইডি", "description": "ডিভাইসের বিকল্প।" },
+        "sched_num": { "name": "প্রোগ্রাম নম্বর", "description": "পরিবর্তন করার প্রোগ্রাম।" },
+        "schedule_name": { "name": "প্রোগ্রামের নাম", "description": "নাম অনুযায়ী পরিবর্তন করার প্রোগ্রাম।" },
+        "name": { "name": "নতুন নাম", "description": "নতুন প্রোগ্রামের নাম।" },
+        "stages": { "name": "পর্যায়সমূহ", "description": "র‌্যাম্প, তাপমাত্রা এবং হোল্ড সহ নতুন পর্যায়ের তালিকা।" }
+      }
+    },
+    "delete_schedule": {
+      "name": "প্রোগ্রাম মুছুন",
+      "description": "একটি পোড়ানোর প্রোগ্রাম মুছে দেয়।",
+      "fields": {
+        "device_id": { "name": "ভাটি", "description": "ভাটি ডিভাইসটি।" },
+        "kiln_id": { "name": "ভাটি আইডি", "description": "ডিভাইসের বিকল্প।" },
+        "sched_num": { "name": "প্রোগ্রাম নম্বর", "description": "মুছে ফেলার প্রোগ্রাম।" },
+        "schedule_name": { "name": "প্রোগ্রামের নাম", "description": "নাম অনুযায়ী মুছে ফেলার প্রোগ্রাম।" }
+      }
+    }
+  }
+}

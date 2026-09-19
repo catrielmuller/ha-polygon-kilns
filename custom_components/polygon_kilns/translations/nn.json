@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Kopla til Polygon",
+        "description": "Bruk e-posten og passordet til Polygon-appkontoen din. Kontoar som berre brukar Google- eller Apple-innlogging må først setja eit passord.",
+        "data": {
+          "email": "E-post",
+          "password": "Passord"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Fornya økta",
+        "description": "Polygon-økta er utgått. Skriv inn legitimasjonen din på nytt.",
+        "data": {
+          "email": "E-post",
+          "password": "Passord"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Klarte ikkje å kopla til",
+      "invalid_auth": "Ugyldig autentisering",
+      "unknown": "Det oppstod ein ukjend feil"
+    },
+    "abort": {
+      "already_configured": "Kontoen er allereie konfigurert",
+      "reauth_successful": "Ny autentisering var vellukka"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns-alternativ",
+        "data": {
+          "poll_interval": "Oppdateringsintervall (sekund)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperatur" },
+      "setpoint": { "name": "Settpunkt" },
+      "state": { "name": "Tilstand" },
+      "stage": { "name": "Trinn" },
+      "segment_phase": { "name": "Segmentfase" },
+      "progress": { "name": "Framdrift" },
+      "eta": { "name": "Estimert fullføring" },
+      "elapsed": { "name": "Tid som har gått" },
+      "energy": { "name": "Energi" },
+      "cost": { "name": "Kostnad" },
+      "wifi_signal": { "name": "WiFi-signal" },
+      "last_seen": { "name": "Siste kontakt" },
+      "last_firing": { "name": "Siste brenning" }
+    },
+    "binary_sensor": {
+      "online": { "name": "På nett" },
+      "thermocouple_error": { "name": "Termoelementfeil" },
+      "sensor_fault": { "name": "Sensorfeil" },
+      "overheat_fault": { "name": "Overoppheiting" }
+    },
+    "select": {
+      "program": { "name": "Program som skal startast" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Planlagd start" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Planlagd start aktivert" }
+    },
+    "button": {
+      "start": { "name": "Start program" },
+      "stop": { "name": "Stopp omnen" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Start program",
+      "description": "Startar eit brenningsprogram på ein omn, no eller på ein framtidig dato/eit tidspunkt.",
+      "fields": {
+        "device_id": { "name": "Omn", "description": "Omneininga." },
+        "kiln_id": { "name": "Omn-ID", "description": "Alternativ til eining: dokument-ID-en til omnen (t.d. K1117)." },
+        "sched_num": { "name": "Programnummer", "description": "Programnummeret (schedNum)." },
+        "schedule_name": { "name": "Programnamn", "description": "Programnamn, alternativ til nummeret." },
+        "start_time": { "name": "Starttid", "description": "Om sett, blir starten planlagd til den datoen/det tidspunktet i staden for å køyre no." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Stopp omnen",
+      "description": "Ber om å stoppe den pågåande brenninga.",
+      "fields": {
+        "device_id": { "name": "Omn", "description": "Omneininga." },
+        "kiln_id": { "name": "Omn-ID", "description": "Alternativ til eining." }
+      }
+    },
+    "create_schedule": {
+      "name": "Opprett program",
+      "description": "Opprettar eit brenningsprogram i samlinga til omnen.",
+      "fields": {
+        "device_id": { "name": "Omn", "description": "Omneininga." },
+        "kiln_id": { "name": "Omn-ID", "description": "Alternativ til eining." },
+        "schedule_name": { "name": "Namn", "description": "Programnamn." },
+        "sched_num": { "name": "Programnummer", "description": "Nummeret omnen brukar for å identifisere programmet." },
+        "stages": { "name": "Trinn", "description": "Liste over trinn med rampe (°C/t), temperatur (°C) og halding (minutt)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Oppdater program",
+      "description": "Endrar namnet og/eller trinna i eit eksisterande program.",
+      "fields": {
+        "device_id": { "name": "Omn", "description": "Omneininga." },
+        "kiln_id": { "name": "Omn-ID", "description": "Alternativ til eining." },
+        "sched_num": { "name": "Programnummer", "description": "Programmet som skal endrast." },
+        "schedule_name": { "name": "Programnamn", "description": "Programmet som skal endrast, etter namn." },
+        "name": { "name": "Nytt namn", "description": "Nytt programnamn." },
+        "stages": { "name": "Trinn", "description": "Ny liste over trinn med rampe, temperatur og halding." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Slett program",
+      "description": "Slettar eit brenningsprogram.",
+      "fields": {
+        "device_id": { "name": "Omn", "description": "Omneininga." },
+        "kiln_id": { "name": "Omn-ID", "description": "Alternativ til eining." },
+        "sched_num": { "name": "Programnummer", "description": "Programmet som skal slettast." },
+        "schedule_name": { "name": "Programnamn", "description": "Programmet som skal slettast, etter namn." }
+      }
+    }
+  }
+}

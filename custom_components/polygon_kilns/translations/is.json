@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Tengjast Polygon",
+        "description": "Notaðu netfang og lykilorð Polygon app reikningsins þíns. Reikningar sem nota aðeins Google eða Apple innskráningu verða fyrst að stilla lykilorð.",
+        "data": {
+          "email": "Netfang",
+          "password": "Lykilorð"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Endurnýja lotu",
+        "description": "Polygon lotan er útrunnin. Sláðu inn skilríki þín aftur.",
+        "data": {
+          "email": "Netfang",
+          "password": "Lykilorð"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Tenging mistókst",
+      "invalid_auth": "Ógild auðkenning",
+      "unknown": "Óþekkt villa kom upp"
+    },
+    "abort": {
+      "already_configured": "Reikningur er þegar stilltur",
+      "reauth_successful": "Endurauðkenning tókst"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns valkostir",
+        "data": {
+          "poll_interval": "Uppfærslutíðni (sekúndur)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Hitastig" },
+      "setpoint": { "name": "Markgildi" },
+      "state": { "name": "Staða" },
+      "stage": { "name": "Stig" },
+      "segment_phase": { "name": "Áfangafasi" },
+      "progress": { "name": "Framvinda" },
+      "eta": { "name": "Áætluð lok" },
+      "elapsed": { "name": "Liðinn tími" },
+      "energy": { "name": "Orka" },
+      "cost": { "name": "Kostnaður" },
+      "wifi_signal": { "name": "WiFi merki" },
+      "last_seen": { "name": "Síðasta samband" },
+      "last_firing": { "name": "Síðasta brennsla" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Á netinu" },
+      "thermocouple_error": { "name": "Villa í hitapari" },
+      "sensor_fault": { "name": "Bilun í skynjara" },
+      "overheat_fault": { "name": "Ofhitnun" }
+    },
+    "select": {
+      "program": { "name": "Forrit til að hefja" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Áætluð byrjun" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Áætluð byrjun virkjuð" }
+    },
+    "button": {
+      "start": { "name": "Hefja forrit" },
+      "stop": { "name": "Stöðva ofn" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Hefja forrit",
+      "description": "Ræsir brennsluforrit á ofni, núna eða á framtíðardagsetningu/-tíma.",
+      "fields": {
+        "device_id": { "name": "Ofn", "description": "Ofntækið." },
+        "kiln_id": { "name": "Ofnauðkenni", "description": "Valkostur við tæki: skjalauðkenni ofnsins (t.d. K1117)." },
+        "sched_num": { "name": "Forritsnúmer", "description": "Númer forritsins (schedNum)." },
+        "schedule_name": { "name": "Heiti forrits", "description": "Heiti forrits, valkostur við númer." },
+        "start_time": { "name": "Byrjunartími", "description": "Ef stillt, er byrjun áætluð fyrir þá dagsetningu/tíma í stað þess að keyra núna." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Stöðva ofn",
+      "description": "Óskar eftir stöðvun áframhaldandi brennslu.",
+      "fields": {
+        "device_id": { "name": "Ofn", "description": "Ofntækið." },
+        "kiln_id": { "name": "Ofnauðkenni", "description": "Valkostur við tæki." }
+      }
+    },
+    "create_schedule": {
+      "name": "Búa til forrit",
+      "description": "Býr til brennsluforrit í safni ofnsins.",
+      "fields": {
+        "device_id": { "name": "Ofn", "description": "Ofntækið." },
+        "kiln_id": { "name": "Ofnauðkenni", "description": "Valkostur við tæki." },
+        "schedule_name": { "name": "Heiti", "description": "Heiti forrits." },
+        "sched_num": { "name": "Forritsnúmer", "description": "Númer sem ofninn notar til að þekkja forritið." },
+        "stages": { "name": "Stig", "description": "Listi yfir stig með ramp (°C/klst), hitastig (°C) og viðhald (mínútur)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Uppfæra forrit",
+      "description": "Breyfir heiti og/eða stigum fyrirliggjandi forrits.",
+      "fields": {
+        "device_id": { "name": "Ofn", "description": "Ofntækið." },
+        "kiln_id": { "name": "Ofnauðkenni", "description": "Valkostur við tæki." },
+        "sched_num": { "name": "Forritsnúmer", "description": "Forrit til að breyta." },
+        "schedule_name": { "name": "Heiti forrits", "description": "Forrit til að breyta, eftir heiti." },
+        "name": { "name": "Nýtt heiti", "description": "Nýtt heiti forrits." },
+        "stages": { "name": "Stig", "description": "Nýr listi yfir stig með ramp, hitastig og viðhald." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Eyða forriti",
+      "description": "Eyðir brennsluforriti.",
+      "fields": {
+        "device_id": { "name": "Ofn", "description": "Ofntækið." },
+        "kiln_id": { "name": "Ofnauðkenni", "description": "Valkostur við tæki." },
+        "sched_num": { "name": "Forritsnúmer", "description": "Forrit til að eyða." },
+        "schedule_name": { "name": "Heiti forrits", "description": "Forrit til að eyða, eftir heiti." }
+      }
+    }
+  }
+}

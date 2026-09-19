@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Polygon에 연결",
+        "description": "Polygon 앱 계정의 이메일과 비밀번호를 사용하세요. Google 또는 Apple 로그인만 사용하는 계정은 먼저 비밀번호를 설정해야 합니다.",
+        "data": {
+          "email": "이메일",
+          "password": "비밀번호"
+        }
+      },
+      "reauth_confirm": {
+        "title": "세션 갱신",
+        "description": "Polygon 세션이 만료되었습니다. 자격 증명을 다시 입력하세요.",
+        "data": {
+          "email": "이메일",
+          "password": "비밀번호"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "연결하지 못했습니다",
+      "invalid_auth": "인증이 올바르지 않습니다",
+      "unknown": "알 수 없는 오류가 발생했습니다"
+    },
+    "abort": {
+      "already_configured": "계정이 이미 구성되어 있습니다",
+      "reauth_successful": "재인증에 성공했습니다"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns 옵션",
+        "data": {
+          "poll_interval": "업데이트 간격(초)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "온도" },
+      "setpoint": { "name": "설정 온도" },
+      "state": { "name": "상태" },
+      "stage": { "name": "단계" },
+      "segment_phase": { "name": "세그먼트 단계" },
+      "progress": { "name": "진행률" },
+      "eta": { "name": "예상 완료" },
+      "elapsed": { "name": "경과 시간" },
+      "energy": { "name": "에너지" },
+      "cost": { "name": "비용" },
+      "wifi_signal": { "name": "WiFi 신호" },
+      "last_seen": { "name": "마지막 통신" },
+      "last_firing": { "name": "마지막 소성" }
+    },
+    "binary_sensor": {
+      "online": { "name": "온라인" },
+      "thermocouple_error": { "name": "열전대 오류" },
+      "sensor_fault": { "name": "센서 오류" },
+      "overheat_fault": { "name": "과열" }
+    },
+    "select": {
+      "program": { "name": "시작할 프로그램" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "예약 시작" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "예약 시작 활성화" }
+    },
+    "button": {
+      "start": { "name": "프로그램 시작" },
+      "stop": { "name": "가마 중지" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "프로그램 시작",
+      "description": "가마에서 소성 프로그램을 지금 또는 미래의 날짜/시간에 시작합니다.",
+      "fields": {
+        "device_id": { "name": "가마", "description": "가마 장치." },
+        "kiln_id": { "name": "가마 ID", "description": "장치의 대안: 가마 문서 ID(예: K1117)." },
+        "sched_num": { "name": "프로그램 번호", "description": "프로그램 번호(schedNum)." },
+        "schedule_name": { "name": "프로그램 이름", "description": "프로그램 이름, 번호의 대안." },
+        "start_time": { "name": "시작 시간", "description": "설정하면 지금 실행하는 대신 해당 날짜/시간에 시작이 예약됩니다." }
+      }
+    },
+    "stop_schedule": {
+      "name": "가마 중지",
+      "description": "진행 중인 소성의 중지를 요청합니다.",
+      "fields": {
+        "device_id": { "name": "가마", "description": "가마 장치." },
+        "kiln_id": { "name": "가마 ID", "description": "장치의 대안." }
+      }
+    },
+    "create_schedule": {
+      "name": "프로그램 생성",
+      "description": "가마의 컬렉션에 소성 프로그램을 생성합니다.",
+      "fields": {
+        "device_id": { "name": "가마", "description": "가마 장치." },
+        "kiln_id": { "name": "가마 ID", "description": "장치의 대안." },
+        "schedule_name": { "name": "이름", "description": "프로그램 이름." },
+        "sched_num": { "name": "프로그램 번호", "description": "가마가 프로그램을 식별하는 데 사용하는 번호." },
+        "stages": { "name": "단계", "description": "램프(°C/h), 온도(°C), 유지(분)가 포함된 단계 목록." }
+      }
+    },
+    "update_schedule": {
+      "name": "프로그램 업데이트",
+      "description": "기존 프로그램의 이름 및/또는 단계를 수정합니다.",
+      "fields": {
+        "device_id": { "name": "가마", "description": "가마 장치." },
+        "kiln_id": { "name": "가마 ID", "description": "장치의 대안." },
+        "sched_num": { "name": "프로그램 번호", "description": "수정할 프로그램." },
+        "schedule_name": { "name": "프로그램 이름", "description": "이름으로 수정할 프로그램." },
+        "name": { "name": "새 이름", "description": "새 프로그램 이름." },
+        "stages": { "name": "단계", "description": "램프, 온도, 유지가 포함된 새 단계 목록." }
+      }
+    },
+    "delete_schedule": {
+      "name": "프로그램 삭제",
+      "description": "소성 프로그램을 삭제합니다.",
+      "fields": {
+        "device_id": { "name": "가마", "description": "가마 장치." },
+        "kiln_id": { "name": "가마 ID", "description": "장치의 대안." },
+        "sched_num": { "name": "프로그램 번호", "description": "삭제할 프로그램." },
+        "schedule_name": { "name": "프로그램 이름", "description": "이름으로 삭제할 프로그램." }
+      }
+    }
+  }
+}

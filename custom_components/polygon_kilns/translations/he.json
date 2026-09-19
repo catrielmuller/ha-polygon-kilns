@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "התחברות ל-Polygon",
+        "description": "השתמשו בכתובת האימייל ובסיסמה של חשבון אפליקציית Polygon שלכם. חשבונות שמשתמשים רק ב-Google או ב-Apple Sign-In חייבים להגדיר סיסמה תחילה.",
+        "data": {
+          "email": "אימייל",
+          "password": "סיסמה"
+        }
+      },
+      "reauth_confirm": {
+        "title": "חידוש ההפעלה",
+        "description": "פג תוקף הפעלת Polygon. יש להזין שוב את פרטי הכניסה.",
+        "data": {
+          "email": "אימייל",
+          "password": "סיסמה"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "ההתחברות נכשלה",
+      "invalid_auth": "אימות לא תקין",
+      "unknown": "אירעה שגיאה לא ידועה"
+    },
+    "abort": {
+      "already_configured": "החשבון כבר מוגדר",
+      "reauth_successful": "האימות מחדש הצליח"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "אפשרויות Polygon Kilns",
+        "data": {
+          "poll_interval": "מרווח עדכון (שניות)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "טמפרטורה" },
+      "setpoint": { "name": "ערך מטרה" },
+      "state": { "name": "מצב" },
+      "stage": { "name": "שלב" },
+      "segment_phase": { "name": "שלב מקטע" },
+      "progress": { "name": "התקדמות" },
+      "eta": { "name": "סיום משוער" },
+      "elapsed": { "name": "זמן שחלף" },
+      "energy": { "name": "אנרגיה" },
+      "cost": { "name": "עלות" },
+      "wifi_signal": { "name": "אות WiFi" },
+      "last_seen": { "name": "קשר אחרון" },
+      "last_firing": { "name": "צריפה אחרונה" }
+    },
+    "binary_sensor": {
+      "online": { "name": "מקוון" },
+      "thermocouple_error": { "name": "שגיאת תרמו-צמד" },
+      "sensor_fault": { "name": "תקלת חיישן" },
+      "overheat_fault": { "name": "התחממות יתר" }
+    },
+    "select": {
+      "program": { "name": "תוכנית להפעלה" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "התחלה מתוזמנת" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "התחלה מתוזמנת מופעלת" }
+    },
+    "button": {
+      "start": { "name": "הפעלת תוכנית" },
+      "stop": { "name": "עצירת הכבשן" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "הפעלת תוכנית",
+      "description": "מפעיל תוכנית צריפה בכבשן, עכשיו או במועד עתידי.",
+      "fields": {
+        "device_id": { "name": "כבשן", "description": "מכשיר הכבשן." },
+        "kiln_id": { "name": "מזהה כבשן", "description": "חלופה למכשיר: מזהה המסמך של הכבשן (למשל K1117)." },
+        "sched_num": { "name": "מספר תוכנית", "description": "מספר התוכנית (schedNum)." },
+        "schedule_name": { "name": "שם התוכנית", "description": "שם התוכנית, חלופה למספר." },
+        "start_time": { "name": "שעת התחלה", "description": "אם הוגדר, ההתחלה תתוזמן לאותו מועד במקום לרוץ כעת." }
+      }
+    },
+    "stop_schedule": {
+      "name": "עצירת הכבשן",
+      "description": "מבקש עצירה של הצריפה המתבצעת.",
+      "fields": {
+        "device_id": { "name": "כבשן", "description": "מכשיר הכבשן." },
+        "kiln_id": { "name": "מזהה כבשן", "description": "חלופה למכשיר." }
+      }
+    },
+    "create_schedule": {
+      "name": "יצירת תוכנית",
+      "description": "יוצר תוכנית צריפה באוסף של הכבשן.",
+      "fields": {
+        "device_id": { "name": "כבשן", "description": "מכשיר הכבשן." },
+        "kiln_id": { "name": "מזהה כבשן", "description": "חלופה למכשיר." },
+        "schedule_name": { "name": "שם", "description": "שם התוכנית." },
+        "sched_num": { "name": "מספר תוכנית", "description": "המספר שבו הכבשן מזהה את התוכנית." },
+        "stages": { "name": "שלבים", "description": "רשימת שלבים עם שיפוע (°C לשעה), טמפרטורה (°C) והחזקה (דקות)." }
+      }
+    },
+    "update_schedule": {
+      "name": "עדכון תוכנית",
+      "description": "משנה את השם ו/או השלבים של תוכנית קיימת.",
+      "fields": {
+        "device_id": { "name": "כבשן", "description": "מכשיר הכבשן." },
+        "kiln_id": { "name": "מזהה כבשן", "description": "חלופה למכשיר." },
+        "sched_num": { "name": "מספר תוכנית", "description": "תוכנית לשינוי." },
+        "schedule_name": { "name": "שם התוכנית", "description": "תוכנית לשינוי, לפי שם." },
+        "name": { "name": "שם חדש", "description": "שם חדש לתוכנית." },
+        "stages": { "name": "שלבים", "description": "רשימה חדשה של שלבים עם שיפוע, טמפרטורה והחזקה." }
+      }
+    },
+    "delete_schedule": {
+      "name": "מחיקת תוכנית",
+      "description": "מוחק תוכנית צריפה.",
+      "fields": {
+        "device_id": { "name": "כבשן", "description": "מכשיר הכבשן." },
+        "kiln_id": { "name": "מזהה כבשן", "description": "חלופה למכשיר." },
+        "sched_num": { "name": "מספר תוכנית", "description": "תוכנית למחיקה." },
+        "schedule_name": { "name": "שם התוכנית", "description": "תוכנית למחיקה, לפי שם." }
+      }
+    }
+  }
+}

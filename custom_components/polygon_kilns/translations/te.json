@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Polygon కు కనెక్ట్ అవ్వండి",
+        "description": "మీ Polygon యాప్ ఖాతా ఇమెయిల్ మరియు పాస్‌వర్డ్‌ను ఉపయోగించండి. Google లేదా Apple సైన్-ఇన్ మాత్రమే ఉపయోగించే ఖాతాలు ముందుగా పాస్‌వర్డ్ సెట్ చేయాలి.",
+        "data": {
+          "email": "ఇమెయిల్",
+          "password": "పాస్‌వర్డ్"
+        }
+      },
+      "reauth_confirm": {
+        "title": "సెషన్‌ను రెన్యూ చేయండి",
+        "description": "Polygon సెషన్ గడువు ముగిసింది. మీ క్రెడెన్షియల్స్‌ను మళ్లీ నమోదు చేయండి.",
+        "data": {
+          "email": "ఇమెయిల్",
+          "password": "పాస్‌వర్డ్"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "కనెక్ట్ చేయడం విఫలమైంది",
+      "invalid_auth": "చెల్లని ప్రామాణీకరణ",
+      "unknown": "తెలియని లోపం సంభవించింది"
+    },
+    "abort": {
+      "already_configured": "ఖాతా ఇప్పటికే కాన్ఫిగర్ చేయబడింది",
+      "reauth_successful": "రీ-ఆథెంటికేషన్ విజయవంతమైంది"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon భట్టుల ఆప్షన్లు",
+        "data": {
+          "poll_interval": "అప్‌డేట్ విరామం (సెకన్లు)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "ఉష్ణోగ్రత" },
+      "setpoint": { "name": "సెట్‌పాయింట్" },
+      "state": { "name": "స్థితి" },
+      "stage": { "name": "దశ" },
+      "segment_phase": { "name": "సెగ్మెంట్ దశ" },
+      "progress": { "name": "పురోగతి" },
+      "eta": { "name": "అంచనా పూర్తి సమయం" },
+      "elapsed": { "name": "గడిచిన సమయం" },
+      "energy": { "name": "శక్తి" },
+      "cost": { "name": "ఖర్చు" },
+      "wifi_signal": { "name": "WiFi సిగ్నల్" },
+      "last_seen": { "name": "చివరి సంప్రదింపు" },
+      "last_firing": { "name": "చివరి కాల్చడం" }
+    },
+    "binary_sensor": {
+      "online": { "name": "ఆన్‌లైన్" },
+      "thermocouple_error": { "name": "థర్మోకపుల్ లోపం" },
+      "sensor_fault": { "name": "సెన్సార్ తప్పిదం" },
+      "overheat_fault": { "name": "అతి వేడి" }
+    },
+    "select": {
+      "program": { "name": "ప్రారంభించాల్సిన ప్రోగ్రామ్" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "షెడ్యూల్ చేసిన ప్రారంభం" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "షెడ్యూల్ ప్రారంభం ఆర్మ్ చేయబడింది" }
+    },
+    "button": {
+      "start": { "name": "ప్రోగ్రామ్ ప్రారంభించండి" },
+      "stop": { "name": "భట్టిని ఆపండి" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "ప్రోగ్రామ్ ప్రారంభించండి",
+      "description": "భట్టిలో కాల్చడం ప్రోగ్రామ్‌ను ఇప్పుడు లేదా భవిష్యత్ తేదీ/సమయంలో ప్రారంభిస్తుంది.",
+      "fields": {
+        "device_id": { "name": "భట్టి", "description": "భట్టి పరికరం." },
+        "kiln_id": { "name": "భట్టి ID", "description": "పరికరానికి ప్రత్యామ్నాయం: భట్టి డాక్యుమెంట్ ID (ఉదా. K1117)." },
+        "sched_num": { "name": "ప్రోగ్రామ్ సంఖ్య", "description": "ప్రోగ్రామ్ సంఖ్య (schedNum)." },
+        "schedule_name": { "name": "ప్రోగ్రామ్ పేరు", "description": "ప్రోగ్రామ్ పేరు, సంఖ్యకు ప్రత్యామ్నాయం." },
+        "start_time": { "name": "ప్రారంభ సమయం", "description": "సెట్ చేస్తే, ఇప్పుడు అమలు చేయకుండా ఆ తేదీ/సమయానికి ప్రారంభం షెడ్యూల్ చేయబడుతుంది." }
+      }
+    },
+    "stop_schedule": {
+      "name": "భట్టిని ఆపండి",
+      "description": "కొనసాగుతున్న కాల్చడాన్ని ఆపమని అభ్యర్థిస్తుంది.",
+      "fields": {
+        "device_id": { "name": "భట్టి", "description": "భట్టి పరికరం." },
+        "kiln_id": { "name": "భట్టి ID", "description": "పరికరానికి ప్రత్యామ్నాయం." }
+      }
+    },
+    "create_schedule": {
+      "name": "ప్రోగ్రామ్ సృష్టించండి",
+      "description": "భట్టి సేకరణలో కాల్చడం ప్రోగ్రామ్‌ను సృష్టిస్తుంది.",
+      "fields": {
+        "device_id": { "name": "భట్టి", "description": "భట్టి పరికరం." },
+        "kiln_id": { "name": "భట్టి ID", "description": "పరికరానికి ప్రత్యామ్నాయం." },
+        "schedule_name": { "name": "పేరు", "description": "ప్రోగ్రామ్ పేరు." },
+        "sched_num": { "name": "ప్రోగ్రామ్ సంఖ్య", "description": "ప్రోగ్రామ్‌ను గుర్తించడానికి భట్టి ఉపయోగించే సంఖ్య." },
+        "stages": { "name": "దశలు", "description": "ర్యాంప్ (°C/గంట), ఉష్ణోగ్రత (°C) మరియు హోల్డ్ (నిమిషాలు) ఉన్న దశల జాబితా." }
+      }
+    },
+    "update_schedule": {
+      "name": "ప్రోగ్రామ్ నవీకరించండి",
+      "description": "ఇప్పటికే ఉన్న ప్రోగ్రామ్ పేరు మరియు/లేదా దశలను మారుస్తుంది.",
+      "fields": {
+        "device_id": { "name": "భట్టి", "description": "భట్టి పరికరం." },
+        "kiln_id": { "name": "భట్టి ID", "description": "పరికరానికి ప్రత్యామ్నాయం." },
+        "sched_num": { "name": "ప్రోగ్రామ్ సంఖ్య", "description": "మార్చాల్సిన ప్రోగ్రామ్." },
+        "schedule_name": { "name": "ప్రోగ్రామ్ పేరు", "description": "మార్చాల్సిన ప్రోగ్రామ్, పేరు ద్వారా." },
+        "name": { "name": "కొత్త పేరు", "description": "కొత్త ప్రోగ్రామ్ పేరు." },
+        "stages": { "name": "దశలు", "description": "ర్యాంప్, ఉష్ణోగ్రత మరియు హోల్డ్ ఉన్న దశల కొత్త జాబితా." }
+      }
+    },
+    "delete_schedule": {
+      "name": "ప్రోగ్రామ్ తొలగించండి",
+      "description": "కాల్చడం ప్రోగ్రామ్‌ను తొలగిస్తుంది.",
+      "fields": {
+        "device_id": { "name": "భట్టి", "description": "భట్టి పరికరం." },
+        "kiln_id": { "name": "భట్టి ID", "description": "పరికరానికి ప్రత్యామ్నాయం." },
+        "sched_num": { "name": "ప్రోగ్రామ్ సంఖ్య", "description": "తొలగించాల్సిన ప్రోగ్రామ్." },
+        "schedule_name": { "name": "ప్రోగ్రామ్ పేరు", "description": "తొలగించాల్సిన ప్రోగ్రామ్, పేరు ద్వారా." }
+      }
+    }
+  }
+}

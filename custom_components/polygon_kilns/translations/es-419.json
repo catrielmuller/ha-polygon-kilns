@@ -1,0 +1,242 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Conectar con Polygon",
+        "description": "Usá el email y la contraseña de tu cuenta de la app Polygon. Las cuentas que solo usan Google o Apple Sign-In deben establecer una contraseña primero.",
+        "data": {
+          "email": "Email",
+          "password": "Contraseña"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Renovar sesión",
+        "description": "La sesión con Polygon expiró. Ingresá nuevamente tus credenciales.",
+        "data": {
+          "email": "Email",
+          "password": "Contraseña"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "No se pudo conectar",
+      "invalid_auth": "Credenciales inválidas",
+      "reauth_account_mismatch": "Las credenciales pertenecen a otra cuenta; ingresa las de la cuenta original",
+      "unknown": "Error inesperado"
+    },
+    "abort": {
+      "already_configured": "La cuenta ya está configurada",
+      "reauth_successful": "La sesión se renovó correctamente"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opciones de Polygon Kilns",
+        "data": {
+          "poll_interval": "Intervalo de actualización (segundos)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": {
+        "name": "Temperatura"
+      },
+      "setpoint": {
+        "name": "Setpoint"
+      },
+      "state": {
+        "name": "Estado"
+      },
+      "stage": {
+        "name": "Etapa"
+      },
+      "segment_phase": {
+        "name": "Fase de segmento"
+      },
+      "progress": {
+        "name": "Progreso"
+      },
+      "eta": {
+        "name": "Finalización estimada"
+      },
+      "elapsed": {
+        "name": "Tiempo transcurrido"
+      },
+      "energy": {
+        "name": "Energía"
+      },
+      "cost": {
+        "name": "Costo"
+      },
+      "wifi_signal": {
+        "name": "Señal WiFi"
+      },
+      "last_seen": {
+        "name": "Último contacto"
+      },
+      "last_firing": {
+        "name": "Última horneada"
+      }
+    },
+    "binary_sensor": {
+      "online": {
+        "name": "En línea"
+      },
+      "thermocouple_error": {
+        "name": "Error de termocupla"
+      },
+      "sensor_fault": {
+        "name": "Falla de sensor"
+      },
+      "overheat_fault": {
+        "name": "Sobrecalentamiento"
+      }
+    },
+    "select": {
+      "program": {
+        "name": "Programa a iniciar"
+      }
+    },
+    "datetime": {
+      "scheduled_start": {
+        "name": "Inicio programado"
+      }
+    },
+    "switch": {
+      "scheduled_start_armed": {
+        "name": "Inicio programado activo"
+      }
+    },
+    "button": {
+      "start": {
+        "name": "Iniciar programa"
+      },
+      "stop": {
+        "name": "Detener horno"
+      }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Iniciar programa",
+      "description": "Inicia un programa de cocción en un horno, ahora o en una fecha/hora futura.",
+      "fields": {
+        "device_id": {
+          "name": "Horno",
+          "description": "Dispositivo del horno."
+        },
+        "kiln_id": {
+          "name": "ID de horno",
+          "description": "Alternativa al dispositivo: ID del documento del horno (p. ej. K1117)."
+        },
+        "sched_num": {
+          "name": "Número de programa",
+          "description": "Número del programa (schedNum)."
+        },
+        "schedule_name": {
+          "name": "Nombre de programa",
+          "description": "Nombre del programa, alternativa al número."
+        },
+        "start_time": {
+          "name": "Hora de inicio",
+          "description": "Si se indica, el inicio queda programado para esa fecha/hora en lugar de ejecutarse ahora."
+        }
+      }
+    },
+    "stop_schedule": {
+      "name": "Detener horno",
+      "description": "Solicita la detención de la horneada en curso.",
+      "fields": {
+        "device_id": {
+          "name": "Horno",
+          "description": "Dispositivo del horno."
+        },
+        "kiln_id": {
+          "name": "ID de horno",
+          "description": "Alternativa al dispositivo."
+        }
+      }
+    },
+    "create_schedule": {
+      "name": "Crear programa",
+      "description": "Crea un programa de cocción en la colección del horno.",
+      "fields": {
+        "device_id": {
+          "name": "Horno",
+          "description": "Dispositivo del horno."
+        },
+        "kiln_id": {
+          "name": "ID de horno",
+          "description": "Alternativa al dispositivo."
+        },
+        "schedule_name": {
+          "name": "Nombre",
+          "description": "Nombre del programa."
+        },
+        "sched_num": {
+          "name": "Número de programa",
+          "description": "Número con el que el horno identifica el programa."
+        },
+        "stages": {
+          "name": "Etapas",
+          "description": "Lista de etapas con ramp (°C/h), temp (°C) y hold (minutos)."
+        }
+      }
+    },
+    "update_schedule": {
+      "name": "Actualizar programa",
+      "description": "Modifica el nombre y/o las etapas de un programa existente.",
+      "fields": {
+        "device_id": {
+          "name": "Horno",
+          "description": "Dispositivo del horno."
+        },
+        "kiln_id": {
+          "name": "ID de horno",
+          "description": "Alternativa al dispositivo."
+        },
+        "sched_num": {
+          "name": "Número de programa",
+          "description": "Programa a modificar."
+        },
+        "schedule_name": {
+          "name": "Nombre de programa",
+          "description": "Programa a modificar, por nombre."
+        },
+        "name": {
+          "name": "Nuevo nombre",
+          "description": "Nombre nuevo del programa."
+        },
+        "stages": {
+          "name": "Etapas",
+          "description": "Nueva lista de etapas con ramp, temp y hold."
+        }
+      }
+    },
+    "delete_schedule": {
+      "name": "Borrar programa",
+      "description": "Elimina un programa de cocción.",
+      "fields": {
+        "device_id": {
+          "name": "Horno",
+          "description": "Dispositivo del horno."
+        },
+        "kiln_id": {
+          "name": "ID de horno",
+          "description": "Alternativa al dispositivo."
+        },
+        "sched_num": {
+          "name": "Número de programa",
+          "description": "Programa a borrar."
+        },
+        "schedule_name": {
+          "name": "Nombre de programa",
+          "description": "Programa a borrar, por nombre."
+        }
+      }
+    }
+  }
+}

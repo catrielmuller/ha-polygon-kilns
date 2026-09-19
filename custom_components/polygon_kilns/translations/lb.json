@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Mat Polygon verbannen",
+        "description": "Benotzt d'E-Mail an d'Passwuert vun Ärem Polygon-App-Kont. Konten, déi nëmme Google oder Apple Sign-In benotzen, musse fir d'éischt e Passwuert festleeën.",
+        "data": {
+          "email": "E-Mail",
+          "password": "Passwuert"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Sessioun erneieren",
+        "description": "D'Polygon-Sessioun ass ofgelaf. Gitt Är Umeldinformatiounen nach eng Kéier an.",
+        "data": {
+          "email": "E-Mail",
+          "password": "Passwuert"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbindung feelgeschloen",
+      "invalid_auth": "Ongëlteg Authentifikatioun",
+      "unknown": "Onbekannte Feeler opgetrueden"
+    },
+    "abort": {
+      "already_configured": "Kont ass scho konfiguréiert",
+      "reauth_successful": "Nei-Authentifikatioun war erfollegräich"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns Optiounen",
+        "data": {
+          "poll_interval": "Aktualiséierungsintervall (Sekonnen)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperatur" },
+      "setpoint": { "name": "Sollwäert" },
+      "state": { "name": "Zoustand" },
+      "stage": { "name": "Etapp" },
+      "segment_phase": { "name": "Segmentphas" },
+      "progress": { "name": "Fortschrëtt" },
+      "eta": { "name": "Geschatten Ofschloss" },
+      "elapsed": { "name": "Verfloss Zäit" },
+      "energy": { "name": "Energie" },
+      "cost": { "name": "Käschten" },
+      "wifi_signal": { "name": "WiFi-Signal" },
+      "last_seen": { "name": "Leschte Kontakt" },
+      "last_firing": { "name": "Leschte Brenn" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Online" },
+      "thermocouple_error": { "name": "Thermoelement-Feeler" },
+      "sensor_fault": { "name": "Sensor-Feeler" },
+      "overheat_fault": { "name": "Iwwerhëtzung" }
+    },
+    "select": {
+      "program": { "name": "Programm fir ze starten" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Geplangten Start" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Geplangten Start aktivéiert" }
+    },
+    "button": {
+      "start": { "name": "Programm starten" },
+      "stop": { "name": "Uewen stoppen" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Programm starten",
+      "description": "Start e Brennprogramm op engem Uewen, elo oder zu engem zukünftege Datum/Zäit.",
+      "fields": {
+        "device_id": { "name": "Uewen", "description": "Den Uewen-Gerät." },
+        "kiln_id": { "name": "Uewen-ID", "description": "Alternativ zum Gerät: d'Uewen-Dokument-ID (z.B. K1117)." },
+        "sched_num": { "name": "Programmnummer", "description": "D'Programmnummer (schedNum)." },
+        "schedule_name": { "name": "Programmnumm", "description": "Programmnumm, Alternativ zur Nummer." },
+        "start_time": { "name": "Startzäit", "description": "Wann agestallt, gëtt de Start fir dat Datum/dës Zäit geplangt, amplaz direkt ze lafen." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Uewen stoppen",
+      "description": "Frot e Stop vun der lafender Brenn un.",
+      "fields": {
+        "device_id": { "name": "Uewen", "description": "Den Uewen-Gerät." },
+        "kiln_id": { "name": "Uewen-ID", "description": "Alternativ zum Gerät." }
+      }
+    },
+    "create_schedule": {
+      "name": "Programm erstellen",
+      "description": "Erstellt e Brennprogramm an der Sammlung vum Uewen.",
+      "fields": {
+        "device_id": { "name": "Uewen", "description": "Den Uewen-Gerät." },
+        "kiln_id": { "name": "Uewen-ID", "description": "Alternativ zum Gerät." },
+        "schedule_name": { "name": "Numm", "description": "Programmnumm." },
+        "sched_num": { "name": "Programmnummer", "description": "Nummer, déi den Uewen benotzt fir de Programm z'identifizéieren." },
+        "stages": { "name": "Etappen", "description": "Lëscht vun Etappe mat Rampe (°C/h), Temp (°C) an Halten (Minutten)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Programm aktualiséieren",
+      "description": "Ännert den Numm an/oder d'Etappe vun engem bestehende Programm.",
+      "fields": {
+        "device_id": { "name": "Uewen", "description": "Den Uewen-Gerät." },
+        "kiln_id": { "name": "Uewen-ID", "description": "Alternativ zum Gerät." },
+        "sched_num": { "name": "Programmnummer", "description": "Programm z'änneren." },
+        "schedule_name": { "name": "Programmnumm", "description": "Programm z'änneren, iwwer den Numm." },
+        "name": { "name": "Neien Numm", "description": "Neie Programmnumm." },
+        "stages": { "name": "Etappen", "description": "Nei Lëscht vun Etappe mat Rampe, Temp an Halten." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Programm läschen",
+      "description": "Läscht e Brennprogramm.",
+      "fields": {
+        "device_id": { "name": "Uewen", "description": "Den Uewen-Gerät." },
+        "kiln_id": { "name": "Uewen-ID", "description": "Alternativ zum Gerät." },
+        "sched_num": { "name": "Programmnummer", "description": "Programm ze läschen." },
+        "schedule_name": { "name": "Programmnumm", "description": "Programm ze läschen, iwwer den Numm." }
+      }
+    }
+  }
+}

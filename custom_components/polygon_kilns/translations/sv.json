@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Anslut till Polygon",
+        "description": "Använd e-post och lösenord för ditt Polygon-appkonto. Konton som bara använder inloggning med Google eller Apple måste ange ett lösenord först.",
+        "data": {
+          "email": "E-post",
+          "password": "Lösenord"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Förnya sessionen",
+        "description": "Polygon-sessionen har gått ut. Ange dina inloggningsuppgifter igen.",
+        "data": {
+          "email": "E-post",
+          "password": "Lösenord"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Det gick inte att ansluta",
+      "invalid_auth": "Ogiltig autentisering",
+      "unknown": "Ett okänt fel uppstod"
+    },
+    "abort": {
+      "already_configured": "Kontot är redan konfigurerat",
+      "reauth_successful": "Omautentiseringen lyckades"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Alternativ för Polygon-ugnar",
+        "data": {
+          "poll_interval": "Uppdateringsintervall (sekunder)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperatur" },
+      "setpoint": { "name": "Börvärde" },
+      "state": { "name": "Tillstånd" },
+      "stage": { "name": "Steg" },
+      "segment_phase": { "name": "Segmentfas" },
+      "progress": { "name": "Förlopp" },
+      "eta": { "name": "Beräknat slutförande" },
+      "elapsed": { "name": "Förfluten tid" },
+      "energy": { "name": "Energi" },
+      "cost": { "name": "Kostnad" },
+      "wifi_signal": { "name": "WiFi-signal" },
+      "last_seen": { "name": "Senaste kontakt" },
+      "last_firing": { "name": "Senaste bränning" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Online" },
+      "thermocouple_error": { "name": "Termoelementfel" },
+      "sensor_fault": { "name": "Sensorfel" },
+      "overheat_fault": { "name": "Överhettning" }
+    },
+    "select": {
+      "program": { "name": "Program att starta" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Schemalagd start" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Schemalagd start aktiverad" }
+    },
+    "button": {
+      "start": { "name": "Starta program" },
+      "stop": { "name": "Stoppa ugnen" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Starta program",
+      "description": "Startar ett brännprogram på en ugn, nu eller vid ett framtida datum/tid.",
+      "fields": {
+        "device_id": { "name": "Ugn", "description": "Ugnenheten." },
+        "kiln_id": { "name": "Ugn-ID", "description": "Alternativ till enhet: ugnens dokument-ID (t.ex. K1117)." },
+        "sched_num": { "name": "Programnummer", "description": "Programnumret (schedNum)." },
+        "schedule_name": { "name": "Programnamn", "description": "Programnamn, alternativ till numret." },
+        "start_time": { "name": "Starttid", "description": "Om den anges schemaläggs starten till det datumet/tiden istället för att köras nu." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Stoppa ugnen",
+      "description": "Begär att den pågående bränningen stoppas.",
+      "fields": {
+        "device_id": { "name": "Ugn", "description": "Ugnenheten." },
+        "kiln_id": { "name": "Ugn-ID", "description": "Alternativ till enhet." }
+      }
+    },
+    "create_schedule": {
+      "name": "Skapa program",
+      "description": "Skapar ett brännprogram i ugnens samling.",
+      "fields": {
+        "device_id": { "name": "Ugn", "description": "Ugnenheten." },
+        "kiln_id": { "name": "Ugn-ID", "description": "Alternativ till enhet." },
+        "schedule_name": { "name": "Namn", "description": "Programnamn." },
+        "sched_num": { "name": "Programnummer", "description": "Nummer som ugnen använder för att identifiera programmet." },
+        "stages": { "name": "Steg", "description": "Lista över steg med ramp (°C/h), temp (°C) och hålltid (minuter)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Uppdatera program",
+      "description": "Ändrar namn och/eller steg på ett befintligt program.",
+      "fields": {
+        "device_id": { "name": "Ugn", "description": "Ugnenheten." },
+        "kiln_id": { "name": "Ugn-ID", "description": "Alternativ till enhet." },
+        "sched_num": { "name": "Programnummer", "description": "Program att ändra." },
+        "schedule_name": { "name": "Programnamn", "description": "Program att ändra, via namn." },
+        "name": { "name": "Nytt namn", "description": "Nytt programnamn." },
+        "stages": { "name": "Steg", "description": "Ny lista över steg med ramp, temp och hålltid." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Ta bort program",
+      "description": "Tar bort ett brännprogram.",
+      "fields": {
+        "device_id": { "name": "Ugn", "description": "Ugnenheten." },
+        "kiln_id": { "name": "Ugn-ID", "description": "Alternativ till enhet." },
+        "sched_num": { "name": "Programnummer", "description": "Program att ta bort." },
+        "schedule_name": { "name": "Programnamn", "description": "Program att ta bort, via namn." }
+      }
+    }
+  }
+}

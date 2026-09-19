@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Ühenda Polygoniga",
+        "description": "Kasutage oma Polygoni rakenduse konto e-posti aadressi ja parooli. Kontod, mis kasutavad ainult Google'i või Apple'i sisselogimist, peavad esmalt määrama parooli.",
+        "data": {
+          "email": "E-post",
+          "password": "Parool"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Uuenda seanssi",
+        "description": "Polygoni seanss aegus. Sisestage oma kasutajatunnused uuesti.",
+        "data": {
+          "email": "E-post",
+          "password": "Parool"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Ühendamine ebaõnnestus",
+      "invalid_auth": "Vale autentimine",
+      "unknown": "Ilmnes tundmatu viga"
+    },
+    "abort": {
+      "already_configured": "Konto on juba seadistatud",
+      "reauth_successful": "Taasautentimine õnnestus"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilnsi valikud",
+        "data": {
+          "poll_interval": "Värskendusintervall (sekundit)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperatuur" },
+      "setpoint": { "name": "Seadeväärtus" },
+      "state": { "name": "Olek" },
+      "stage": { "name": "Etapp" },
+      "segment_phase": { "name": "Segmendi faas" },
+      "progress": { "name": "Edenemine" },
+      "eta": { "name": "Hinnanguline valmimisaeg" },
+      "elapsed": { "name": "Kulunud aeg" },
+      "energy": { "name": "Energia" },
+      "cost": { "name": "Maksumus" },
+      "wifi_signal": { "name": "WiFi-signaal" },
+      "last_seen": { "name": "Viimane kontakt" },
+      "last_firing": { "name": "Viimane põletus" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Võrgus" },
+      "thermocouple_error": { "name": "Termoelemendi viga" },
+      "sensor_fault": { "name": "Anduri rike" },
+      "overheat_fault": { "name": "Ülekuumenemine" }
+    },
+    "select": {
+      "program": { "name": "Käivitatav programm" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Plaanitud käivitus" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Plaanitud käivitus aktiveeritud" }
+    },
+    "button": {
+      "start": { "name": "Käivita programm" },
+      "stop": { "name": "Peata ahi" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Käivita programm",
+      "description": "Käivitab ahjus põletusprogrammi kohe või tulevikus määratud kuupäeval/kellaajal.",
+      "fields": {
+        "device_id": { "name": "Ahi", "description": "Ahju seade." },
+        "kiln_id": { "name": "Ahju ID", "description": "Alternatiiv seadmele: ahju dokumendi ID (nt K1117)." },
+        "sched_num": { "name": "Programmi number", "description": "Programmi number (schedNum)." },
+        "schedule_name": { "name": "Programmi nimi", "description": "Programmi nimi, alternatiiv numbrile." },
+        "start_time": { "name": "Algusaeg", "description": "Kui see on määratud, plaanitakse käivitus sellele kuupäevale/kellaajale, mitte kohe." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Peata ahi",
+      "description": "Taotleb käimasoleva põletuse peatamist.",
+      "fields": {
+        "device_id": { "name": "Ahi", "description": "Ahju seade." },
+        "kiln_id": { "name": "Ahju ID", "description": "Alternatiiv seadmele." }
+      }
+    },
+    "create_schedule": {
+      "name": "Loo programm",
+      "description": "Loob ahju kogusse põletusprogrammi.",
+      "fields": {
+        "device_id": { "name": "Ahi", "description": "Ahju seade." },
+        "kiln_id": { "name": "Ahju ID", "description": "Alternatiiv seadmele." },
+        "schedule_name": { "name": "Nimi", "description": "Programmi nimi." },
+        "sched_num": { "name": "Programmi number", "description": "Number, millega ahi programmi tuvastab." },
+        "stages": { "name": "Etapid", "description": "Etapide loend koos tõusukiirusega (°C/h), temperatuuriga (°C) ja hoidmisajaga (minutit)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Uuenda programmi",
+      "description": "Muudab olemasoleva programmi nime ja/või etappe.",
+      "fields": {
+        "device_id": { "name": "Ahi", "description": "Ahju seade." },
+        "kiln_id": { "name": "Ahju ID", "description": "Alternatiiv seadmele." },
+        "sched_num": { "name": "Programmi number", "description": "Muudetav programm." },
+        "schedule_name": { "name": "Programmi nimi", "description": "Muudetav programm nime järgi." },
+        "name": { "name": "Uus nimi", "description": "Programmi uus nimi." },
+        "stages": { "name": "Etapid", "description": "Uus etapide loend koos tõusukiiruse, temperatuuri ja hoidmisajaga." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Kustuta programm",
+      "description": "Kustutab põletusprogrammi.",
+      "fields": {
+        "device_id": { "name": "Ahi", "description": "Ahju seade." },
+        "kiln_id": { "name": "Ahju ID", "description": "Alternatiiv seadmele." },
+        "sched_num": { "name": "Programmi number", "description": "Kustutatav programm." },
+        "schedule_name": { "name": "Programmi nimi", "description": "Kustutatav programm nime järgi." }
+      }
+    }
+  }
+}

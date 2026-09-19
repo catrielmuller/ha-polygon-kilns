@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Conectar ao Polygon",
+        "description": "Use o e-mail e a senha da sua conta do app Polygon. Contas que usam apenas o Google ou o Apple Sign-In precisam definir uma senha primeiro.",
+        "data": {
+          "email": "E-mail",
+          "password": "Senha"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Renovar sessão",
+        "description": "A sessão do Polygon expirou. Insira suas credenciais novamente.",
+        "data": {
+          "email": "E-mail",
+          "password": "Senha"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Falha ao conectar",
+      "invalid_auth": "Autenticação inválida",
+      "unknown": "Ocorreu um erro desconhecido"
+    },
+    "abort": {
+      "already_configured": "A conta já está configurada",
+      "reauth_successful": "A reautenticação foi bem-sucedida"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opções do Polygon Kilns",
+        "data": {
+          "poll_interval": "Intervalo de atualização (segundos)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperatura" },
+      "setpoint": { "name": "Setpoint" },
+      "state": { "name": "Estado" },
+      "stage": { "name": "Etapa" },
+      "segment_phase": { "name": "Fase do segmento" },
+      "progress": { "name": "Progresso" },
+      "eta": { "name": "Conclusão estimada" },
+      "elapsed": { "name": "Tempo decorrido" },
+      "energy": { "name": "Energia" },
+      "cost": { "name": "Custo" },
+      "wifi_signal": { "name": "Sinal Wi-Fi" },
+      "last_seen": { "name": "Último contato" },
+      "last_firing": { "name": "Última queima" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Online" },
+      "thermocouple_error": { "name": "Erro do termopar" },
+      "sensor_fault": { "name": "Falha do sensor" },
+      "overheat_fault": { "name": "Superaquecimento" }
+    },
+    "select": {
+      "program": { "name": "Programa a iniciar" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Início programado" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Início programado ativado" }
+    },
+    "button": {
+      "start": { "name": "Iniciar programa" },
+      "stop": { "name": "Parar forno" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Iniciar programa",
+      "description": "Inicia um programa de queima em um forno, agora ou em uma data/hora futura.",
+      "fields": {
+        "device_id": { "name": "Forno", "description": "O dispositivo do forno." },
+        "kiln_id": { "name": "ID do forno", "description": "Alternativa ao dispositivo: o ID do documento do forno (ex.: K1117)." },
+        "sched_num": { "name": "Número do programa", "description": "O número do programa (schedNum)." },
+        "schedule_name": { "name": "Nome do programa", "description": "Nome do programa, alternativa ao número." },
+        "start_time": { "name": "Hora de início", "description": "Se definida, a inicialização é agendada para essa data/hora em vez de executar agora." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Parar forno",
+      "description": "Solicita a parada da queima em andamento.",
+      "fields": {
+        "device_id": { "name": "Forno", "description": "O dispositivo do forno." },
+        "kiln_id": { "name": "ID do forno", "description": "Alternativa ao dispositivo." }
+      }
+    },
+    "create_schedule": {
+      "name": "Criar programa",
+      "description": "Cria um programa de queima na coleção do forno.",
+      "fields": {
+        "device_id": { "name": "Forno", "description": "O dispositivo do forno." },
+        "kiln_id": { "name": "ID do forno", "description": "Alternativa ao dispositivo." },
+        "schedule_name": { "name": "Nome", "description": "Nome do programa." },
+        "sched_num": { "name": "Número do programa", "description": "Número que o forno usa para identificar o programa." },
+        "stages": { "name": "Etapas", "description": "Lista de etapas com rampa (°C/h), temperatura (°C) e patamar (minutos)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Atualizar programa",
+      "description": "Modifica o nome e/ou as etapas de um programa existente.",
+      "fields": {
+        "device_id": { "name": "Forno", "description": "O dispositivo do forno." },
+        "kiln_id": { "name": "ID do forno", "description": "Alternativa ao dispositivo." },
+        "sched_num": { "name": "Número do programa", "description": "Programa a modificar." },
+        "schedule_name": { "name": "Nome do programa", "description": "Programa a modificar, pelo nome." },
+        "name": { "name": "Novo nome", "description": "Novo nome do programa." },
+        "stages": { "name": "Etapas", "description": "Nova lista de etapas com rampa, temperatura e patamar." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Excluir programa",
+      "description": "Exclui um programa de queima.",
+      "fields": {
+        "device_id": { "name": "Forno", "description": "O dispositivo do forno." },
+        "kiln_id": { "name": "ID do forno", "description": "Alternativa ao dispositivo." },
+        "sched_num": { "name": "Número do programa", "description": "Programa a excluir." },
+        "schedule_name": { "name": "Nome do programa", "description": "Programa a excluir, pelo nome." }
+      }
+    }
+  }
+}

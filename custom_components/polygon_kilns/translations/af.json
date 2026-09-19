@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Koppel aan Polygon",
+        "description": "Gebruik die e-pos en wagwoord van jou Polygon-toepassingsrekening. Rekeninge wat slegs Google- of Apple-aanmelding gebruik, moet eers 'n wagwoord instel.",
+        "data": {
+          "email": "E-pos",
+          "password": "Wagwoord"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Hernieu sessie",
+        "description": "Die Polygon-sessie het verval. Voer jou geloofsbriewe weer in.",
+        "data": {
+          "email": "E-pos",
+          "password": "Wagwoord"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Kon nie koppel nie",
+      "invalid_auth": "Ongeldige verifikasie",
+      "unknown": "Onbekende fout het voorgekom"
+    },
+    "abort": {
+      "already_configured": "Rekening is reeds gekonfigureer",
+      "reauth_successful": "Her-verifikasie was suksesvol"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns-opsies",
+        "data": {
+          "poll_interval": "Opdateringsinterval (sekondes)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperatuur" },
+      "setpoint": { "name": "Setpunt" },
+      "state": { "name": "Toestand" },
+      "stage": { "name": "Fase" },
+      "segment_phase": { "name": "Segmentfase" },
+      "progress": { "name": "Vordering" },
+      "eta": { "name": "Geskatte voltooiing" },
+      "elapsed": { "name": "Verstreke tyd" },
+      "energy": { "name": "Energie" },
+      "cost": { "name": "Koste" },
+      "wifi_signal": { "name": "WiFi-sein" },
+      "last_seen": { "name": "Laaste kontak" },
+      "last_firing": { "name": "Laaste skieting" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Aanlyn" },
+      "thermocouple_error": { "name": "Termokoppelfout" },
+      "sensor_fault": { "name": "Sensorfout" },
+      "overheat_fault": { "name": "Oorverhitting" }
+    },
+    "select": {
+      "program": { "name": "Program om te begin" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Geskeduleerde begin" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Geskeduleerde begin geaktiveer" }
+    },
+    "button": {
+      "start": { "name": "Begin program" },
+      "stop": { "name": "Stop oond" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Begin program",
+      "description": "Begin 'n skietprogram op 'n oond, nou of op 'n toekomstige datum/tyd.",
+      "fields": {
+        "device_id": { "name": "Oond", "description": "Die oondtoestel." },
+        "kiln_id": { "name": "Oond-ID", "description": "Alternatief vir toestel: die oonddokument-ID (bv. K1117)." },
+        "sched_num": { "name": "Programnommer", "description": "Die programnommer (schedNum)." },
+        "schedule_name": { "name": "Programnaam", "description": "Programnaam, alternatief vir die nommer." },
+        "start_time": { "name": "Begintyd", "description": "Indien ingestel, word die begin vir daardie datum/tyd geskeduleer in plaas daarvan om nou te loop." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Stop oond",
+      "description": "Versoek 'n stop van die lopende skieting.",
+      "fields": {
+        "device_id": { "name": "Oond", "description": "Die oondtoestel." },
+        "kiln_id": { "name": "Oond-ID", "description": "Alternatief vir toestel." }
+      }
+    },
+    "create_schedule": {
+      "name": "Skep program",
+      "description": "Skep 'n skietprogram in die oond se versameling.",
+      "fields": {
+        "device_id": { "name": "Oond", "description": "Die oondtoestel." },
+        "kiln_id": { "name": "Oond-ID", "description": "Alternatief vir toestel." },
+        "schedule_name": { "name": "Naam", "description": "Programnaam." },
+        "sched_num": { "name": "Programnommer", "description": "Nommer wat die oond gebruik om die program te identifiseer." },
+        "stages": { "name": "Fases", "description": "Lys van fases met helling (°C/u), temp (°C) en hou (minute)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Werk program by",
+      "description": "Wysig die naam en/of fases van 'n bestaande program.",
+      "fields": {
+        "device_id": { "name": "Oond", "description": "Die oondtoestel." },
+        "kiln_id": { "name": "Oond-ID", "description": "Alternatief vir toestel." },
+        "sched_num": { "name": "Programnommer", "description": "Program om te wysig." },
+        "schedule_name": { "name": "Programnaam", "description": "Program om te wysig, volgens naam." },
+        "name": { "name": "Nuwe naam", "description": "Nuwe programnaam." },
+        "stages": { "name": "Fases", "description": "Nuwe lys van fases met helling, temp en hou." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Verwyder program",
+      "description": "Verwyder 'n skietprogram.",
+      "fields": {
+        "device_id": { "name": "Oond", "description": "Die oondtoestel." },
+        "kiln_id": { "name": "Oond-ID", "description": "Alternatief vir toestel." },
+        "sched_num": { "name": "Programnommer", "description": "Program om te verwyder." },
+        "schedule_name": { "name": "Programnaam", "description": "Program om te verwyder, volgens naam." }
+      }
+    }
+  }
+}

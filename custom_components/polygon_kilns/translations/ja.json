@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Polygon に接続",
+        "description": "Polygon アプリアカウントのメールアドレスとパスワードを使用してください。Google または Apple のサインインのみを使用しているアカウントは、先にパスワードを設定する必要があります。",
+        "data": {
+          "email": "メールアドレス",
+          "password": "パスワード"
+        }
+      },
+      "reauth_confirm": {
+        "title": "セッションを更新",
+        "description": "Polygon のセッションが期限切れになりました。認証情報を再度入力してください。",
+        "data": {
+          "email": "メールアドレス",
+          "password": "パスワード"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "接続できませんでした",
+      "invalid_auth": "認証が無効です",
+      "unknown": "不明なエラーが発生しました"
+    },
+    "abort": {
+      "already_configured": "アカウントはすでに設定されています",
+      "reauth_successful": "再認証に成功しました"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns のオプション",
+        "data": {
+          "poll_interval": "更新間隔（秒）"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "温度" },
+      "setpoint": { "name": "設定温度" },
+      "state": { "name": "状態" },
+      "stage": { "name": "ステージ" },
+      "segment_phase": { "name": "セグメントフェーズ" },
+      "progress": { "name": "進捗" },
+      "eta": { "name": "完了予定" },
+      "elapsed": { "name": "経過時間" },
+      "energy": { "name": "エネルギー" },
+      "cost": { "name": "コスト" },
+      "wifi_signal": { "name": "WiFi 信号" },
+      "last_seen": { "name": "最終通信" },
+      "last_firing": { "name": "最後の焼成" }
+    },
+    "binary_sensor": {
+      "online": { "name": "オンライン" },
+      "thermocouple_error": { "name": "熱電対エラー" },
+      "sensor_fault": { "name": "センサー故障" },
+      "overheat_fault": { "name": "過熱" }
+    },
+    "select": {
+      "program": { "name": "起動するプログラム" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "予約開始" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "予約開始を有効化" }
+    },
+    "button": {
+      "start": { "name": "プログラムを開始" },
+      "stop": { "name": "窯を停止" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "プログラムを開始",
+      "description": "窯で焼成プログラムを、今すぐまたは将来の日時に開始します。",
+      "fields": {
+        "device_id": { "name": "窯", "description": "窯のデバイス。" },
+        "kiln_id": { "name": "窯 ID", "description": "デバイスの代替：窯のドキュメント ID（例：K1117）。" },
+        "sched_num": { "name": "プログラム番号", "description": "プログラム番号（schedNum）。" },
+        "schedule_name": { "name": "プログラム名", "description": "プログラム名。番号の代替。" },
+        "start_time": { "name": "開始時刻", "description": "設定すると、今すぐ実行する代わりにその日時に開始が予約されます。" }
+      }
+    },
+    "stop_schedule": {
+      "name": "窯を停止",
+      "description": "進行中の焼成の停止を要求します。",
+      "fields": {
+        "device_id": { "name": "窯", "description": "窯のデバイス。" },
+        "kiln_id": { "name": "窯 ID", "description": "デバイスの代替。" }
+      }
+    },
+    "create_schedule": {
+      "name": "プログラムを作成",
+      "description": "窯のコレクションに焼成プログラムを作成します。",
+      "fields": {
+        "device_id": { "name": "窯", "description": "窯のデバイス。" },
+        "kiln_id": { "name": "窯 ID", "description": "デバイスの代替。" },
+        "schedule_name": { "name": "名前", "description": "プログラム名。" },
+        "sched_num": { "name": "プログラム番号", "description": "窯がプログラムを識別するために使用する番号。" },
+        "stages": { "name": "ステージ", "description": "ランプ（°C/時）、温度（°C）、保持（分）を含むステージのリスト。" }
+      }
+    },
+    "update_schedule": {
+      "name": "プログラムを更新",
+      "description": "既存プログラムの名前やステージを変更します。",
+      "fields": {
+        "device_id": { "name": "窯", "description": "窯のデバイス。" },
+        "kiln_id": { "name": "窯 ID", "description": "デバイスの代替。" },
+        "sched_num": { "name": "プログラム番号", "description": "変更するプログラム。" },
+        "schedule_name": { "name": "プログラム名", "description": "変更するプログラム（名前で指定）。" },
+        "name": { "name": "新しい名前", "description": "新しいプログラム名。" },
+        "stages": { "name": "ステージ", "description": "ランプ、温度、保持を含む新しいステージのリスト。" }
+      }
+    },
+    "delete_schedule": {
+      "name": "プログラムを削除",
+      "description": "焼成プログラムを削除します。",
+      "fields": {
+        "device_id": { "name": "窯", "description": "窯のデバイス。" },
+        "kiln_id": { "name": "窯 ID", "description": "デバイスの代替。" },
+        "sched_num": { "name": "プログラム番号", "description": "削除するプログラム。" },
+        "schedule_name": { "name": "プログラム名", "description": "削除するプログラム（名前で指定）。" }
+      }
+    }
+  }
+}

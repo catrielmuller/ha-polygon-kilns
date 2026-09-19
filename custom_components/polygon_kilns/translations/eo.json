@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Konekti al Polygon",
+        "description": "Uzu la retpoŝtadreson kaj pasvorton de via konto de la Polygon-aplikaĵo. Kontoj, kiuj uzas nur Google- aŭ Apple-saluton, devas unue agordi pasvorton.",
+        "data": {
+          "email": "Retpoŝto",
+          "password": "Pasvorto"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Renovigi seancon",
+        "description": "La Polygon-seanco eksvalidiĝis. Enigu viajn legitimaĵojn denove.",
+        "data": {
+          "email": "Retpoŝto",
+          "password": "Pasvorto"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Konektado malsukcesis",
+      "invalid_auth": "Nevalida aŭtentigo",
+      "unknown": "Okazis nekonata eraro"
+    },
+    "abort": {
+      "already_configured": "La konto jam estas agordita",
+      "reauth_successful": "La reaŭtentigo sukcesis"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opcioj de Polygon Kilns",
+        "data": {
+          "poll_interval": "Ĝisdatiga intervalo (sekundoj)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperaturo" },
+      "setpoint": { "name": "Celvaloro" },
+      "state": { "name": "Stato" },
+      "stage": { "name": "Etapo" },
+      "segment_phase": { "name": "Segmenta fazo" },
+      "progress": { "name": "Progreso" },
+      "eta": { "name": "Taksita finiĝo" },
+      "elapsed": { "name": "Pasinta tempo" },
+      "energy": { "name": "Energio" },
+      "cost": { "name": "Kosto" },
+      "wifi_signal": { "name": "WiFi-signalo" },
+      "last_seen": { "name": "Lasta kontakto" },
+      "last_firing": { "name": "Lasta bakado" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Konektita" },
+      "thermocouple_error": { "name": "Eraro de termoparo" },
+      "sensor_fault": { "name": "Sensila difekto" },
+      "overheat_fault": { "name": "Trovarmigo" }
+    },
+    "select": {
+      "program": { "name": "Programo por startigi" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Planita starto" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Planita starto armata" }
+    },
+    "button": {
+      "start": { "name": "Startigi programon" },
+      "stop": { "name": "Haltigi fornon" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Startigi programon",
+      "description": "Startas bakprogramon sur forno, nun aŭ je estonta dato/horo.",
+      "fields": {
+        "device_id": { "name": "Forno", "description": "La fornaparato." },
+        "kiln_id": { "name": "Forno-ID", "description": "Alternativo al aparato: la dokumenta ID de la forno (ekz. K1117)." },
+        "sched_num": { "name": "Programnumero", "description": "La programnumero (schedNum)." },
+        "schedule_name": { "name": "Programnomo", "description": "Programnomo, alternativo al la numero." },
+        "start_time": { "name": "Starttempo", "description": "Se difinita, la starto estas planita por tiu dato/horo anstataŭ kuri nun." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Haltigi fornon",
+      "description": "Petas halton de la daŭra bakado.",
+      "fields": {
+        "device_id": { "name": "Forno", "description": "La fornaparato." },
+        "kiln_id": { "name": "Forno-ID", "description": "Alternativo al aparato." }
+      }
+    },
+    "create_schedule": {
+      "name": "Krei programon",
+      "description": "Kreas bakprogramon en la kolekto de la forno.",
+      "fields": {
+        "device_id": { "name": "Forno", "description": "La fornaparato." },
+        "kiln_id": { "name": "Forno-ID", "description": "Alternativo al aparato." },
+        "schedule_name": { "name": "Nomo", "description": "Programnomo." },
+        "sched_num": { "name": "Programnumero", "description": "Numero, kiun la forno uzas por identigi la programon." },
+        "stages": { "name": "Etapoj", "description": "Listo de etapoj kun rampo (°C/h), temperaturo (°C) kaj tenado (minutoj)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Ĝisdatigi programon",
+      "description": "Modifas la nomon kaj/aŭ etapojn de ekzistanta programo.",
+      "fields": {
+        "device_id": { "name": "Forno", "description": "La fornaparato." },
+        "kiln_id": { "name": "Forno-ID", "description": "Alternativo al aparato." },
+        "sched_num": { "name": "Programnumero", "description": "Programo por modifi." },
+        "schedule_name": { "name": "Programnomo", "description": "Programo por modifi, laŭ nomo." },
+        "name": { "name": "Nova nomo", "description": "Nova programnomo." },
+        "stages": { "name": "Etapoj", "description": "Nova listo de etapoj kun rampo, temperaturo kaj tenado." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Forigi programon",
+      "description": "Forigas bakprogramon.",
+      "fields": {
+        "device_id": { "name": "Forno", "description": "La fornaparato." },
+        "kiln_id": { "name": "Forno-ID", "description": "Alternativo al aparato." },
+        "sched_num": { "name": "Programnumero", "description": "Programo por forigi." },
+        "schedule_name": { "name": "Programnomo", "description": "Programo por forigi, laŭ nomo." }
+      }
+    }
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Cysylltu â Polygon",
+        "description": "Defnyddiwch e-bost a chyfrinair eich cyfrif ap Polygon. Rhaid i gyfrifon sy'n defnyddio Mewngofnodi Google neu Apple yn unig osod cyfrinair yn gyntaf.",
+        "data": {
+          "email": "E-bost",
+          "password": "Cyfrinair"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Adnewyddu sesiwn",
+        "description": "Mae'r sesiwn Polygon wedi dod i ben. Rhowch eich manylion mewngofnodi eto.",
+        "data": {
+          "email": "E-bost",
+          "password": "Cyfrinair"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Methu cysylltu",
+      "invalid_auth": "Dilysu annilys",
+      "unknown": "Gwall anhysbys wedi digwydd"
+    },
+    "abort": {
+      "already_configured": "Mae'r cyfrif eisoes wedi'i ffurfweddu",
+      "reauth_successful": "Roedd yr ailddilysu yn llwyddiannus"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opsiynau Polygon Kilns",
+        "data": {
+          "poll_interval": "Cyfnod diweddaru (eiliadau)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Tymheredd" },
+      "setpoint": { "name": "Pwynt gosod" },
+      "state": { "name": "Cyflwr" },
+      "stage": { "name": "Cam" },
+      "segment_phase": { "name": "Cyfnod y segment" },
+      "progress": { "name": "Cynnydd" },
+      "eta": { "name": "Cwblhau amcangyfrifedig" },
+      "elapsed": { "name": "Amser wedi'i dreulio" },
+      "energy": { "name": "Ynni" },
+      "cost": { "name": "Cost" },
+      "wifi_signal": { "name": "Signal Wi-Fi" },
+      "last_seen": { "name": "Cyswllt diwethaf" },
+      "last_firing": { "name": "Losgi olaf" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Ar-lein" },
+      "thermocouple_error": { "name": "Gwall thermocwpl" },
+      "sensor_fault": { "name": "Bai synhwyrydd" },
+      "overheat_fault": { "name": "Gorboethi" }
+    },
+    "select": {
+      "program": { "name": "Rhaglen i'w chychwyn" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Cychwyn wedi'i drefnu" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Cychwyn trefnedig wedi'i arfogi" }
+    },
+    "button": {
+      "start": { "name": "Cychwyn rhaglen" },
+      "stop": { "name": "Stopio'r odwyn" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Cychwyn rhaglen",
+      "description": "Yn cychwyn rhaglen losgi ar odwyn, nawr neu ar ddyddiad/amser yn y dyfodol.",
+      "fields": {
+        "device_id": { "name": "Odwyn", "description": "Dyfais yr odwyn." },
+        "kiln_id": { "name": "ID odwyn", "description": "Amgen i ddyfais: ID dogfen yr odwyn (e.e. K1117)." },
+        "sched_num": { "name": "Rhif y rhaglen", "description": "Rhif y rhaglen (schedNum)." },
+        "schedule_name": { "name": "Enw'r rhaglen", "description": "Enw'r rhaglen, amgen i'r rhif." },
+        "start_time": { "name": "Amser cychwyn", "description": "Os caiff ei osod, trefnir y cychwyn ar gyfer y dyddiad/amser hwnnw yn hytrach na rhedeg nawr." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Stopio'r odwyn",
+      "description": "Yn gofyn am stopio'r losgi cyfredol.",
+      "fields": {
+        "device_id": { "name": "Odwyn", "description": "Dyfais yr odwyn." },
+        "kiln_id": { "name": "ID odwyn", "description": "Amgen i ddyfais." }
+      }
+    },
+    "create_schedule": {
+      "name": "Creu rhaglen",
+      "description": "Yn creu rhaglen losgi yng nghasgliad yr odwyn.",
+      "fields": {
+        "device_id": { "name": "Odwyn", "description": "Dyfais yr odwyn." },
+        "kiln_id": { "name": "ID odwyn", "description": "Amgen i ddyfais." },
+        "schedule_name": { "name": "Enw", "description": "Enw'r rhaglen." },
+        "sched_num": { "name": "Rhif y rhaglen", "description": "Y rhif y mae'r odwyn yn ei ddefnyddio i adnabod y rhaglen." },
+        "stages": { "name": "Camau", "description": "Rhestr o gamau gyda ramp (°C/h), tymheredd (°C) a dal (munudau)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Diweddaru rhaglen",
+      "description": "Yn addasu enw a/neu gamau rhaglen sy'n bodoli eisoes.",
+      "fields": {
+        "device_id": { "name": "Odwyn", "description": "Dyfais yr odwyn." },
+        "kiln_id": { "name": "ID odwyn", "description": "Amgen i ddyfais." },
+        "sched_num": { "name": "Rhif y rhaglen", "description": "Rhaglen i'w haddasu." },
+        "schedule_name": { "name": "Enw'r rhaglen", "description": "Rhaglen i'w haddasu, yn ôl enw." },
+        "name": { "name": "Enw newydd", "description": "Enw newydd y rhaglen." },
+        "stages": { "name": "Camau", "description": "Rhestr newydd o gamau gyda ramp, tymheredd a dal." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Dileu rhaglen",
+      "description": "Yn dileu rhaglen losgi.",
+      "fields": {
+        "device_id": { "name": "Odwyn", "description": "Dyfais yr odwyn." },
+        "kiln_id": { "name": "ID odwyn", "description": "Amgen i ddyfais." },
+        "sched_num": { "name": "Rhif y rhaglen", "description": "Rhaglen i'w dileu." },
+        "schedule_name": { "name": "Enw'r rhaglen", "description": "Rhaglen i'w dileu, yn ôl enw." }
+      }
+    }
+  }
+}

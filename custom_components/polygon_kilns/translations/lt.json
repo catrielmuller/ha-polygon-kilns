@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Prisijungti prie Polygon",
+        "description": "Naudokite savo Polygon programėlės paskyros el. paštą ir slaptažodį. Paskyros, kurios naudoja tik Google arba Apple prisijungimą, pirmiausia turi nustatyti slaptažodį.",
+        "data": {
+          "email": "El. paštas",
+          "password": "Slaptažodis"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Atnaujinti sesiją",
+        "description": "Polygon sesija baigėsi. Dar kartą įveskite prisijungimo duomenis.",
+        "data": {
+          "email": "El. paštas",
+          "password": "Slaptažodis"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nepavyko prisijungti",
+      "invalid_auth": "Neteisinga autentifikacija",
+      "unknown": "Įvyko nežinoma klaida"
+    },
+    "abort": {
+      "already_configured": "Paskyra jau sukonfigūruota",
+      "reauth_successful": "Pakartotinis autentifikavimas sėkmingas"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns parinktys",
+        "data": {
+          "poll_interval": "Atnaujinimo intervalas (sekundės)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperatūra" },
+      "setpoint": { "name": "Užduotoji vertė" },
+      "state": { "name": "Būsena" },
+      "stage": { "name": "Etapas" },
+      "segment_phase": { "name": "Segmento fazė" },
+      "progress": { "name": "Eiga" },
+      "eta": { "name": "Numatoma pabaiga" },
+      "elapsed": { "name": "Praėjęs laikas" },
+      "energy": { "name": "Energija" },
+      "cost": { "name": "Kaina" },
+      "wifi_signal": { "name": "WiFi signalas" },
+      "last_seen": { "name": "Paskutinis ryšys" },
+      "last_firing": { "name": "Paskutinis degimas" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Prisijungęs" },
+      "thermocouple_error": { "name": "Termoporos klaida" },
+      "sensor_fault": { "name": "Jutiklio gedimas" },
+      "overheat_fault": { "name": "Perkaitimas" }
+    },
+    "select": {
+      "program": { "name": "Programa paleisti" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Suplanuotas paleidimas" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Suplanuotas paleidimas įjungtas" }
+    },
+    "button": {
+      "start": { "name": "Paleisti programą" },
+      "stop": { "name": "Sustabdyti krosnį" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Paleisti programą",
+      "description": "Paleidžia degimo programą krosnyje dabar arba būsimą datą/laiką.",
+      "fields": {
+        "device_id": { "name": "Krosnis", "description": "Krosnies įrenginys." },
+        "kiln_id": { "name": "Krosnies ID", "description": "Alternatyva įrenginiui: krosnies dokumento ID (pvz., K1117)." },
+        "sched_num": { "name": "Programos numeris", "description": "Programos numeris (schedNum)." },
+        "schedule_name": { "name": "Programos pavadinimas", "description": "Programos pavadinimas, alternatyva numeriui." },
+        "start_time": { "name": "Paleidimo laikas", "description": "Jei nustatyta, paleidimas suplanuojamas tai datai/laikui, o ne vykdomas iš karto." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Sustabdyti krosnį",
+      "description": "Prašo sustabdyti vykstantį degimą.",
+      "fields": {
+        "device_id": { "name": "Krosnis", "description": "Krosnies įrenginys." },
+        "kiln_id": { "name": "Krosnies ID", "description": "Alternatyva įrenginiui." }
+      }
+    },
+    "create_schedule": {
+      "name": "Sukurti programą",
+      "description": "Sukuria degimo programą krosnies kolekcijoje.",
+      "fields": {
+        "device_id": { "name": "Krosnis", "description": "Krosnies įrenginys." },
+        "kiln_id": { "name": "Krosnies ID", "description": "Alternatyva įrenginiui." },
+        "schedule_name": { "name": "Pavadinimas", "description": "Programos pavadinimas." },
+        "sched_num": { "name": "Programos numeris", "description": "Numeris, kurį krosnis naudoja programai atpažinti." },
+        "stages": { "name": "Etapai", "description": "Etapų sąrašas su rampe (°C/val.), temperatūra (°C) ir išlaikymu (minutės)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Atnaujinti programą",
+      "description": "Keičia esamos programos pavadinimą ir (arba) etapus.",
+      "fields": {
+        "device_id": { "name": "Krosnis", "description": "Krosnies įrenginys." },
+        "kiln_id": { "name": "Krosnies ID", "description": "Alternatyva įrenginiui." },
+        "sched_num": { "name": "Programos numeris", "description": "Keičiama programa." },
+        "schedule_name": { "name": "Programos pavadinimas", "description": "Keičiama programa pagal pavadinimą." },
+        "name": { "name": "Naujas pavadinimas", "description": "Naujas programos pavadinimas." },
+        "stages": { "name": "Etapai", "description": "Naujas etapų sąrašas su rampe, temperatūra ir išlaikymu." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Ištrinti programą",
+      "description": "Ištrina degimo programą.",
+      "fields": {
+        "device_id": { "name": "Krosnis", "description": "Krosnies įrenginys." },
+        "kiln_id": { "name": "Krosnies ID", "description": "Alternatyva įrenginiui." },
+        "sched_num": { "name": "Programos numeris", "description": "Trinama programa." },
+        "schedule_name": { "name": "Programos pavadinimas", "description": "Trinama programa pagal pavadinimą." }
+      }
+    }
+  }
+}

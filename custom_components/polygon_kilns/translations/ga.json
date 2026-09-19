@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Ceangail le Polygon",
+        "description": "Bain úsáid as ríomhphost agus pasfhocal do chuntais aipe Polygon. Caithfidh cuntais nach n-úsáideann ach Google nó Apple Sign-In pasfhocal a shocrú ar dtús.",
+        "data": {
+          "email": "Ríomhphost",
+          "password": "Pasfhocal"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Athnuaigh an seisiún",
+        "description": "Chuaigh an seisiún Polygon in éag. Cuir isteach do dhintiúir arís.",
+        "data": {
+          "email": "Ríomhphost",
+          "password": "Pasfhocal"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Theip ar an nascadh",
+      "invalid_auth": "Fíordheimhniú neamhbhailí",
+      "unknown": "Tharla earráid anaithnid"
+    },
+    "abort": {
+      "already_configured": "Tá an cuntas cumraithe cheana féin",
+      "reauth_successful": "D'éirigh leis an athfhíordheimhniú"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Roghanna Polygon Kilns",
+        "data": {
+          "poll_interval": "Eatramh nuashonraithe (soicindí)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Teocht" },
+      "setpoint": { "name": "Luach sprice" },
+      "state": { "name": "Staid" },
+      "stage": { "name": "Céim" },
+      "segment_phase": { "name": "Céim deighilte" },
+      "progress": { "name": "Dul chun cinn" },
+      "eta": { "name": "Am críochnaithe measta" },
+      "elapsed": { "name": "Am caite" },
+      "energy": { "name": "Fuinneamh" },
+      "cost": { "name": "Costas" },
+      "wifi_signal": { "name": "Comhartha WiFi" },
+      "last_seen": { "name": "Teagmháil dheireanach" },
+      "last_firing": { "name": "An dóiteán deireanach" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Ar líne" },
+      "thermocouple_error": { "name": "Earráid teirmeachúplála" },
+      "sensor_fault": { "name": "Locht braiteora" },
+      "overheat_fault": { "name": "Róthéamh" }
+    },
+    "select": {
+      "program": { "name": "Clár le tosú" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Tús sceidealta" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Tús sceidealta armtha" }
+    },
+    "button": {
+      "start": { "name": "Tosaigh clár" },
+      "stop": { "name": "Stop an t-áth" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Tosaigh clár",
+      "description": "Tosaíonn sé clár dóite ar áth, anois nó ag dáta/am amach anseo.",
+      "fields": {
+        "device_id": { "name": "Áth", "description": "Gléas an átha." },
+        "kiln_id": { "name": "ID an átha", "description": "Rogha eile seachas gléas: ID doiciméid an átha (m.sh. K1117)." },
+        "sched_num": { "name": "Uimhir an chláir", "description": "Uimhir an chláir (schedNum)." },
+        "schedule_name": { "name": "Ainm an chláir", "description": "Ainm an chláir, rogha eile seachas an uimhir." },
+        "start_time": { "name": "Am tosaigh", "description": "Má shocraítear é, sceidealaítear an tús don dáta/am sin in ionad rith anois." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Stop an t-áth",
+      "description": "Iarrann sé stop a chur leis an dóiteán atá ar siúl.",
+      "fields": {
+        "device_id": { "name": "Áth", "description": "Gléas an átha." },
+        "kiln_id": { "name": "ID an átha", "description": "Rogha eile seachas gléas." }
+      }
+    },
+    "create_schedule": {
+      "name": "Cruthaigh clár",
+      "description": "Cruthaíonn sé clár dóite i mbailiúchán an átha.",
+      "fields": {
+        "device_id": { "name": "Áth", "description": "Gléas an átha." },
+        "kiln_id": { "name": "ID an átha", "description": "Rogha eile seachas gléas." },
+        "schedule_name": { "name": "Ainm", "description": "Ainm an chláir." },
+        "sched_num": { "name": "Uimhir an chláir", "description": "Uimhir a úsáideann an t-áth chun an clár a aithint." },
+        "stages": { "name": "Céimeanna", "description": "Liosta céimeanna le rampa (°C/uair), teocht (°C) agus coinneáil (nóiméid)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Nuashonraigh clár",
+      "description": "Mionathraíonn sé ainm agus/nó céimeanna cláir atá ann cheana féin.",
+      "fields": {
+        "device_id": { "name": "Áth", "description": "Gléas an átha." },
+        "kiln_id": { "name": "ID an átha", "description": "Rogha eile seachas gléas." },
+        "sched_num": { "name": "Uimhir an chláir", "description": "Clár le mionathrú." },
+        "schedule_name": { "name": "Ainm an chláir", "description": "Clár le mionathrú, de réir ainm." },
+        "name": { "name": "Ainm nua", "description": "Ainm nua an chláir." },
+        "stages": { "name": "Céimeanna", "description": "Liosta nua céimeanna le rampa, teocht agus coinneáil." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Scrios clár",
+      "description": "Scriosann sé clár dóite.",
+      "fields": {
+        "device_id": { "name": "Áth", "description": "Gléas an átha." },
+        "kiln_id": { "name": "ID an átha", "description": "Rogha eile seachas gléas." },
+        "sched_num": { "name": "Uimhir an chláir", "description": "Clár le scriosadh." },
+        "schedule_name": { "name": "Ainm an chláir", "description": "Clár le scriosadh, de réir ainm." }
+      }
+    }
+  }
+}

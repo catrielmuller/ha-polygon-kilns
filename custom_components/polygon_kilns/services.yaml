@@ -1,0 +1,100 @@
+start_schedule:
+  fields:
+    device_id:
+      selector:
+        device:
+          integration: polygon_kilns
+    kiln_id:
+      selector:
+        text:
+    sched_num:
+      selector:
+        number:
+          min: 1
+          max: 99
+          mode: box
+    schedule_name:
+      selector:
+        text:
+    start_time:
+      selector:
+        datetime:
+
+stop_schedule:
+  fields:
+    device_id:
+      selector:
+        device:
+          integration: polygon_kilns
+    kiln_id:
+      selector:
+        text:
+
+create_schedule:
+  fields:
+    device_id:
+      selector:
+        device:
+          integration: polygon_kilns
+    kiln_id:
+      selector:
+        text:
+    schedule_name:
+      required: true
+      selector:
+        text:
+    sched_num:
+      required: true
+      selector:
+        number:
+          min: 1
+          max: 99
+          mode: box
+    stages:
+      required: true
+      selector:
+        object:
+
+update_schedule:
+  fields:
+    device_id:
+      selector:
+        device:
+          integration: polygon_kilns
+    kiln_id:
+      selector:
+        text:
+    sched_num:
+      selector:
+        number:
+          min: 1
+          max: 99
+          mode: box
+    schedule_name:
+      selector:
+        text:
+    name:
+      selector:
+        text:
+    stages:
+      selector:
+        object:
+
+delete_schedule:
+  fields:
+    device_id:
+      selector:
+        device:
+          integration: polygon_kilns
+    kiln_id:
+      selector:
+        text:
+    sched_num:
+      selector:
+        number:
+          min: 1
+          max: 99
+          mode: box
+    schedule_name:
+      selector:
+        text:

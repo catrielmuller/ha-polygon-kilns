@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connecta't a Polygon",
+        "description": "Fes servir el correu electrònic i la contrasenya del teu compte de l'aplicació Polygon. Els comptes que només utilitzen l'inici de sessió de Google o Apple han d'establir una contrasenya primer.",
+        "data": {
+          "email": "Correu electrònic",
+          "password": "Contrasenya"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Renova la sessió",
+        "description": "La sessió de Polygon ha caducat. Torna a introduir les teves credencials.",
+        "data": {
+          "email": "Correu electrònic",
+          "password": "Contrasenya"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "No s'ha pogut connectar",
+      "invalid_auth": "Autenticació no vàlida",
+      "unknown": "S'ha produït un error desconegut"
+    },
+    "abort": {
+      "already_configured": "El compte ja està configurat",
+      "reauth_successful": "La reautenticació ha estat correcta"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opcions de Polygon Kilns",
+        "data": {
+          "poll_interval": "Interval d'actualització (segons)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperatura" },
+      "setpoint": { "name": "Consigna" },
+      "state": { "name": "Estat" },
+      "stage": { "name": "Etapa" },
+      "segment_phase": { "name": "Fase del segment" },
+      "progress": { "name": "Progrés" },
+      "eta": { "name": "Finalització estimada" },
+      "elapsed": { "name": "Temps transcorregut" },
+      "energy": { "name": "Energia" },
+      "cost": { "name": "Cost" },
+      "wifi_signal": { "name": "Senyal WiFi" },
+      "last_seen": { "name": "Últim contacte" },
+      "last_firing": { "name": "Última cocció" }
+    },
+    "binary_sensor": {
+      "online": { "name": "En línia" },
+      "thermocouple_error": { "name": "Error del termoparell" },
+      "sensor_fault": { "name": "Fallada del sensor" },
+      "overheat_fault": { "name": "Sobreescalfament" }
+    },
+    "select": {
+      "program": { "name": "Programa per iniciar" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Inici programat" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Inici programat activat" }
+    },
+    "button": {
+      "start": { "name": "Inicia el programa" },
+      "stop": { "name": "Atura el forn" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Inicia el programa",
+      "description": "Inicia un programa de cocció en un forn, ara o en una data/hora futura.",
+      "fields": {
+        "device_id": { "name": "Forn", "description": "El dispositiu forn." },
+        "kiln_id": { "name": "ID del forn", "description": "Alternativa al dispositiu: l'ID del document del forn (p. ex. K1117)." },
+        "sched_num": { "name": "Número de programa", "description": "El número de programa (schedNum)." },
+        "schedule_name": { "name": "Nom del programa", "description": "Nom del programa, alternativa al número." },
+        "start_time": { "name": "Hora d'inici", "description": "Si s'estableix, l'inici es programa per a aquesta data/hora en lloc d'executar-se ara." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Atura el forn",
+      "description": "Sol·licita l'aturada de la cocció en curs.",
+      "fields": {
+        "device_id": { "name": "Forn", "description": "El dispositiu forn." },
+        "kiln_id": { "name": "ID del forn", "description": "Alternativa al dispositiu." }
+      }
+    },
+    "create_schedule": {
+      "name": "Crea un programa",
+      "description": "Crea un programa de cocció a la col·lecció del forn.",
+      "fields": {
+        "device_id": { "name": "Forn", "description": "El dispositiu forn." },
+        "kiln_id": { "name": "ID del forn", "description": "Alternativa al dispositiu." },
+        "schedule_name": { "name": "Nom", "description": "Nom del programa." },
+        "sched_num": { "name": "Número de programa", "description": "Número que el forn utilitza per identificar el programa." },
+        "stages": { "name": "Etapes", "description": "Llista d'etapes amb rampa (°C/h), temperatura (°C) i manteniment (minuts)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Actualitza el programa",
+      "description": "Modifica el nom i/o les etapes d'un programa existent.",
+      "fields": {
+        "device_id": { "name": "Forn", "description": "El dispositiu forn." },
+        "kiln_id": { "name": "ID del forn", "description": "Alternativa al dispositiu." },
+        "sched_num": { "name": "Número de programa", "description": "Programa a modificar." },
+        "schedule_name": { "name": "Nom del programa", "description": "Programa a modificar, pel nom." },
+        "name": { "name": "Nou nom", "description": "Nou nom del programa." },
+        "stages": { "name": "Etapes", "description": "Nova llista d'etapes amb rampa, temperatura i manteniment." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Elimina el programa",
+      "description": "Elimina un programa de cocció.",
+      "fields": {
+        "device_id": { "name": "Forn", "description": "El dispositiu forn." },
+        "kiln_id": { "name": "ID del forn", "description": "Alternativa al dispositiu." },
+        "sched_num": { "name": "Número de programa", "description": "Programa a eliminar." },
+        "schedule_name": { "name": "Nom del programa", "description": "Programa a eliminar, pel nom." }
+      }
+    }
+  }
+}

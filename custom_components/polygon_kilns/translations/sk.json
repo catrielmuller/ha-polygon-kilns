@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Pripojenie k Polygon",
+        "description": "Použite e-mail a heslo svojho účtu v aplikácii Polygon. Účty, ktoré používajú iba prihlásenie cez Google alebo Apple, musia najprv nastaviť heslo.",
+        "data": {
+          "email": "E-mail",
+          "password": "Heslo"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Obnovenie relácie",
+        "description": "Relácia Polygon vypršala. Zadajte svoje prihlasovacie údaje znova.",
+        "data": {
+          "email": "E-mail",
+          "password": "Heslo"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Pripojenie zlyhalo",
+      "invalid_auth": "Neplatná autentifikácia",
+      "unknown": "Vyskytla sa neznáma chyba"
+    },
+    "abort": {
+      "already_configured": "Účet je už nakonfigurovaný",
+      "reauth_successful": "Opätovná autentifikácia bola úspešná"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Možnosti Polygon Kilns",
+        "data": {
+          "poll_interval": "Interval aktualizácie (sekundy)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Teplota" },
+      "setpoint": { "name": "Žiadaná hodnota" },
+      "state": { "name": "Stav" },
+      "stage": { "name": "Etapa" },
+      "segment_phase": { "name": "Fáza segmentu" },
+      "progress": { "name": "Pokrok" },
+      "eta": { "name": "Odhadované dokončenie" },
+      "elapsed": { "name": "Uplynutý čas" },
+      "energy": { "name": "Energia" },
+      "cost": { "name": "Náklady" },
+      "wifi_signal": { "name": "Signál Wi-Fi" },
+      "last_seen": { "name": "Posledný kontakt" },
+      "last_firing": { "name": "Posledný výpal" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Online" },
+      "thermocouple_error": { "name": "Chyba termočlánku" },
+      "sensor_fault": { "name": "Porucha senzora" },
+      "overheat_fault": { "name": "Prehriatie" }
+    },
+    "select": {
+      "program": { "name": "Program na spustenie" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Naplánované spustenie" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Naplánované spustenie aktivované" }
+    },
+    "button": {
+      "start": { "name": "Spustiť program" },
+      "stop": { "name": "Zastaviť pec" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Spustiť program",
+      "description": "Spustí program výpalu na peci, teraz alebo v budúcom dátume/čase.",
+      "fields": {
+        "device_id": { "name": "Pec", "description": "Zariadenie pece." },
+        "kiln_id": { "name": "ID pece", "description": "Alternatíva k zariadeniu: ID dokumentu pece (napr. K1117)." },
+        "sched_num": { "name": "Číslo programu", "description": "Číslo programu (schedNum)." },
+        "schedule_name": { "name": "Názov programu", "description": "Názov programu, alternatíva k číslu." },
+        "start_time": { "name": "Čas spustenia", "description": "Ak je nastavený, spustenie sa naplánuje na daný dátum/čas namiesto okamžitého spustenia." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Zastaviť pec",
+      "description": "Požiada o zastavenie prebiehajúceho výpalu.",
+      "fields": {
+        "device_id": { "name": "Pec", "description": "Zariadenie pece." },
+        "kiln_id": { "name": "ID pece", "description": "Alternatíva k zariadeniu." }
+      }
+    },
+    "create_schedule": {
+      "name": "Vytvoriť program",
+      "description": "Vytvorí program výpalu v kolekcii pece.",
+      "fields": {
+        "device_id": { "name": "Pec", "description": "Zariadenie pece." },
+        "kiln_id": { "name": "ID pece", "description": "Alternatíva k zariadeniu." },
+        "schedule_name": { "name": "Názov", "description": "Názov programu." },
+        "sched_num": { "name": "Číslo programu", "description": "Číslo, ktoré pec používa na identifikáciu programu." },
+        "stages": { "name": "Etapy", "description": "Zoznam etáp s rampou (°C/h), teplotou (°C) a držaním (minúty)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Aktualizovať program",
+      "description": "Upraví názov a/alebo etapy existujúceho programu.",
+      "fields": {
+        "device_id": { "name": "Pec", "description": "Zariadenie pece." },
+        "kiln_id": { "name": "ID pece", "description": "Alternatíva k zariadeniu." },
+        "sched_num": { "name": "Číslo programu", "description": "Program na úpravu." },
+        "schedule_name": { "name": "Názov programu", "description": "Program na úpravu, podľa názvu." },
+        "name": { "name": "Nový názov", "description": "Nový názov programu." },
+        "stages": { "name": "Etapy", "description": "Nový zoznam etáp s rampou, teplotou a držaním." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Odstrániť program",
+      "description": "Odstráni program výpalu.",
+      "fields": {
+        "device_id": { "name": "Pec", "description": "Zariadenie pece." },
+        "kiln_id": { "name": "ID pece", "description": "Alternatíva k zariadeniu." },
+        "sched_num": { "name": "Číslo programu", "description": "Program na odstránenie." },
+        "schedule_name": { "name": "Názov programu", "description": "Program na odstránenie, podľa názvu." }
+      }
+    }
+  }
+}

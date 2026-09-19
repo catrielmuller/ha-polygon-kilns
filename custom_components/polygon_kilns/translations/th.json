@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "เชื่อมต่อกับ Polygon",
+        "description": "ใช้อีเมลและรหัสผ่านของบัญชีแอป Polygon ของคุณ บัญชีที่ใช้การเข้าสู่ระบบด้วย Google หรือ Apple เท่านั้นต้องตั้งรหัสผ่านก่อน",
+        "data": {
+          "email": "อีเมล",
+          "password": "รหัสผ่าน"
+        }
+      },
+      "reauth_confirm": {
+        "title": "ต่ออายุเซสชัน",
+        "description": "เซสชัน Polygon หมดอายุแล้ว ป้อนข้อมูลประจำตัวของคุณอีกครั้ง",
+        "data": {
+          "email": "อีเมล",
+          "password": "รหัสผ่าน"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "เชื่อมต่อไม่สำเร็จ",
+      "invalid_auth": "การยืนยันตัวตนไม่ถูกต้อง",
+      "unknown": "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ"
+    },
+    "abort": {
+      "already_configured": "บัญชีนี้ได้รับการตั้งค่าแล้ว",
+      "reauth_successful": "การยืนยันตัวตนใหม่สำเร็จ"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "ตัวเลือก Polygon Kilns",
+        "data": {
+          "poll_interval": "ช่วงเวลาการอัปเดต (วินาที)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "อุณหภูมิ" },
+      "setpoint": { "name": "ค่าที่ตั้ง" },
+      "state": { "name": "สถานะ" },
+      "stage": { "name": "ขั้นตอน" },
+      "segment_phase": { "name": "เฟสของเซกเมนต์" },
+      "progress": { "name": "ความคืบหน้า" },
+      "eta": { "name": "เวลาแล้วเสร็จโดยประมาณ" },
+      "elapsed": { "name": "เวลาที่ผ่านไป" },
+      "energy": { "name": "พลังงาน" },
+      "cost": { "name": "ค่าใช้จ่าย" },
+      "wifi_signal": { "name": "สัญญาณ WiFi" },
+      "last_seen": { "name": "การติดต่อล่าสุด" },
+      "last_firing": { "name": "การเผาครั้งล่าสุด" }
+    },
+    "binary_sensor": {
+      "online": { "name": "ออนไลน์" },
+      "thermocouple_error": { "name": "ข้อผิดพลาดเทอร์โมคัปเปิล" },
+      "sensor_fault": { "name": "เซ็นเซอร์ขัดข้อง" },
+      "overheat_fault": { "name": "ความร้อนเกิน" }
+    },
+    "select": {
+      "program": { "name": "โปรแกรมที่จะเริ่ม" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "การเริ่มตามกำหนดเวลา" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "เปิดใช้การเริ่มตามกำหนดเวลา" }
+    },
+    "button": {
+      "start": { "name": "เริ่มโปรแกรม" },
+      "stop": { "name": "หยุดเตาเผา" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "เริ่มโปรแกรม",
+      "description": "เริ่มโปรแกรมการเผาบนเตาเผา ทันทีหรือในวัน/เวลาที่กำหนดในอนาคต",
+      "fields": {
+        "device_id": { "name": "เตาเผา", "description": "อุปกรณ์เตาเผา" },
+        "kiln_id": { "name": "รหัสเตาเผา", "description": "ทางเลือกแทนอุปกรณ์: รหัสเอกสารของเตาเผา (เช่น K1117)" },
+        "sched_num": { "name": "หมายเลขโปรแกรม", "description": "หมายเลขโปรแกรม (schedNum)" },
+        "schedule_name": { "name": "ชื่อโปรแกรม", "description": "ชื่อโปรแกรม ทางเลือกแทนหมายเลข" },
+        "start_time": { "name": "เวลาเริ่ม", "description": "หากตั้งไว้ การเริ่มจะถูกกำหนดเวลาไว้สำหรับวัน/เวลานั้นแทนการทำงานทันที" }
+      }
+    },
+    "stop_schedule": {
+      "name": "หยุดเตาเผา",
+      "description": "ขอให้หยุดการเผาที่กำลังดำเนินอยู่",
+      "fields": {
+        "device_id": { "name": "เตาเผา", "description": "อุปกรณ์เตาเผา" },
+        "kiln_id": { "name": "รหัสเตาเผา", "description": "ทางเลือกแทนอุปกรณ์" }
+      }
+    },
+    "create_schedule": {
+      "name": "สร้างโปรแกรม",
+      "description": "สร้างโปรแกรมการเผาในคอลเลกชันของเตาเผา",
+      "fields": {
+        "device_id": { "name": "เตาเผา", "description": "อุปกรณ์เตาเผา" },
+        "kiln_id": { "name": "รหัสเตาเผา", "description": "ทางเลือกแทนอุปกรณ์" },
+        "schedule_name": { "name": "ชื่อ", "description": "ชื่อโปรแกรม" },
+        "sched_num": { "name": "หมายเลขโปรแกรม", "description": "หมายเลขที่เตาเผาใช้ระบุโปรแกรม" },
+        "stages": { "name": "ขั้นตอน", "description": "รายการขั้นตอนที่มีแรมป์ (°C/ชม.) อุณหภูมิ (°C) และเวลาคงที่ (นาที)" }
+      }
+    },
+    "update_schedule": {
+      "name": "อัปเดตโปรแกรม",
+      "description": "แก้ไขชื่อและ/หรือขั้นตอนของโปรแกรมที่มีอยู่",
+      "fields": {
+        "device_id": { "name": "เตาเผา", "description": "อุปกรณ์เตาเผา" },
+        "kiln_id": { "name": "รหัสเตาเผา", "description": "ทางเลือกแทนอุปกรณ์" },
+        "sched_num": { "name": "หมายเลขโปรแกรม", "description": "โปรแกรมที่จะแก้ไข" },
+        "schedule_name": { "name": "ชื่อโปรแกรม", "description": "โปรแกรมที่จะแก้ไข โดยระบุชื่อ" },
+        "name": { "name": "ชื่อใหม่", "description": "ชื่อโปรแกรมใหม่" },
+        "stages": { "name": "ขั้นตอน", "description": "รายการขั้นตอนใหม่ที่มีแรมป์ อุณหภูมิ และเวลาคงที่" }
+      }
+    },
+    "delete_schedule": {
+      "name": "ลบโปรแกรม",
+      "description": "ลบโปรแกรมการเผา",
+      "fields": {
+        "device_id": { "name": "เตาเผา", "description": "อุปกรณ์เตาเผา" },
+        "kiln_id": { "name": "รหัสเตาเผา", "description": "ทางเลือกแทนอุปกรณ์" },
+        "sched_num": { "name": "หมายเลขโปรแกรม", "description": "โปรแกรมที่จะลบ" },
+        "schedule_name": { "name": "ชื่อโปรแกรม", "description": "โปรแกรมที่จะลบ โดยระบุชื่อ" }
+      }
+    }
+  }
+}

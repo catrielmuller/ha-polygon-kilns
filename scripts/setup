@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Set up the development environment inside the devcontainer.
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+# The workspace is bind-mounted into the devcontainer, so a .venv created on
+# the host (or vice versa) points to a Python interpreter that does not exist
+# in the current environment. The same happens if the workspace directory is
+# renamed, since console scripts embed the absolute venv path. Detect both
+# cases via pip (its shebang hardcodes the interpreter path) and recreate.
+if [ -d .venv ] && ! .venv/bin/pip --version >/dev/null 2>&1; then
+  echo "El .venv existente pertenece a otro entorno; recreándolo..."
+  rm -rf .venv
+fi
+
+if [ ! -d .venv ]; then
+  python3 -m venv .venv
+fi
+
+.venv/bin/pip install --upgrade pip
+.venv/bin/pip install -r requirements_dev.txt

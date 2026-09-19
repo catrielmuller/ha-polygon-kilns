@@ -1,0 +1,61 @@
+{
+  "entity": {
+    "button": {
+      "start": {
+        "default": "mdi:fire-circle"
+      },
+      "stop": {
+        "default": "mdi:fire-off"
+      }
+    },
+    "datetime": {
+      "scheduled_start": {
+        "default": "mdi:calendar-clock"
+      }
+    },
+    "select": {
+      "program": {
+        "default": "mdi:playlist-play"
+      }
+    },
+    "switch": {
+      "scheduled_start_armed": {
+        "default": "mdi:alarm-check"
+      }
+    },
+    "sensor": {
+      "state": {
+        "default": "mdi:fire"
+      },
+      "stage": {
+        "default": "mdi:stairs"
+      },
+      "segment_phase": {
+        "default": "mdi:trending-up"
+      },
+      "progress": {
+        "default": "mdi:progress-clock"
+      },
+      "last_firing": {
+        "default": "mdi:history"
+      }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "service": "mdi:fire-circle"
+    },
+    "stop_schedule": {
+      "service": "mdi:fire-off"
+    },
+    "create_schedule": {
+      "service": "mdi:playlist-plus"
+    },
+    "update_schedule": {
+      "service": "mdi:playlist-edit"
+    },
+    "delete_schedule": {
+      "service": "mdi:playlist-remove"
+    }
+  }
+}

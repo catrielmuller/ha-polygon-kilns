@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "连接到 Polygon",
+        "description": "使用您的 Polygon 应用账户的邮箱和密码。仅使用 Google 或 Apple 登录的账户必须先设置密码。",
+        "data": {
+          "email": "邮箱",
+          "password": "密码"
+        }
+      },
+      "reauth_confirm": {
+        "title": "重新验证会话",
+        "description": "Polygon 会话已过期。请重新输入您的凭据。",
+        "data": {
+          "email": "邮箱",
+          "password": "密码"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "连接失败",
+      "invalid_auth": "身份验证无效",
+      "unknown": "发生未知错误"
+    },
+    "abort": {
+      "already_configured": "账户已配置",
+      "reauth_successful": "重新验证成功"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns 选项",
+        "data": {
+          "poll_interval": "更新间隔（秒）"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "温度" },
+      "setpoint": { "name": "设定值" },
+      "state": { "name": "状态" },
+      "stage": { "name": "阶段" },
+      "segment_phase": { "name": "分段阶段" },
+      "progress": { "name": "进度" },
+      "eta": { "name": "预计完成时间" },
+      "elapsed": { "name": "已用时间" },
+      "energy": { "name": "能耗" },
+      "cost": { "name": "费用" },
+      "wifi_signal": { "name": "WiFi 信号" },
+      "last_seen": { "name": "上次联系" },
+      "last_firing": { "name": "上次烧制" }
+    },
+    "binary_sensor": {
+      "online": { "name": "在线" },
+      "thermocouple_error": { "name": "热电偶故障" },
+      "sensor_fault": { "name": "传感器故障" },
+      "overheat_fault": { "name": "过热" }
+    },
+    "select": {
+      "program": { "name": "要启动的程序" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "定时启动" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "定时启动已启用" }
+    },
+    "button": {
+      "start": { "name": "启动程序" },
+      "stop": { "name": "停止窑炉" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "启动程序",
+      "description": "立即或在未来的日期/时间启动窑炉的烧制程序。",
+      "fields": {
+        "device_id": { "name": "窑炉", "description": "窑炉设备。" },
+        "kiln_id": { "name": "窑炉 ID", "description": "设备的替代项：窑炉文档 ID（例如 K1117）。" },
+        "sched_num": { "name": "程序编号", "description": "程序编号（schedNum）。" },
+        "schedule_name": { "name": "程序名称", "description": "程序名称，可替代编号。" },
+        "start_time": { "name": "启动时间", "description": "如果设置，启动将安排在该日期/时间，而不是立即运行。" }
+      }
+    },
+    "stop_schedule": {
+      "name": "停止窑炉",
+      "description": "请求停止正在进行的烧制。",
+      "fields": {
+        "device_id": { "name": "窑炉", "description": "窑炉设备。" },
+        "kiln_id": { "name": "窑炉 ID", "description": "设备的替代项。" }
+      }
+    },
+    "create_schedule": {
+      "name": "创建程序",
+      "description": "在窑炉的集合中创建烧制程序。",
+      "fields": {
+        "device_id": { "name": "窑炉", "description": "窑炉设备。" },
+        "kiln_id": { "name": "窑炉 ID", "description": "设备的替代项。" },
+        "schedule_name": { "name": "名称", "description": "程序名称。" },
+        "sched_num": { "name": "程序编号", "description": "窑炉用于识别程序的编号。" },
+        "stages": { "name": "阶段", "description": "阶段列表，包含升温速率（°C/小时）、目标温度（°C）和保温时间（分钟）。" }
+      }
+    },
+    "update_schedule": {
+      "name": "更新程序",
+      "description": "修改现有程序的名称和/或阶段。",
+      "fields": {
+        "device_id": { "name": "窑炉", "description": "窑炉设备。" },
+        "kiln_id": { "name": "窑炉 ID", "description": "设备的替代项。" },
+        "sched_num": { "name": "程序编号", "description": "要修改的程序。" },
+        "schedule_name": { "name": "程序名称", "description": "要修改的程序，按名称。" },
+        "name": { "name": "新名称", "description": "新的程序名称。" },
+        "stages": { "name": "阶段", "description": "新的阶段列表，包含升温速率、目标温度和保温时间。" }
+      }
+    },
+    "delete_schedule": {
+      "name": "删除程序",
+      "description": "删除一个烧制程序。",
+      "fields": {
+        "device_id": { "name": "窑炉", "description": "窑炉设备。" },
+        "kiln_id": { "name": "窑炉 ID", "description": "设备的替代项。" },
+        "sched_num": { "name": "程序编号", "description": "要删除的程序。" },
+        "schedule_name": { "name": "程序名称", "description": "要删除的程序，按名称。" }
+      }
+    }
+  }
+}

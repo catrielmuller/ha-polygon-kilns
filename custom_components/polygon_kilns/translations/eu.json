@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Konektatu Polygonera",
+        "description": "Erabili zure Polygon aplikazioko kontuko e-posta eta pasahitza. Google edo Apple bidezko saio-hasiera soilik erabiltzen duten kontuek lehenago pasahitz bat ezarri behar dute.",
+        "data": {
+          "email": "E-posta",
+          "password": "Pasahitza"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Berritu saioa",
+        "description": "Polygon saioa iraungi da. Sartu berriz zure kredentzialak.",
+        "data": {
+          "email": "E-posta",
+          "password": "Pasahitza"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Ezin izan da konektatu",
+      "invalid_auth": "Autentifikazio baliogabea",
+      "unknown": "Errore ezezaguna gertatu da"
+    },
+    "abort": {
+      "already_configured": "Kontua dagoeneko konfiguratuta dago",
+      "reauth_successful": "Berriz autentifikatzea arrakastatsua izan da"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns aukerak",
+        "data": {
+          "poll_interval": "Eguneratze-tartea (segundoak)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Tenperatura" },
+      "setpoint": { "name": "Helburu-balioa" },
+      "state": { "name": "Egoera" },
+      "stage": { "name": "Etapa" },
+      "segment_phase": { "name": "Segmentuaren fasea" },
+      "progress": { "name": "Aurrerapena" },
+      "eta": { "name": "Estimatutako amaiera" },
+      "elapsed": { "name": "Igarotako denbora" },
+      "energy": { "name": "Energia" },
+      "cost": { "name": "Kostua" },
+      "wifi_signal": { "name": "WiFi seinalea" },
+      "last_seen": { "name": "Azken kontaktua" },
+      "last_firing": { "name": "Azken egostea" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Linean" },
+      "thermocouple_error": { "name": "Termoparearen errorea" },
+      "sensor_fault": { "name": "Sentsorearen hutsegitea" },
+      "overheat_fault": { "name": "Gainberotzea" }
+    },
+    "select": {
+      "program": { "name": "Hasi beharreko programa" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Programatutako hasiera" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Programatutako hasiera aktibatuta" }
+    },
+    "button": {
+      "start": { "name": "Hasi programa" },
+      "stop": { "name": "Gelditu labea" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Hasi programa",
+      "description": "Egoste-programa bat abiarazten du labe batean, orain edo etorkizuneko data/ordu batean.",
+      "fields": {
+        "device_id": { "name": "Labea", "description": "Labe-gailua." },
+        "kiln_id": { "name": "Labearen IDa", "description": "Gailuaren ordezkoa: labearen dokumentuaren IDa (adib. K1117)." },
+        "sched_num": { "name": "Programa-zenbakia", "description": "Programa-zenbakia (schedNum)." },
+        "schedule_name": { "name": "Programaren izena", "description": "Programaren izena, zenbakiaren ordezkoa." },
+        "start_time": { "name": "Hasiera-ordua", "description": "Ezarrita badago, hasiera data/ordu horretarako programatuko da, orain exekutatu beharrean." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Gelditu labea",
+      "description": "Martxan dagoen egostearen gelditzea eskatzen du.",
+      "fields": {
+        "device_id": { "name": "Labea", "description": "Labe-gailua." },
+        "kiln_id": { "name": "Labearen IDa", "description": "Gailuaren ordezkoa." }
+      }
+    },
+    "create_schedule": {
+      "name": "Sortu programa",
+      "description": "Egoste-programa bat sortzen du labearen bilduman.",
+      "fields": {
+        "device_id": { "name": "Labea", "description": "Labe-gailua." },
+        "kiln_id": { "name": "Labearen IDa", "description": "Gailuaren ordezkoa." },
+        "schedule_name": { "name": "Izena", "description": "Programaren izena." },
+        "sched_num": { "name": "Programa-zenbakia", "description": "Labeak programa identifikatzeko erabiltzen duen zenbakia." },
+        "stages": { "name": "Etapak", "description": "Etapen zerrenda malda (°C/h), tenperatura (°C) eta mantentzearekin (minutuak)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Eguneratu programa",
+      "description": "Lehendik dagoen programa baten izena eta/edo etapak aldatzen ditu.",
+      "fields": {
+        "device_id": { "name": "Labea", "description": "Labe-gailua." },
+        "kiln_id": { "name": "Labearen IDa", "description": "Gailuaren ordezkoa." },
+        "sched_num": { "name": "Programa-zenbakia", "description": "Aldatu beharreko programa." },
+        "schedule_name": { "name": "Programaren izena", "description": "Aldatu beharreko programa, izenaren arabera." },
+        "name": { "name": "Izen berria", "description": "Programaren izen berria." },
+        "stages": { "name": "Etapak", "description": "Etapen zerrenda berria malda, tenperatura eta mantentzearekin." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Ezabatu programa",
+      "description": "Egoste-programa bat ezabatzen du.",
+      "fields": {
+        "device_id": { "name": "Labea", "description": "Labe-gailua." },
+        "kiln_id": { "name": "Labearen IDa", "description": "Gailuaren ordezkoa." },
+        "sched_num": { "name": "Programa-zenbakia", "description": "Ezabatu beharreko programa." },
+        "schedule_name": { "name": "Programaren izena", "description": "Ezabatu beharreko programa, izenaren arabera." }
+      }
+    }
+  }
+}

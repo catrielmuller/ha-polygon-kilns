@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Подключение к Polygon",
+        "description": "Используйте адрес электронной почты и пароль от вашей учётной записи в приложении Polygon. Учётные записи, использующие только вход через Google или Apple, должны сначала задать пароль.",
+        "data": {
+          "email": "Электронная почта",
+          "password": "Пароль"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Продление сессии",
+        "description": "Сессия Polygon истекла. Введите учётные данные снова.",
+        "data": {
+          "email": "Электронная почта",
+          "password": "Пароль"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Не удалось подключиться",
+      "invalid_auth": "Ошибка аутентификации",
+      "unknown": "Произошла неизвестная ошибка"
+    },
+    "abort": {
+      "already_configured": "Учётная запись уже настроена",
+      "reauth_successful": "Повторная аутентификация выполнена успешно"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Настройки Polygon Kilns",
+        "data": {
+          "poll_interval": "Интервал обновления (секунды)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Температура" },
+      "setpoint": { "name": "Уставка" },
+      "state": { "name": "Состояние" },
+      "stage": { "name": "Этап" },
+      "segment_phase": { "name": "Фаза сегмента" },
+      "progress": { "name": "Прогресс" },
+      "eta": { "name": "Расчётное время завершения" },
+      "elapsed": { "name": "Прошедшее время" },
+      "energy": { "name": "Энергия" },
+      "cost": { "name": "Стоимость" },
+      "wifi_signal": { "name": "Сигнал Wi-Fi" },
+      "last_seen": { "name": "Последний контакт" },
+      "last_firing": { "name": "Последний обжиг" }
+    },
+    "binary_sensor": {
+      "online": { "name": "В сети" },
+      "thermocouple_error": { "name": "Ошибка термопары" },
+      "sensor_fault": { "name": "Неисправность датчика" },
+      "overheat_fault": { "name": "Перегрев" }
+    },
+    "select": {
+      "program": { "name": "Программа для запуска" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Запланированный запуск" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Запланированный запуск активен" }
+    },
+    "button": {
+      "start": { "name": "Запустить программу" },
+      "stop": { "name": "Остановить печь" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Запустить программу",
+      "description": "Запускает программу обжига на печи, сейчас или в заданную дату и время.",
+      "fields": {
+        "device_id": { "name": "Печь", "description": "Устройство печи." },
+        "kiln_id": { "name": "ID печи", "description": "Альтернатива устройству: ID документа печи (например, K1117)." },
+        "sched_num": { "name": "Номер программы", "description": "Номер программы (schedNum)." },
+        "schedule_name": { "name": "Название программы", "description": "Название программы, альтернатива номеру." },
+        "start_time": { "name": "Время запуска", "description": "Если задано, запуск планируется на указанную дату и время вместо немедленного выполнения." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Остановить печь",
+      "description": "Запрашивает остановку текущего обжига.",
+      "fields": {
+        "device_id": { "name": "Печь", "description": "Устройство печи." },
+        "kiln_id": { "name": "ID печи", "description": "Альтернатива устройству." }
+      }
+    },
+    "create_schedule": {
+      "name": "Создать программу",
+      "description": "Создаёт программу обжига в коллекции печи.",
+      "fields": {
+        "device_id": { "name": "Печь", "description": "Устройство печи." },
+        "kiln_id": { "name": "ID печи", "description": "Альтернатива устройству." },
+        "schedule_name": { "name": "Название", "description": "Название программы." },
+        "sched_num": { "name": "Номер программы", "description": "Номер, который печь использует для идентификации программы." },
+        "stages": { "name": "Этапы", "description": "Список этапов с параметрами: скорость нагрева (°C/ч), температура (°C) и выдержка (минуты)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Обновить программу",
+      "description": "Изменяет название и/или этапы существующей программы.",
+      "fields": {
+        "device_id": { "name": "Печь", "description": "Устройство печи." },
+        "kiln_id": { "name": "ID печи", "description": "Альтернатива устройству." },
+        "sched_num": { "name": "Номер программы", "description": "Программа для изменения." },
+        "schedule_name": { "name": "Название программы", "description": "Программа для изменения, по названию." },
+        "name": { "name": "Новое название", "description": "Новое название программы." },
+        "stages": { "name": "Этапы", "description": "Новый список этапов со скоростью нагрева, температурой и выдержкой." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Удалить программу",
+      "description": "Удаляет программу обжига.",
+      "fields": {
+        "device_id": { "name": "Печь", "description": "Устройство печи." },
+        "kiln_id": { "name": "ID печи", "description": "Альтернатива устройству." },
+        "sched_num": { "name": "Номер программы", "description": "Программа для удаления." },
+        "schedule_name": { "name": "Название программы", "description": "Программа для удаления, по названию." }
+      }
+    }
+  }
+}

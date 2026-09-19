@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Polygon-თან დაკავშირება",
+        "description": "გამოიყენეთ თქვენი Polygon აპლიკაციის ანგარიშის ელფოსტა და პაროლი. ანგარიშებმა, რომლებიც მხოლოდ Google ან Apple Sign-In-ს იყენებენ, ჯერ უნდა დააყენონ პაროლი.",
+        "data": {
+          "email": "ელფოსტა",
+          "password": "პაროლი"
+        }
+      },
+      "reauth_confirm": {
+        "title": "სესიის განახლება",
+        "description": "Polygon სესია ვადაგასულია. შეიყვანეთ თქვენი ანგარიშის მონაცემები ხელახლა.",
+        "data": {
+          "email": "ელფოსტა",
+          "password": "პაროლი"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "დაკავშირება ვერ მოხერხდა",
+      "invalid_auth": "არასწორი ავტორიზაცია",
+      "unknown": "უცნობი შეცდომა მოხდა"
+    },
+    "abort": {
+      "already_configured": "ანგარიში უკვე კონფიგურირებულია",
+      "reauth_successful": "ხელახალი ავტორიზაცია წარმატებით დასრულდა"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns-ის პარამეტრები",
+        "data": {
+          "poll_interval": "განახლების ინტერვალი (წამები)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "ტემპერატურა" },
+      "setpoint": { "name": "სამიზნე ტემპერატურა" },
+      "state": { "name": "მდგომარეობა" },
+      "stage": { "name": "ეტაპი" },
+      "segment_phase": { "name": "სეგმენტის ფაზა" },
+      "progress": { "name": "პროგრესი" },
+      "eta": { "name": "დასრულების სავარაუდო დრო" },
+      "elapsed": { "name": "გასული დრო" },
+      "energy": { "name": "ენერგია" },
+      "cost": { "name": "ღირებულება" },
+      "wifi_signal": { "name": "WiFi სიგნალი" },
+      "last_seen": { "name": "ბოლო კონტაქტი" },
+      "last_firing": { "name": "ბოლო წვა" }
+    },
+    "binary_sensor": {
+      "online": { "name": "ონლაინ" },
+      "thermocouple_error": { "name": "თერმოწყვილის შეცდომა" },
+      "sensor_fault": { "name": "სენსორის გაუმართაობა" },
+      "overheat_fault": { "name": "გადახურება" }
+    },
+    "select": {
+      "program": { "name": "გასაშვები პროგრამა" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "დაგეგმილი დაწყება" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "დაგეგმილი დაწყება ჩართულია" }
+    },
+    "button": {
+      "start": { "name": "პროგრამის დაწყება" },
+      "stop": { "name": "ღუმელის გაჩერება" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "პროგრამის დაწყება",
+      "description": "ღუმელში წვის პროგრამის გაშვება — ახლა ან მომავალ თარიღზე/დროზე.",
+      "fields": {
+        "device_id": { "name": "ღუმელი", "description": "ღუმელის მოწყობილობა." },
+        "kiln_id": { "name": "ღუმელის ID", "description": "მოწყობილობის ალტერნატივა: ღუმელის დოკუმენტის ID (მაგ. K1117)." },
+        "sched_num": { "name": "პროგრამის ნომერი", "description": "პროგრამის ნომერი (schedNum)." },
+        "schedule_name": { "name": "პროგრამის სახელი", "description": "პროგრამის სახელი, ნომრის ალტერნატივა." },
+        "start_time": { "name": "დაწყების დრო", "description": "თუ მითითებულია, დაწყება ამ თარიღზე/დროზე დაიგეგმება და არა დაუყოვნებლივ გაეშვება." }
+      }
+    },
+    "stop_schedule": {
+      "name": "ღუმელის გაჩერება",
+      "description": "მიმდინარე წვის გაჩერების მოთხოვნა.",
+      "fields": {
+        "device_id": { "name": "ღუმელი", "description": "ღუმელის მოწყობილობა." },
+        "kiln_id": { "name": "ღუმელის ID", "description": "მოწყობილობის ალტერნატივა." }
+      }
+    },
+    "create_schedule": {
+      "name": "პროგრამის შექმნა",
+      "description": "ქმნის წვის პროგრამას ღუმელის კოლექციაში.",
+      "fields": {
+        "device_id": { "name": "ღუმელი", "description": "ღუმელის მოწყობილობა." },
+        "kiln_id": { "name": "ღუმელის ID", "description": "მოწყობილობის ალტერნატივა." },
+        "schedule_name": { "name": "სახელი", "description": "პროგრამის სახელი." },
+        "sched_num": { "name": "პროგრამის ნომერი", "description": "ნომერი, რომელსაც ღუმელი პროგრამის იდენტიფიკაციისთვის იყენებს." },
+        "stages": { "name": "ეტაპები", "description": "ეტაპების სია რამპით (°C/სთ), ტემპერატურით (°C) და შენარჩუნებით (წუთები)." }
+      }
+    },
+    "update_schedule": {
+      "name": "პროგრამის განახლება",
+      "description": "ცვლის არსებული პროგრამის სახელს და/ან ეტაპებს.",
+      "fields": {
+        "device_id": { "name": "ღუმელი", "description": "ღუმელის მოწყობილობა." },
+        "kiln_id": { "name": "ღუმელის ID", "description": "მოწყობილობის ალტერნატივა." },
+        "sched_num": { "name": "პროგრამის ნომერი", "description": "შესაცვლელი პროგრამა." },
+        "schedule_name": { "name": "პროგრამის სახელი", "description": "შესაცვლელი პროგრამა, სახელით." },
+        "name": { "name": "ახალი სახელი", "description": "ახალი პროგრამის სახელი." },
+        "stages": { "name": "ეტაპები", "description": "ეტაპების ახალი სია რამპით, ტემპერატურით და შენარჩუნებით." }
+      }
+    },
+    "delete_schedule": {
+      "name": "პროგრამის წაშლა",
+      "description": "შლის წვის პროგრამას.",
+      "fields": {
+        "device_id": { "name": "ღუმელი", "description": "ღუმელის მოწყობილობა." },
+        "kiln_id": { "name": "ღუმელის ID", "description": "მოწყობილობის ალტერნატივა." },
+        "sched_num": { "name": "პროგრამის ნომერი", "description": "წასაშლელი პროგრამა." },
+        "schedule_name": { "name": "პროგრამის სახელი", "description": "წასაშლელი პროგრამა, სახელით." }
+      }
+    }
+  }
+}

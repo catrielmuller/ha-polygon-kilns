@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Savienoties ar Polygon",
+        "description": "Izmantojiet sava Polygon lietotnes konta e-pastu un paroli. Kontiem, kas izmanto tikai Google vai Apple pieteikšanos, vispirms jāiestata parole.",
+        "data": {
+          "email": "E-pasts",
+          "password": "Parole"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Atjaunot sesiju",
+        "description": "Polygon sesija ir beigusies. Vēlreiz ievadiet savus pieteikšanās datus.",
+        "data": {
+          "email": "E-pasts",
+          "password": "Parole"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Neizdevās izveidot savienojumu",
+      "invalid_auth": "Nederīga autentifikācija",
+      "unknown": "Radās nezināma kļūda"
+    },
+    "abort": {
+      "already_configured": "Konts jau ir konfigurēts",
+      "reauth_successful": "Atkārtota autentifikācija bija veiksmīga"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns opcijas",
+        "data": {
+          "poll_interval": "Atjaunināšanas intervāls (sekundes)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperatūra" },
+      "setpoint": { "name": "Uzdotā vērtība" },
+      "state": { "name": "Stāvoklis" },
+      "stage": { "name": "Posms" },
+      "segment_phase": { "name": "Segmenta fāze" },
+      "progress": { "name": "Progress" },
+      "eta": { "name": "Paredzamā pabeigšana" },
+      "elapsed": { "name": "Pagājušais laiks" },
+      "energy": { "name": "Enerģija" },
+      "cost": { "name": "Izmaksas" },
+      "wifi_signal": { "name": "WiFi signāls" },
+      "last_seen": { "name": "Pēdējais kontakts" },
+      "last_firing": { "name": "Pēdējā apdedzināšana" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Tiešsaistē" },
+      "thermocouple_error": { "name": "Termopāra kļūda" },
+      "sensor_fault": { "name": "Sensora kļūme" },
+      "overheat_fault": { "name": "Pārkaršana" }
+    },
+    "select": {
+      "program": { "name": "Startējamā programma" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Plānotais starts" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Plānotais starts aktivizēts" }
+    },
+    "button": {
+      "start": { "name": "Sākt programmu" },
+      "stop": { "name": "Apturēt krāsni" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Sākt programmu",
+      "description": "Sāk apdedzināšanas programmu krāsnī tagad vai nākotnē norādītā datumā/laikā.",
+      "fields": {
+        "device_id": { "name": "Krāsns", "description": "Krāsns ierīce." },
+        "kiln_id": { "name": "Krāsns ID", "description": "Alternatīva ierīcei: krāsns dokumenta ID (piem., K1117)." },
+        "sched_num": { "name": "Programmas numurs", "description": "Programmas numurs (schedNum)." },
+        "schedule_name": { "name": "Programmas nosaukums", "description": "Programmas nosaukums, alternatīva numuram." },
+        "start_time": { "name": "Sākuma laiks", "description": "Ja iestatīts, starts tiek ieplānots šajā datumā/laikā, nevis izpildīts nekavējoties." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Apturēt krāsni",
+      "description": "Pieprasa notiekošās apdedzināšanas apturēšanu.",
+      "fields": {
+        "device_id": { "name": "Krāsns", "description": "Krāsns ierīce." },
+        "kiln_id": { "name": "Krāsns ID", "description": "Alternatīva ierīcei." }
+      }
+    },
+    "create_schedule": {
+      "name": "Izveidot programmu",
+      "description": "Izveido apdedzināšanas programmu krāsns kolekcijā.",
+      "fields": {
+        "device_id": { "name": "Krāsns", "description": "Krāsns ierīce." },
+        "kiln_id": { "name": "Krāsns ID", "description": "Alternatīva ierīcei." },
+        "schedule_name": { "name": "Nosaukums", "description": "Programmas nosaukums." },
+        "sched_num": { "name": "Programmas numurs", "description": "Numurs, ko krāsns izmanto programmas identificēšanai." },
+        "stages": { "name": "Posmi", "description": "Posmu saraksts ar rampu (°C/h), temp (°C) un izturēšanu (minūtes)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Atjaunināt programmu",
+      "description": "Maina esošās programmas nosaukumu un/vai posmus.",
+      "fields": {
+        "device_id": { "name": "Krāsns", "description": "Krāsns ierīce." },
+        "kiln_id": { "name": "Krāsns ID", "description": "Alternatīva ierīcei." },
+        "sched_num": { "name": "Programmas numurs", "description": "Maināmā programma." },
+        "schedule_name": { "name": "Programmas nosaukums", "description": "Maināmā programma pēc nosaukuma." },
+        "name": { "name": "Jaunais nosaukums", "description": "Jaunais programmas nosaukums." },
+        "stages": { "name": "Posmi", "description": "Jauns posmu saraksts ar rampu, temp un izturēšanu." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Dzēst programmu",
+      "description": "Dzēš apdedzināšanas programmu.",
+      "fields": {
+        "device_id": { "name": "Krāsns", "description": "Krāsns ierīce." },
+        "kiln_id": { "name": "Krāsns ID", "description": "Alternatīva ierīcei." },
+        "sched_num": { "name": "Programmas numurs", "description": "Dzēšamā programma." },
+        "schedule_name": { "name": "Programmas nosaukums", "description": "Dzēšamā programma pēc nosaukuma." }
+      }
+    }
+  }
+}

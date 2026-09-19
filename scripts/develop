@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Run a development Home Assistant instance with the integration loaded.
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+if [ ! -x .venv/bin/hass ]; then
+  bash scripts/setup
+fi
+
+mkdir -p config
+
+# Link the integration into the dev config so HA picks it up.
+if [ ! -e config/custom_components ]; then
+  ln -s ../custom_components config/custom_components
+fi
+
+exec .venv/bin/hass --config config

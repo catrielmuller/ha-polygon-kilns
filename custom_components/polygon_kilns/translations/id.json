@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Hubungkan ke Polygon",
+        "description": "Gunakan email dan kata sandi akun aplikasi Polygon Anda. Akun yang hanya menggunakan Google atau Apple Sign-In harus menetapkan kata sandi terlebih dahulu.",
+        "data": {
+          "email": "Email",
+          "password": "Kata sandi"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Perbarui sesi",
+        "description": "Sesi Polygon telah kedaluwarsa. Masukkan kembali kredensial Anda.",
+        "data": {
+          "email": "Email",
+          "password": "Kata sandi"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Gagal terhubung",
+      "invalid_auth": "Autentikasi tidak valid",
+      "unknown": "Terjadi kesalahan yang tidak diketahui"
+    },
+    "abort": {
+      "already_configured": "Akun sudah dikonfigurasi",
+      "reauth_successful": "Autentikasi ulang berhasil"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opsi Polygon Kilns",
+        "data": {
+          "poll_interval": "Interval pembaruan (detik)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Suhu" },
+      "setpoint": { "name": "Setpoint" },
+      "state": { "name": "Status" },
+      "stage": { "name": "Tahap" },
+      "segment_phase": { "name": "Fase segmen" },
+      "progress": { "name": "Kemajuan" },
+      "eta": { "name": "Perkiraan selesai" },
+      "elapsed": { "name": "Waktu berlalu" },
+      "energy": { "name": "Energi" },
+      "cost": { "name": "Biaya" },
+      "wifi_signal": { "name": "Sinyal WiFi" },
+      "last_seen": { "name": "Kontak terakhir" },
+      "last_firing": { "name": "Pembakaran terakhir" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Daring" },
+      "thermocouple_error": { "name": "Kesalahan termokopel" },
+      "sensor_fault": { "name": "Kerusakan sensor" },
+      "overheat_fault": { "name": "Terlalu panas" }
+    },
+    "select": {
+      "program": { "name": "Program untuk dimulai" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Mulai terjadwal" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Mulai terjadwal aktif" }
+    },
+    "button": {
+      "start": { "name": "Mulai program" },
+      "stop": { "name": "Hentikan tungku" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Mulai program",
+      "description": "Memulai program pembakaran pada tungku, sekarang atau pada tanggal/waktu mendatang.",
+      "fields": {
+        "device_id": { "name": "Tungku", "description": "Perangkat tungku." },
+        "kiln_id": { "name": "ID tungku", "description": "Alternatif untuk perangkat: ID dokumen tungku (mis. K1117)." },
+        "sched_num": { "name": "Nomor program", "description": "Nomor program (schedNum)." },
+        "schedule_name": { "name": "Nama program", "description": "Nama program, alternatif untuk nomor." },
+        "start_time": { "name": "Waktu mulai", "description": "Jika diatur, mulai dijadwalkan untuk tanggal/waktu tersebut alih-alih berjalan sekarang." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Hentikan tungku",
+      "description": "Meminta penghentian pembakaran yang sedang berlangsung.",
+      "fields": {
+        "device_id": { "name": "Tungku", "description": "Perangkat tungku." },
+        "kiln_id": { "name": "ID tungku", "description": "Alternatif untuk perangkat." }
+      }
+    },
+    "create_schedule": {
+      "name": "Buat program",
+      "description": "Membuat program pembakaran dalam koleksi tungku.",
+      "fields": {
+        "device_id": { "name": "Tungku", "description": "Perangkat tungku." },
+        "kiln_id": { "name": "ID tungku", "description": "Alternatif untuk perangkat." },
+        "schedule_name": { "name": "Nama", "description": "Nama program." },
+        "sched_num": { "name": "Nomor program", "description": "Nomor yang digunakan tungku untuk mengidentifikasi program." },
+        "stages": { "name": "Tahap", "description": "Daftar tahap dengan ramp (°C/jam), suhu (°C) dan tahan (menit)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Perbarui program",
+      "description": "Mengubah nama dan/atau tahap program yang ada.",
+      "fields": {
+        "device_id": { "name": "Tungku", "description": "Perangkat tungku." },
+        "kiln_id": { "name": "ID tungku", "description": "Alternatif untuk perangkat." },
+        "sched_num": { "name": "Nomor program", "description": "Program yang akan diubah." },
+        "schedule_name": { "name": "Nama program", "description": "Program yang akan diubah, berdasarkan nama." },
+        "name": { "name": "Nama baru", "description": "Nama program baru." },
+        "stages": { "name": "Tahap", "description": "Daftar tahap baru dengan ramp, suhu dan tahan." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Hapus program",
+      "description": "Menghapus program pembakaran.",
+      "fields": {
+        "device_id": { "name": "Tungku", "description": "Perangkat tungku." },
+        "kiln_id": { "name": "ID tungku", "description": "Alternatif untuk perangkat." },
+        "sched_num": { "name": "Nomor program", "description": "Program yang akan dihapus." },
+        "schedule_name": { "name": "Nama program", "description": "Program yang akan dihapus, berdasarkan nama." }
+      }
+    }
+  }
+}

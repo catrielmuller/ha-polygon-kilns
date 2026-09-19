@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Mit Polygon verbinden",
+        "description": "Verwende E-Mail und Passwort deines Polygon-App-Kontos. Konten, die nur Google- oder Apple Sign-In verwenden, müssen zuerst ein Passwort festlegen.",
+        "data": {
+          "email": "E-Mail",
+          "password": "Passwort"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Sitzung erneuern",
+        "description": "Die Polygon-Sitzung ist abgelaufen. Gib deine Anmeldedaten erneut ein.",
+        "data": {
+          "email": "E-Mail",
+          "password": "Passwort"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbindung fehlgeschlagen",
+      "invalid_auth": "Ungültige Authentifizierung",
+      "unknown": "Unbekannter Fehler aufgetreten"
+    },
+    "abort": {
+      "already_configured": "Konto ist bereits konfiguriert",
+      "reauth_successful": "Erneute Authentifizierung war erfolgreich"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns-Optionen",
+        "data": {
+          "poll_interval": "Aktualisierungsintervall (Sekunden)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperatur" },
+      "setpoint": { "name": "Sollwert" },
+      "state": { "name": "Zustand" },
+      "stage": { "name": "Etappe" },
+      "segment_phase": { "name": "Segmentphase" },
+      "progress": { "name": "Fortschritt" },
+      "eta": { "name": "Voraussichtliche Fertigstellung" },
+      "elapsed": { "name": "Verstrichene Zeit" },
+      "energy": { "name": "Energie" },
+      "cost": { "name": "Kosten" },
+      "wifi_signal": { "name": "WLAN-Signal" },
+      "last_seen": { "name": "Letzter Kontakt" },
+      "last_firing": { "name": "Letzter Brand" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Online" },
+      "thermocouple_error": { "name": "Thermoelementfehler" },
+      "sensor_fault": { "name": "Sensorfehler" },
+      "overheat_fault": { "name": "Überhitzung" }
+    },
+    "select": {
+      "program": { "name": "Zu startendes Programm" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Geplanter Start" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Geplanter Start aktiviert" }
+    },
+    "button": {
+      "start": { "name": "Programm starten" },
+      "stop": { "name": "Brennofen stoppen" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Programm starten",
+      "description": "Startet ein Brennprogramm auf einem Brennofen, jetzt oder zu einem zukünftigen Datum/Zeitpunkt.",
+      "fields": {
+        "device_id": { "name": "Brennofen", "description": "Das Brennofen-Gerät." },
+        "kiln_id": { "name": "Brennofen-ID", "description": "Alternative zum Gerät: die Dokument-ID des Brennofens (z. B. K1117)." },
+        "sched_num": { "name": "Programmnummer", "description": "Die Programmnummer (schedNum)." },
+        "schedule_name": { "name": "Programmname", "description": "Programmname, Alternative zur Nummer." },
+        "start_time": { "name": "Startzeit", "description": "Wenn gesetzt, wird der Start für dieses Datum/diese Uhrzeit geplant, statt sofort zu laufen." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Brennofen stoppen",
+      "description": "Fordert einen Stopp des laufenden Brennvorgangs an.",
+      "fields": {
+        "device_id": { "name": "Brennofen", "description": "Das Brennofen-Gerät." },
+        "kiln_id": { "name": "Brennofen-ID", "description": "Alternative zum Gerät." }
+      }
+    },
+    "create_schedule": {
+      "name": "Programm erstellen",
+      "description": "Erstellt ein Brennprogramm in der Sammlung des Brennofens.",
+      "fields": {
+        "device_id": { "name": "Brennofen", "description": "Das Brennofen-Gerät." },
+        "kiln_id": { "name": "Brennofen-ID", "description": "Alternative zum Gerät." },
+        "schedule_name": { "name": "Name", "description": "Programmname." },
+        "sched_num": { "name": "Programmnummer", "description": "Nummer, mit der der Brennofen das Programm identifiziert." },
+        "stages": { "name": "Etappen", "description": "Liste der Etappen mit Rampe (°C/h), Temperatur (°C) und Haltezeit (Minuten)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Programm aktualisieren",
+      "description": "Ändert den Namen und/oder die Etappen eines bestehenden Programms.",
+      "fields": {
+        "device_id": { "name": "Brennofen", "description": "Das Brennofen-Gerät." },
+        "kiln_id": { "name": "Brennofen-ID", "description": "Alternative zum Gerät." },
+        "sched_num": { "name": "Programmnummer", "description": "Zu änderndes Programm." },
+        "schedule_name": { "name": "Programmname", "description": "Zu änderndes Programm, nach Name." },
+        "name": { "name": "Neuer Name", "description": "Neuer Programmname." },
+        "stages": { "name": "Etappen", "description": "Neue Liste der Etappen mit Rampe, Temperatur und Haltezeit." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Programm löschen",
+      "description": "Löscht ein Brennprogramm.",
+      "fields": {
+        "device_id": { "name": "Brennofen", "description": "Das Brennofen-Gerät." },
+        "kiln_id": { "name": "Brennofen-ID", "description": "Alternative zum Gerät." },
+        "sched_num": { "name": "Programmnummer", "description": "Zu löschendes Programm." },
+        "schedule_name": { "name": "Programmname", "description": "Zu löschendes Programm, nach Name." }
+      }
+    }
+  }
+}

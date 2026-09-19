@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "連線到 Polygon",
+        "description": "使用您的 Polygon 應用程式帳戶的電子郵件和密碼。僅使用 Google 或 Apple 登入的帳戶必須先設定密碼。",
+        "data": {
+          "email": "電子郵件",
+          "password": "密碼"
+        }
+      },
+      "reauth_confirm": {
+        "title": "重新驗證工作階段",
+        "description": "Polygon 工作階段已過期。請重新輸入您的憑證。",
+        "data": {
+          "email": "電子郵件",
+          "password": "密碼"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "連線失敗",
+      "invalid_auth": "驗證無效",
+      "unknown": "發生未知錯誤"
+    },
+    "abort": {
+      "already_configured": "帳戶已設定",
+      "reauth_successful": "重新驗證成功"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns 選項",
+        "data": {
+          "poll_interval": "更新間隔（秒）"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "溫度" },
+      "setpoint": { "name": "設定值" },
+      "state": { "name": "狀態" },
+      "stage": { "name": "階段" },
+      "segment_phase": { "name": "分段階段" },
+      "progress": { "name": "進度" },
+      "eta": { "name": "預計完成時間" },
+      "elapsed": { "name": "已用時間" },
+      "energy": { "name": "能耗" },
+      "cost": { "name": "費用" },
+      "wifi_signal": { "name": "WiFi 訊號" },
+      "last_seen": { "name": "上次聯繫" },
+      "last_firing": { "name": "上次燒製" }
+    },
+    "binary_sensor": {
+      "online": { "name": "線上" },
+      "thermocouple_error": { "name": "熱電偶故障" },
+      "sensor_fault": { "name": "感測器故障" },
+      "overheat_fault": { "name": "過熱" }
+    },
+    "select": {
+      "program": { "name": "要啟動的程序" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "排程啟動" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "已啟用排程啟動" }
+    },
+    "button": {
+      "start": { "name": "啟動程序" },
+      "stop": { "name": "停止窯爐" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "啟動程序",
+      "description": "立即或在未來的日期/時間啟動窯爐的燒製程序。",
+      "fields": {
+        "device_id": { "name": "窯爐", "description": "窯爐裝置。" },
+        "kiln_id": { "name": "窯爐 ID", "description": "裝置的替代項：窯爐文件 ID（例如 K1117）。" },
+        "sched_num": { "name": "程序編號", "description": "程序編號（schedNum）。" },
+        "schedule_name": { "name": "程序名稱", "description": "程序名稱，可替代編號。" },
+        "start_time": { "name": "啟動時間", "description": "如果設定，啟動將安排在該日期/時間，而不是立即執行。" }
+      }
+    },
+    "stop_schedule": {
+      "name": "停止窯爐",
+      "description": "請求停止正在進行的燒製。",
+      "fields": {
+        "device_id": { "name": "窯爐", "description": "窯爐裝置。" },
+        "kiln_id": { "name": "窯爐 ID", "description": "裝置的替代項。" }
+      }
+    },
+    "create_schedule": {
+      "name": "建立程序",
+      "description": "在窯爐的集合中建立燒製程序。",
+      "fields": {
+        "device_id": { "name": "窯爐", "description": "窯爐裝置。" },
+        "kiln_id": { "name": "窯爐 ID", "description": "裝置的替代項。" },
+        "schedule_name": { "name": "名稱", "description": "程序名稱。" },
+        "sched_num": { "name": "程序編號", "description": "窯爐用於識別程序的編號。" },
+        "stages": { "name": "階段", "description": "階段清單，包含升溫速率（°C/小時）、目標溫度（°C）和保溫時間（分鐘）。" }
+      }
+    },
+    "update_schedule": {
+      "name": "更新程序",
+      "description": "修改現有程序的名稱和/或階段。",
+      "fields": {
+        "device_id": { "name": "窯爐", "description": "窯爐裝置。" },
+        "kiln_id": { "name": "窯爐 ID", "description": "裝置的替代項。" },
+        "sched_num": { "name": "程序編號", "description": "要修改的程序。" },
+        "schedule_name": { "name": "程序名稱", "description": "要修改的程序，按名稱。" },
+        "name": { "name": "新名稱", "description": "新的程序名稱。" },
+        "stages": { "name": "階段", "description": "新的階段清單，包含升溫速率、目標溫度和保溫時間。" }
+      }
+    },
+    "delete_schedule": {
+      "name": "刪除程序",
+      "description": "刪除一個燒製程序。",
+      "fields": {
+        "device_id": { "name": "窯爐", "description": "窯爐裝置。" },
+        "kiln_id": { "name": "窯爐 ID", "description": "裝置的替代項。" },
+        "sched_num": { "name": "程序編號", "description": "要刪除的程序。" },
+        "schedule_name": { "name": "程序名稱", "description": "要刪除的程序，按名稱。" }
+      }
+    }
+  }
+}

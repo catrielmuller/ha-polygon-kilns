@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Ferbine mei Polygon",
+        "description": "Brûk it e-mailadres en wachtwurd fan dyn Polygon-appakkount. Accounts dy't allinnich Google- of Apple Sign-In brûke, moatte earst in wachtwurd ynstelle.",
+        "data": {
+          "email": "E-mail",
+          "password": "Wachtwurd"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Sesje fernije",
+        "description": "De Polygon-sesje is ferrûn. Fier dyn oanmeldgegevens opnij yn.",
+        "data": {
+          "email": "E-mail",
+          "password": "Wachtwurd"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Ferbinen mislearre",
+      "invalid_auth": "Unjildige autentikaasje",
+      "unknown": "Unbekende flater bard"
+    },
+    "abort": {
+      "already_configured": "Account is al konfigurearre",
+      "reauth_successful": "Opnij autentisearjen is slagge"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns-opsjes",
+        "data": {
+          "poll_interval": "Fernijingsynterfal (sekonden)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperatuer" },
+      "setpoint": { "name": "Setpunt" },
+      "state": { "name": "Steat" },
+      "stage": { "name": "Etappe" },
+      "segment_phase": { "name": "Segmentfaze" },
+      "progress": { "name": "Foarútgong" },
+      "eta": { "name": "Ferwachte foltôging" },
+      "elapsed": { "name": "Ferrûne tiid" },
+      "energy": { "name": "Enerzjy" },
+      "cost": { "name": "Kosten" },
+      "wifi_signal": { "name": "WiFi-signaal" },
+      "last_seen": { "name": "Lêste kontakt" },
+      "last_firing": { "name": "Lêste stookbeurt" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Online" },
+      "thermocouple_error": { "name": "Termokoppelflater" },
+      "sensor_fault": { "name": "Sensorstouring" },
+      "overheat_fault": { "name": "Oerferhitting" }
+    },
+    "select": {
+      "program": { "name": "Programma om te starten" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Plande start" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Plande start ynskeakele" }
+    },
+    "button": {
+      "start": { "name": "Programma starte" },
+      "stop": { "name": "Ôven stopje" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Programma starte",
+      "description": "Startet in stookprogramma op in ôven, no of op in takomstige datum/tiid.",
+      "fields": {
+        "device_id": { "name": "Ôven", "description": "It ôven-apparaat." },
+        "kiln_id": { "name": "Ôven-ID", "description": "Alternatyf foar apparaat: de dokumint-ID fan de ôven (bgl. K1117)." },
+        "sched_num": { "name": "Programmanûmer", "description": "It programmanûmer (schedNum)." },
+        "schedule_name": { "name": "Programmanamme", "description": "Programmanamme, alternatyf foar it nûmer." },
+        "start_time": { "name": "Starttiid", "description": "As ynsteld, wurdt de start pland foar dy datum/tiid yn stee fan no út te fieren." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Ôven stopje",
+      "description": "Fersiket in stop fan de rinnende stookbeurt.",
+      "fields": {
+        "device_id": { "name": "Ôven", "description": "It ôven-apparaat." },
+        "kiln_id": { "name": "Ôven-ID", "description": "Alternatyf foar apparaat." }
+      }
+    },
+    "create_schedule": {
+      "name": "Programma meitsje",
+      "description": "Makket in stookprogramma yn de kolleksje fan de ôven.",
+      "fields": {
+        "device_id": { "name": "Ôven", "description": "It ôven-apparaat." },
+        "kiln_id": { "name": "Ôven-ID", "description": "Alternatyf foar apparaat." },
+        "schedule_name": { "name": "Namme", "description": "Programmanamme." },
+        "sched_num": { "name": "Programmanûmer", "description": "Nûmer dat de ôven brûkt om it programma te identifisearjen." },
+        "stages": { "name": "Etappen", "description": "List fan etappen mei ramp (°C/o), temp (°C) en hold (minuten)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Programma bywurkje",
+      "description": "Wiziget de namme en/of etappen fan in besteand programma.",
+      "fields": {
+        "device_id": { "name": "Ôven", "description": "It ôven-apparaat." },
+        "kiln_id": { "name": "Ôven-ID", "description": "Alternatyf foar apparaat." },
+        "sched_num": { "name": "Programmanûmer", "description": "Programma om te wizigjen." },
+        "schedule_name": { "name": "Programmanamme", "description": "Programma om te wizigjen, op namme." },
+        "name": { "name": "Nije namme", "description": "Nije programmanamme." },
+        "stages": { "name": "Etappen", "description": "Nije list fan etappen mei ramp, temp en hold." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Programma wiskje",
+      "description": "Wisket in stookprogramma.",
+      "fields": {
+        "device_id": { "name": "Ôven", "description": "It ôven-apparaat." },
+        "kiln_id": { "name": "Ôven-ID", "description": "Alternatyf foar apparaat." },
+        "sched_num": { "name": "Programmanûmer", "description": "Programma om te wiskjen." },
+        "schedule_name": { "name": "Programmanamme", "description": "Programma om te wiskjen, op namme." }
+      }
+    }
+  }
+}

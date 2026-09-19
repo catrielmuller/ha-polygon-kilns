@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Yhdistä Polygoniin",
+        "description": "Käytä Polygon-sovelluksen tilisi sähköpostiosoitetta ja salasanaa. Tilien, jotka käyttävät vain Google- tai Apple-kirjautumista, on ensin asetettava salasana.",
+        "data": {
+          "email": "Sähköposti",
+          "password": "Salasana"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Uusi istunto",
+        "description": "Polygon-istunto vanhentui. Anna tunnistetietosi uudelleen.",
+        "data": {
+          "email": "Sähköposti",
+          "password": "Salasana"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Yhdistäminen epäonnistui",
+      "invalid_auth": "Virheellinen todennus",
+      "unknown": "Tapahtui tuntematon virhe"
+    },
+    "abort": {
+      "already_configured": "Tili on jo määritetty",
+      "reauth_successful": "Uudelleentodennus onnistui"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns -asetukset",
+        "data": {
+          "poll_interval": "Päivitysväli (sekuntia)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Lämpötila" },
+      "setpoint": { "name": "Tavoitearvo" },
+      "state": { "name": "Tila" },
+      "stage": { "name": "Vaihe" },
+      "segment_phase": { "name": "Segmentin vaihe" },
+      "progress": { "name": "Edistyminen" },
+      "eta": { "name": "Arvioitu valmistuminen" },
+      "elapsed": { "name": "Kulunut aika" },
+      "energy": { "name": "Energia" },
+      "cost": { "name": "Kustannus" },
+      "wifi_signal": { "name": "WiFi-signaali" },
+      "last_seen": { "name": "Viimeisin yhteys" },
+      "last_firing": { "name": "Viimeisin poltto" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Verkossa" },
+      "thermocouple_error": { "name": "Lämpöparivirhe" },
+      "sensor_fault": { "name": "Anturivika" },
+      "overheat_fault": { "name": "Ylikuumeneminen" }
+    },
+    "select": {
+      "program": { "name": "Käynnistettävä ohjelma" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Ajoitettu käynnistys" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Ajoitettu käynnistys aktivoitu" }
+    },
+    "button": {
+      "start": { "name": "Käynnistä ohjelma" },
+      "stop": { "name": "Pysäytä uuni" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Käynnistä ohjelma",
+      "description": "Käynnistää poltto-ohjelman uunissa nyt tai tulevana ajankohtana.",
+      "fields": {
+        "device_id": { "name": "Uuni", "description": "Uunilaite." },
+        "kiln_id": { "name": "Uunin tunnus", "description": "Vaihtoehto laitteelle: uunin dokumentin tunnus (esim. K1117)." },
+        "sched_num": { "name": "Ohjelman numero", "description": "Ohjelman numero (schedNum)." },
+        "schedule_name": { "name": "Ohjelman nimi", "description": "Ohjelman nimi, vaihtoehto numerolle." },
+        "start_time": { "name": "Aloitusaika", "description": "Jos asetettu, käynnistys ajoitetaan kyseiseen ajankohtaan sen sijaan, että se suoritettaisiin heti." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Pysäytä uuni",
+      "description": "Pyytää käynnissä olevan polton pysäyttämistä.",
+      "fields": {
+        "device_id": { "name": "Uuni", "description": "Uunilaite." },
+        "kiln_id": { "name": "Uunin tunnus", "description": "Vaihtoehto laitteelle." }
+      }
+    },
+    "create_schedule": {
+      "name": "Luo ohjelma",
+      "description": "Luo poltto-ohjelman uunin kokoelmaan.",
+      "fields": {
+        "device_id": { "name": "Uuni", "description": "Uunilaite." },
+        "kiln_id": { "name": "Uunin tunnus", "description": "Vaihtoehto laitteelle." },
+        "schedule_name": { "name": "Nimi", "description": "Ohjelman nimi." },
+        "sched_num": { "name": "Ohjelman numero", "description": "Numero, jota uuni käyttää ohjelman tunnistamiseen." },
+        "stages": { "name": "Vaiheet", "description": "Luettelo vaiheista, joissa nousunopeus (°C/h), lämpötila (°C) ja pitoaika (minuuttia)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Päivitä ohjelma",
+      "description": "Muokkaa olemassa olevan ohjelman nimeä ja/tai vaiheita.",
+      "fields": {
+        "device_id": { "name": "Uuni", "description": "Uunilaite." },
+        "kiln_id": { "name": "Uunin tunnus", "description": "Vaihtoehto laitteelle." },
+        "sched_num": { "name": "Ohjelman numero", "description": "Muokattava ohjelma." },
+        "schedule_name": { "name": "Ohjelman nimi", "description": "Muokattava ohjelma nimen mukaan." },
+        "name": { "name": "Uusi nimi", "description": "Ohjelman uusi nimi." },
+        "stages": { "name": "Vaiheet", "description": "Uusi luettelo vaiheista nousunopeudella, lämpötilalla ja pitoajalla." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Poista ohjelma",
+      "description": "Poistaa poltto-ohjelman.",
+      "fields": {
+        "device_id": { "name": "Uuni", "description": "Uunilaite." },
+        "kiln_id": { "name": "Uunin tunnus", "description": "Vaihtoehto laitteelle." },
+        "sched_num": { "name": "Ohjelman numero", "description": "Poistettava ohjelma." },
+        "schedule_name": { "name": "Ohjelman nimi", "description": "Poistettava ohjelma nimen mukaan." }
+      }
+    }
+  }
+}

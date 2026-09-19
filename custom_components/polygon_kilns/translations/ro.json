@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Conectare la Polygon",
+        "description": "Utilizați adresa de e-mail și parola contului din aplicația Polygon. Conturile care folosesc doar autentificarea cu Google sau Apple trebuie să seteze mai întâi o parolă.",
+        "data": {
+          "email": "E-mail",
+          "password": "Parolă"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Reînnoire sesiune",
+        "description": "Sesiunea Polygon a expirat. Introduceți din nou acreditările.",
+        "data": {
+          "email": "E-mail",
+          "password": "Parolă"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Conectarea a eșuat",
+      "invalid_auth": "Autentificare nevalidă",
+      "unknown": "A apărut o eroare necunoscută"
+    },
+    "abort": {
+      "already_configured": "Contul este deja configurat",
+      "reauth_successful": "Reautentificarea a reușit"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opțiuni Polygon Kilns",
+        "data": {
+          "poll_interval": "Interval de actualizare (secunde)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperatură" },
+      "setpoint": { "name": "Setpoint" },
+      "state": { "name": "Stare" },
+      "stage": { "name": "Etapă" },
+      "segment_phase": { "name": "Faza segmentului" },
+      "progress": { "name": "Progres" },
+      "eta": { "name": "Finalizare estimată" },
+      "elapsed": { "name": "Timp scurs" },
+      "energy": { "name": "Energie" },
+      "cost": { "name": "Cost" },
+      "wifi_signal": { "name": "Semnal Wi-Fi" },
+      "last_seen": { "name": "Ultimul contact" },
+      "last_firing": { "name": "Ultima ardere" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Online" },
+      "thermocouple_error": { "name": "Eroare termocuplu" },
+      "sensor_fault": { "name": "Defecțiune senzor" },
+      "overheat_fault": { "name": "Supraîncălzire" }
+    },
+    "select": {
+      "program": { "name": "Program de pornit" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Pornire programată" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Pornire programată armată" }
+    },
+    "button": {
+      "start": { "name": "Pornire program" },
+      "stop": { "name": "Oprire cuptor" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Pornire program",
+      "description": "Pornește un program de ardere pe un cuptor, acum sau la o dată/oră viitoare.",
+      "fields": {
+        "device_id": { "name": "Cuptor", "description": "Dispozitivul cuptor." },
+        "kiln_id": { "name": "ID cuptor", "description": "Alternativă la dispozitiv: ID-ul documentului cuptorului (de ex. K1117)." },
+        "sched_num": { "name": "Număr program", "description": "Numărul programului (schedNum)." },
+        "schedule_name": { "name": "Nume program", "description": "Numele programului, alternativă la număr." },
+        "start_time": { "name": "Ora de pornire", "description": "Dacă este setată, pornirea este programată pentru acea dată/oră în loc să ruleze acum." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Oprire cuptor",
+      "description": "Solicită oprirea arderii în curs.",
+      "fields": {
+        "device_id": { "name": "Cuptor", "description": "Dispozitivul cuptor." },
+        "kiln_id": { "name": "ID cuptor", "description": "Alternativă la dispozitiv." }
+      }
+    },
+    "create_schedule": {
+      "name": "Creare program",
+      "description": "Creează un program de ardere în colecția cuptorului.",
+      "fields": {
+        "device_id": { "name": "Cuptor", "description": "Dispozitivul cuptor." },
+        "kiln_id": { "name": "ID cuptor", "description": "Alternativă la dispozitiv." },
+        "schedule_name": { "name": "Nume", "description": "Numele programului." },
+        "sched_num": { "name": "Număr program", "description": "Numărul pe care cuptorul îl folosește pentru a identifica programul." },
+        "stages": { "name": "Etape", "description": "Listă de etape cu rampă (°C/h), temperatură (°C) și menținere (minute)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Actualizare program",
+      "description": "Modifică numele și/sau etapele unui program existent.",
+      "fields": {
+        "device_id": { "name": "Cuptor", "description": "Dispozitivul cuptor." },
+        "kiln_id": { "name": "ID cuptor", "description": "Alternativă la dispozitiv." },
+        "sched_num": { "name": "Număr program", "description": "Program de modificat." },
+        "schedule_name": { "name": "Nume program", "description": "Program de modificat, după nume." },
+        "name": { "name": "Nume nou", "description": "Noul nume al programului." },
+        "stages": { "name": "Etape", "description": "Noua listă de etape cu rampă, temperatură și menținere." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Ștergere program",
+      "description": "Șterge un program de ardere.",
+      "fields": {
+        "device_id": { "name": "Cuptor", "description": "Dispozitivul cuptor." },
+        "kiln_id": { "name": "ID cuptor", "description": "Alternativă la dispozitiv." },
+        "sched_num": { "name": "Număr program", "description": "Program de șters." },
+        "schedule_name": { "name": "Nume program", "description": "Program de șters, după nume." }
+      }
+    }
+  }
+}

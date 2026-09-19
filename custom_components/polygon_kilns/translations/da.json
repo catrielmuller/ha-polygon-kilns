@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Forbind til Polygon",
+        "description": "Brug e-mail og adgangskode fra din Polygon-appkonto. Konti, der kun bruger Google- eller Apple-login, skal først angive en adgangskode.",
+        "data": {
+          "email": "E-mail",
+          "password": "Adgangskode"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Forny session",
+        "description": "Polygon-sessionen er udløbet. Indtast dine legitimationsoplysninger igen.",
+        "data": {
+          "email": "E-mail",
+          "password": "Adgangskode"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Kunne ikke oprette forbindelse",
+      "invalid_auth": "Ugyldig godkendelse",
+      "unknown": "Der opstod en ukendt fejl"
+    },
+    "abort": {
+      "already_configured": "Kontoen er allerede konfigureret",
+      "reauth_successful": "Genautentificeringen lykkedes"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns-indstillinger",
+        "data": {
+          "poll_interval": "Opdateringsinterval (sekunder)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperatur" },
+      "setpoint": { "name": "Setpunkt" },
+      "state": { "name": "Tilstand" },
+      "stage": { "name": "Trin" },
+      "segment_phase": { "name": "Segmentfase" },
+      "progress": { "name": "Fremskridt" },
+      "eta": { "name": "Forventet færdiggørelse" },
+      "elapsed": { "name": "Forløbet tid" },
+      "energy": { "name": "Energi" },
+      "cost": { "name": "Pris" },
+      "wifi_signal": { "name": "Wi-Fi-signal" },
+      "last_seen": { "name": "Sidste kontakt" },
+      "last_firing": { "name": "Sidste brænding" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Online" },
+      "thermocouple_error": { "name": "Termoelementfejl" },
+      "sensor_fault": { "name": "Sensorfejl" },
+      "overheat_fault": { "name": "Overophedning" }
+    },
+    "select": {
+      "program": { "name": "Program, der skal startes" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Planlagt start" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Planlagt start aktiveret" }
+    },
+    "button": {
+      "start": { "name": "Start program" },
+      "stop": { "name": "Stop ovn" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Start program",
+      "description": "Starter et brændingsprogram på en ovn, nu eller på et fremtidigt tidspunkt.",
+      "fields": {
+        "device_id": { "name": "Ovn", "description": "Ovnens enhed." },
+        "kiln_id": { "name": "Ovn-ID", "description": "Alternativ til enhed: ovnens dokument-ID (f.eks. K1117)." },
+        "sched_num": { "name": "Programnummer", "description": "Programnummeret (schedNum)." },
+        "schedule_name": { "name": "Programnavn", "description": "Programnavn, alternativ til nummeret." },
+        "start_time": { "name": "Starttidspunkt", "description": "Hvis angivet, planlægges starten til dette tidspunkt i stedet for at køre nu." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Stop ovn",
+      "description": "Anmoder om stop af den igangværende brænding.",
+      "fields": {
+        "device_id": { "name": "Ovn", "description": "Ovnens enhed." },
+        "kiln_id": { "name": "Ovn-ID", "description": "Alternativ til enhed." }
+      }
+    },
+    "create_schedule": {
+      "name": "Opret program",
+      "description": "Opretter et brændingsprogram i ovnens samling.",
+      "fields": {
+        "device_id": { "name": "Ovn", "description": "Ovnens enhed." },
+        "kiln_id": { "name": "Ovn-ID", "description": "Alternativ til enhed." },
+        "schedule_name": { "name": "Navn", "description": "Programnavn." },
+        "sched_num": { "name": "Programnummer", "description": "Nummeret, som ovnen bruger til at identificere programmet." },
+        "stages": { "name": "Trin", "description": "Liste over trin med rampe (°C/h), temperatur (°C) og holdetid (minutter)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Opdater program",
+      "description": "Ændrer navn og/eller trin på et eksisterende program.",
+      "fields": {
+        "device_id": { "name": "Ovn", "description": "Ovnens enhed." },
+        "kiln_id": { "name": "Ovn-ID", "description": "Alternativ til enhed." },
+        "sched_num": { "name": "Programnummer", "description": "Program, der skal ændres." },
+        "schedule_name": { "name": "Programnavn", "description": "Program, der skal ændres, efter navn." },
+        "name": { "name": "Nyt navn", "description": "Nyt programnavn." },
+        "stages": { "name": "Trin", "description": "Ny liste over trin med rampe, temperatur og holdetid." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Slet program",
+      "description": "Sletter et brændingsprogram.",
+      "fields": {
+        "device_id": { "name": "Ovn", "description": "Ovnens enhed." },
+        "kiln_id": { "name": "Ovn-ID", "description": "Alternativ til enhed." },
+        "sched_num": { "name": "Programnummer", "description": "Program, der skal slettes." },
+        "schedule_name": { "name": "Programnavn", "description": "Program, der skal slettes, efter navn." }
+      }
+    }
+  }
+}

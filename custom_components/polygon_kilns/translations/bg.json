@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Свързване с Polygon",
+        "description": "Използвайте имейла и паролата от профила си в приложението Polygon. Профили, които използват само вход с Google или Apple, трябва първо да зададат парола.",
+        "data": {
+          "email": "Имейл",
+          "password": "Парола"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Подновяване на сесията",
+        "description": "Сесията на Polygon изтече. Въведете отново данните си.",
+        "data": {
+          "email": "Имейл",
+          "password": "Парола"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Неуспешно свързване",
+      "invalid_auth": "Невалидно удостоверяване",
+      "unknown": "Възникна неизвестна грешка"
+    },
+    "abort": {
+      "already_configured": "Профилът вече е конфигуриран",
+      "reauth_successful": "Повторното удостоверяване бе успешно"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Опции на Polygon Kilns",
+        "data": {
+          "poll_interval": "Интервал на обновяване (секунди)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Температура" },
+      "setpoint": { "name": "Зададена стойност" },
+      "state": { "name": "Състояние" },
+      "stage": { "name": "Етап" },
+      "segment_phase": { "name": "Фаза на сегмента" },
+      "progress": { "name": "Прогрес" },
+      "eta": { "name": "Очаквано завършване" },
+      "elapsed": { "name": "Изминало време" },
+      "energy": { "name": "Енергия" },
+      "cost": { "name": "Цена" },
+      "wifi_signal": { "name": "Сигнал на WiFi" },
+      "last_seen": { "name": "Последен контакт" },
+      "last_firing": { "name": "Последно изпичане" }
+    },
+    "binary_sensor": {
+      "online": { "name": "На линия" },
+      "thermocouple_error": { "name": "Грешка в термодвойката" },
+      "sensor_fault": { "name": "Повреда на сензора" },
+      "overheat_fault": { "name": "Прегряване" }
+    },
+    "select": {
+      "program": { "name": "Програма за стартиране" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Планиран старт" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Активиран планиран старт" }
+    },
+    "button": {
+      "start": { "name": "Стартиране на програма" },
+      "stop": { "name": "Спиране на пещта" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Стартиране на програма",
+      "description": "Стартира програма за изпичане на пещ, сега или на бъдеща дата/час.",
+      "fields": {
+        "device_id": { "name": "Пещ", "description": "Устройството пещ." },
+        "kiln_id": { "name": "ID на пещта", "description": "Алтернатива на устройството: ID на документа на пещта (напр. K1117)." },
+        "sched_num": { "name": "Номер на програмата", "description": "Номерът на програмата (schedNum)." },
+        "schedule_name": { "name": "Име на програмата", "description": "Име на програмата, алтернатива на номера." },
+        "start_time": { "name": "Начален час", "description": "Ако е зададен, стартът се планира за тази дата/час вместо да се изпълни сега." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Спиране на пещта",
+      "description": "Заявява спиране на текущото изпичане.",
+      "fields": {
+        "device_id": { "name": "Пещ", "description": "Устройството пещ." },
+        "kiln_id": { "name": "ID на пещта", "description": "Алтернатива на устройството." }
+      }
+    },
+    "create_schedule": {
+      "name": "Създаване на програма",
+      "description": "Създава програма за изпичане в колекцията на пещта.",
+      "fields": {
+        "device_id": { "name": "Пещ", "description": "Устройството пещ." },
+        "kiln_id": { "name": "ID на пещта", "description": "Алтернатива на устройството." },
+        "schedule_name": { "name": "Име", "description": "Име на програмата." },
+        "sched_num": { "name": "Номер на програмата", "description": "Номер, който пещта използва за идентифициране на програмата." },
+        "stages": { "name": "Етапи", "description": "Списък от етапи с рампа (°C/ч), температура (°C) и задържане (минути)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Актуализиране на програмата",
+      "description": "Променя името и/или етапите на съществуваща програма.",
+      "fields": {
+        "device_id": { "name": "Пещ", "description": "Устройството пещ." },
+        "kiln_id": { "name": "ID на пещта", "description": "Алтернатива на устройството." },
+        "sched_num": { "name": "Номер на програмата", "description": "Програма за промяна." },
+        "schedule_name": { "name": "Име на програмата", "description": "Програма за промяна, по име." },
+        "name": { "name": "Ново име", "description": "Ново име на програмата." },
+        "stages": { "name": "Етапи", "description": "Нов списък от етапи с рампа, температура и задържане." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Изтриване на програма",
+      "description": "Изтрива програма за изпичане.",
+      "fields": {
+        "device_id": { "name": "Пещ", "description": "Устройството пещ." },
+        "kiln_id": { "name": "ID на пещта", "description": "Алтернатива на устройството." },
+        "sched_num": { "name": "Номер на програмата", "description": "Програма за изтриване." },
+        "schedule_name": { "name": "Име на програмата", "description": "Програма за изтриване, по име." }
+      }
+    }
+  }
+}

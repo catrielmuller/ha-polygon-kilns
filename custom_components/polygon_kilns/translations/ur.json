@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Polygon سے جڑیں",
+        "description": "اپنے Polygon ایپ اکاؤنٹ کی ای میل اور پاس ورڈ استعمال کریں۔ وہ اکاؤنٹس جو صرف Google یا Apple سائن اِن استعمال کرتے ہیں، انہیں پہلے پاس ورڈ سیٹ کرنا ہوگا۔",
+        "data": {
+          "email": "ای میل",
+          "password": "پاس ورڈ"
+        }
+      },
+      "reauth_confirm": {
+        "title": "سیشن کی تجدید",
+        "description": "Polygon سیشن کی میعاد ختم ہو گئی ہے۔ اپنی اسناد دوبارہ درج کریں۔",
+        "data": {
+          "email": "ای میل",
+          "password": "پاس ورڈ"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "منسلک ہونے میں ناکام",
+      "invalid_auth": "غلط تصدیق",
+      "unknown": "نامعلوم خرابی پیش آگئی"
+    },
+    "abort": {
+      "already_configured": "اکاؤنٹ پہلے سے کنفیگر ہے",
+      "reauth_successful": "دوبارہ تصدیق کامیاب رہی"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns کے اختیارات",
+        "data": {
+          "poll_interval": "اپ ڈیٹ کا وقفہ (سیکنڈ)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "درجہ حرارت" },
+      "setpoint": { "name": "سیٹ پوائنٹ" },
+      "state": { "name": "حالت" },
+      "stage": { "name": "مرحلہ" },
+      "segment_phase": { "name": "سیگمنٹ کا مرحلہ" },
+      "progress": { "name": "پیش رفت" },
+      "eta": { "name": "متوقع تکمیل" },
+      "elapsed": { "name": "گزرا ہوا وقت" },
+      "energy": { "name": "توانائی" },
+      "cost": { "name": "لاگت" },
+      "wifi_signal": { "name": "وائی فائی سگنل" },
+      "last_seen": { "name": "آخری رابطہ" },
+      "last_firing": { "name": "آخری پکائی" }
+    },
+    "binary_sensor": {
+      "online": { "name": "آن لائن" },
+      "thermocouple_error": { "name": "تھرموکپل کی خرابی" },
+      "sensor_fault": { "name": "سینسر کی خرابی" },
+      "overheat_fault": { "name": "حد سے زیادہ گرمی" }
+    },
+    "select": {
+      "program": { "name": "شروع کرنے کا پروگرام" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "طے شدہ آغاز" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "طے شدہ آغاز فعال" }
+    },
+    "button": {
+      "start": { "name": "پروگرام شروع کریں" },
+      "stop": { "name": "بھٹہ بند کریں" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "پروگرام شروع کریں",
+      "description": "بھٹے پر پکائی کا پروگرام ابھی یا مستقبل کی کسی تاریخ/وقت پر شروع کرتا ہے۔",
+      "fields": {
+        "device_id": { "name": "بھٹہ", "description": "بھٹے کا ڈیوائس۔" },
+        "kiln_id": { "name": "بھٹے کی ID", "description": "ڈیوائس کے متبادل کے طور پر: بھٹے کے دستاویز کی ID (مثلاً K1117)۔" },
+        "sched_num": { "name": "پروگرام نمبر", "description": "پروگرام نمبر (schedNum)۔" },
+        "schedule_name": { "name": "پروگرام کا نام", "description": "نمبر کے متبادل کے طور پر پروگرام کا نام۔" },
+        "start_time": { "name": "آغاز کا وقت", "description": "اگر سیٹ ہو تو، آغاز فوری چلانے کے بجائے اس تاریخ/وقت کے لیے طے کیا جاتا ہے۔" }
+      }
+    },
+    "stop_schedule": {
+      "name": "بھٹہ بند کریں",
+      "description": "جاری پکائی کو روکنے کی درخواست کرتا ہے۔",
+      "fields": {
+        "device_id": { "name": "بھٹہ", "description": "بھٹے کا ڈیوائس۔" },
+        "kiln_id": { "name": "بھٹے کی ID", "description": "ڈیوائس کے متبادل کے طور پر۔" }
+      }
+    },
+    "create_schedule": {
+      "name": "پروگرام بنائیں",
+      "description": "بھٹے کے مجموعے میں پکائی کا پروگرام بناتا ہے۔",
+      "fields": {
+        "device_id": { "name": "بھٹہ", "description": "بھٹے کا ڈیوائس۔" },
+        "kiln_id": { "name": "بھٹے کی ID", "description": "ڈیوائس کے متبادل کے طور پر۔" },
+        "schedule_name": { "name": "نام", "description": "پروگرام کا نام۔" },
+        "sched_num": { "name": "پروگرام نمبر", "description": "وہ نمبر جو بھٹہ پروگرام کی شناخت کے لیے استعمال کرتا ہے۔" },
+        "stages": { "name": "مراحل", "description": "رینپ (°C/گھنٹہ)، درجہ حرارت (°C) اور ہولڈ (منٹ) والے مراحل کی فہرست۔" }
+      }
+    },
+    "update_schedule": {
+      "name": "پروگرام اپ ڈیٹ کریں",
+      "description": "موجودہ پروگرام کا نام اور/یا مراحل تبدیل کرتا ہے۔",
+      "fields": {
+        "device_id": { "name": "بھٹہ", "description": "بھٹے کا ڈیوائس۔" },
+        "kiln_id": { "name": "بھٹے کی ID", "description": "ڈیوائس کے متبادل کے طور پر۔" },
+        "sched_num": { "name": "پروگرام نمبر", "description": "تبدیل کرنے والا پروگرام۔" },
+        "schedule_name": { "name": "پروگرام کا نام", "description": "نام کے ذریعے تبدیل کرنے والا پروگرام۔" },
+        "name": { "name": "نیا نام", "description": "پروگرام کا نیا نام۔" },
+        "stages": { "name": "مراحل", "description": "رینپ، درجہ حرارت اور ہولڈ کے ساتھ مراحل کی نئی فہرست۔" }
+      }
+    },
+    "delete_schedule": {
+      "name": "پروگرام حذف کریں",
+      "description": "پکائی کا پروگرام حذف کرتا ہے۔",
+      "fields": {
+        "device_id": { "name": "بھٹہ", "description": "بھٹے کا ڈیوائس۔" },
+        "kiln_id": { "name": "بھٹے کی ID", "description": "ڈیوائس کے متبادل کے طور پر۔" },
+        "sched_num": { "name": "پروگرام نمبر", "description": "حذف کرنے والا پروگرام۔" },
+        "schedule_name": { "name": "پروگرام کا نام", "description": "نام کے ذریعے حذف کرنے والا پروگرام۔" }
+      }
+    }
+  }
+}

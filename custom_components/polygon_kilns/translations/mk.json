@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Поврзете се со Polygon",
+        "description": "Користете го е-поштата и лозинката од вашата сметка во апликацијата Polygon. Сметките кои користат само најава со Google или Apple прво мора да постават лозинка.",
+        "data": {
+          "email": "Е-пошта",
+          "password": "Лозинка"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Обновете ја сесијата",
+        "description": "Сесијата на Polygon истече. Внесете ги повторно вашите акредитиви.",
+        "data": {
+          "email": "Е-пошта",
+          "password": "Лозинка"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Неуспешно поврзување",
+      "invalid_auth": "Невалидна автентикација",
+      "unknown": "Се појави непозната грешка"
+    },
+    "abort": {
+      "already_configured": "Сметката е веќе конфигурирана",
+      "reauth_successful": "Повторната автентикација беше успешна"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Опции за Polygon Kilns",
+        "data": {
+          "poll_interval": "Интервал на ажурирање (секунди)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Температура" },
+      "setpoint": { "name": "Зададена вредност" },
+      "state": { "name": "Состојба" },
+      "stage": { "name": "Етапа" },
+      "segment_phase": { "name": "Фаза на сегментот" },
+      "progress": { "name": "Напредок" },
+      "eta": { "name": "Проценето завршување" },
+      "elapsed": { "name": "Изминато време" },
+      "energy": { "name": "Енергија" },
+      "cost": { "name": "Цена" },
+      "wifi_signal": { "name": "WiFi сигнал" },
+      "last_seen": { "name": "Последен контакт" },
+      "last_firing": { "name": "Последно печење" }
+    },
+    "binary_sensor": {
+      "online": { "name": "На линија" },
+      "thermocouple_error": { "name": "Грешка на термопарот" },
+      "sensor_fault": { "name": "Дефект на сензорот" },
+      "overheat_fault": { "name": "Прегревање" }
+    },
+    "select": {
+      "program": { "name": "Програма за стартување" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Закажано стартување" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Закажаното стартување е активирано" }
+    },
+    "button": {
+      "start": { "name": "Стартувај програма" },
+      "stop": { "name": "Запри печка" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Стартувај програма",
+      "description": "Стартува програма за печење на печка, веднаш или на иден датум/време.",
+      "fields": {
+        "device_id": { "name": "Печка", "description": "Уредот печка." },
+        "kiln_id": { "name": "ИД на печката", "description": "Алтернатива на уредот: ИД на документот на печката (на пр. K1117)." },
+        "sched_num": { "name": "Број на програмата", "description": "Бројот на програмата (schedNum)." },
+        "schedule_name": { "name": "Име на програмата", "description": "Име на програмата, алтернатива на бројот." },
+        "start_time": { "name": "Време на стартување", "description": "Ако е поставено, стартувањето се закажува за тој датум/време наместо да се изврши веднаш." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Запри печка",
+      "description": "Бара запирање на тековното печење.",
+      "fields": {
+        "device_id": { "name": "Печка", "description": "Уредот печка." },
+        "kiln_id": { "name": "ИД на печката", "description": "Алтернатива на уредот." }
+      }
+    },
+    "create_schedule": {
+      "name": "Креирај програма",
+      "description": "Креира програма за печење во колекцијата на печката.",
+      "fields": {
+        "device_id": { "name": "Печка", "description": "Уредот печка." },
+        "kiln_id": { "name": "ИД на печката", "description": "Алтернатива на уредот." },
+        "schedule_name": { "name": "Име", "description": "Име на програмата." },
+        "sched_num": { "name": "Број на програмата", "description": "Бројот што печката го користи за да ја идентификува програмата." },
+        "stages": { "name": "Етапи", "description": "Список на етапи со рампа (°C/h), температура (°C) и одржување (минути)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Ажурирај програма",
+      "description": "Го менува името и/или етапите на постоечка програма.",
+      "fields": {
+        "device_id": { "name": "Печка", "description": "Уредот печка." },
+        "kiln_id": { "name": "ИД на печката", "description": "Алтернатива на уредот." },
+        "sched_num": { "name": "Број на програмата", "description": "Програмата што треба да се измени." },
+        "schedule_name": { "name": "Име на програмата", "description": "Програмата што треба да се измени, по име." },
+        "name": { "name": "Ново име", "description": "Ново име на програмата." },
+        "stages": { "name": "Етапи", "description": "Нов список на етапи со рампа, температура и одржување." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Избриши програма",
+      "description": "Брише програма за печење.",
+      "fields": {
+        "device_id": { "name": "Печка", "description": "Уредот печка." },
+        "kiln_id": { "name": "ИД на печката", "description": "Алтернатива на уредот." },
+        "sched_num": { "name": "Број на програмата", "description": "Програмата што треба да се избрише." },
+        "schedule_name": { "name": "Име на програмата", "description": "Програмата што треба да се избрише, по име." }
+      }
+    }
+  }
+}

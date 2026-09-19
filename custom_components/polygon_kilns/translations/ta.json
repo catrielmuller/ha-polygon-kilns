@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Polygon உடன் இணைக்கவும்",
+        "description": "உங்கள் Polygon செயலி கணக்கின் மின்னஞ்சல் மற்றும் கடவுச்சொல்லைப் பயன்படுத்தவும். Google அல்லது Apple உள்நுழைவை மட்டுமே பயன்படுத்தும் கணக்குகள் முதலில் கடவுச்சொல்லை அமைக்க வேண்டும்.",
+        "data": {
+          "email": "மின்னஞ்சல்",
+          "password": "கடவுச்சொல்"
+        }
+      },
+      "reauth_confirm": {
+        "title": "அமர்வைப் புதுப்பிக்கவும்",
+        "description": "Polygon அமர்வு காலாவதியானது. உங்கள் சான்றுகளை மீண்டும் உள்ளிடவும்.",
+        "data": {
+          "email": "மின்னஞ்சல்",
+          "password": "கடவுச்சொல்"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "இணைப்பு தோல்வியடைந்தது",
+      "invalid_auth": "தவறான அங்கீகாரம்",
+      "unknown": "அறியப்படாத பிழை ஏற்பட்டது"
+    },
+    "abort": {
+      "already_configured": "கணக்கு ஏற்கனவே கட்டமைக்கப்பட்டுள்ளது",
+      "reauth_successful": "மறு அங்கீகாரம் வெற்றிகரமாக முடிந்தது"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon சூளைகள் விருப்பங்கள்",
+        "data": {
+          "poll_interval": "புதுப்பிப்பு இடைவெளி (வினாடிகள்)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "வெப்பநிலை" },
+      "setpoint": { "name": "இலக்கு வெப்பநிலை" },
+      "state": { "name": "நிலை" },
+      "stage": { "name": "கட்டம்" },
+      "segment_phase": { "name": "பிரிவு கட்டம்" },
+      "progress": { "name": "முன்னேற்றம்" },
+      "eta": { "name": "மதிப்பிடப்பட்ட நிறைவு" },
+      "elapsed": { "name": "கழிந்த நேரம்" },
+      "energy": { "name": "ஆற்றல்" },
+      "cost": { "name": "செலவு" },
+      "wifi_signal": { "name": "WiFi சமிக்ஞை" },
+      "last_seen": { "name": "கடைசி தொடர்பு" },
+      "last_firing": { "name": "கடைசி சுடல்" }
+    },
+    "binary_sensor": {
+      "online": { "name": "ஆன்லைன்" },
+      "thermocouple_error": { "name": "தெர்மோகப்பிள் பிழை" },
+      "sensor_fault": { "name": "சென்சார் கோளாறு" },
+      "overheat_fault": { "name": "அதிக வெப்பமயமாதல்" }
+    },
+    "select": {
+      "program": { "name": "தொடங்க வேண்டிய நிரல்" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "திட்டமிடப்பட்ட தொடக்கம்" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "திட்டமிடப்பட்ட தொடக்கம் இயக்கப்பட்டது" }
+    },
+    "button": {
+      "start": { "name": "நிரலைத் தொடங்கு" },
+      "stop": { "name": "சூளையை நிறுத்து" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "நிரலைத் தொடங்கு",
+      "description": "சூளையில் சுடல் நிரலை இப்போது அல்லது எதிர்கால தேதி/நேரத்தில் தொடங்குகிறது.",
+      "fields": {
+        "device_id": { "name": "சூளை", "description": "சூளை சாதனம்." },
+        "kiln_id": { "name": "சூளை ID", "description": "சாதனத்திற்கு மாற்று: சூளை ஆவண ID (எ.கா. K1117)." },
+        "sched_num": { "name": "நிரல் எண்", "description": "நிரல் எண் (schedNum)." },
+        "schedule_name": { "name": "நிரல் பெயர்", "description": "நிரல் பெயர், எண்ணுக்கு மாற்று." },
+        "start_time": { "name": "தொடக்க நேரம்", "description": "அமைக்கப்பட்டால், இப்போது இயக்காமல் அந்த தேதி/நேரத்திற்கு தொடக்கம் திட்டமிடப்படும்." }
+      }
+    },
+    "stop_schedule": {
+      "name": "சூளையை நிறுத்து",
+      "description": "நடந்துகொண்டிருக்கும் சுடலை நிறுத்தக் கோருகிறது.",
+      "fields": {
+        "device_id": { "name": "சூளை", "description": "சூளை சாதனம்." },
+        "kiln_id": { "name": "சூளை ID", "description": "சாதனத்திற்கு மாற்று." }
+      }
+    },
+    "create_schedule": {
+      "name": "நிரலை உருவாக்கு",
+      "description": "சூளையின் தொகுப்பில் சுடல் நிரலை உருவாக்குகிறது.",
+      "fields": {
+        "device_id": { "name": "சூளை", "description": "சூளை சாதனம்." },
+        "kiln_id": { "name": "சூளை ID", "description": "சாதனத்திற்கு மாற்று." },
+        "schedule_name": { "name": "பெயர்", "description": "நிரல் பெயர்." },
+        "sched_num": { "name": "நிரல் எண்", "description": "நிரலை அடையாளம் காண சூளை பயன்படுத்தும் எண்." },
+        "stages": { "name": "கட்டங்கள்", "description": "ராம்ப் (°C/மணி), வெப்பநிலை (°C) மற்றும் தக்கவைப்பு (நிமிடங்கள்) கொண்ட கட்டங்களின் பட்டியல்." }
+      }
+    },
+    "update_schedule": {
+      "name": "நிரலைப் புதுப்பி",
+      "description": "ஏற்கனவே உள்ள நிரலின் பெயர் மற்றும்/அல்லது கட்டங்களை மாற்றுகிறது.",
+      "fields": {
+        "device_id": { "name": "சூளை", "description": "சூளை சாதனம்." },
+        "kiln_id": { "name": "சூளை ID", "description": "சாதனத்திற்கு மாற்று." },
+        "sched_num": { "name": "நிரல் எண்", "description": "மாற்ற வேண்டிய நிரல்." },
+        "schedule_name": { "name": "நிரல் பெயர்", "description": "மாற்ற வேண்டிய நிரல், பெயர் மூலம்." },
+        "name": { "name": "புதிய பெயர்", "description": "புதிய நிரல் பெயர்." },
+        "stages": { "name": "கட்டங்கள்", "description": "ராம்ப், வெப்பநிலை மற்றும் தக்கவைப்பு கொண்ட கட்டங்களின் புதிய பட்டியல்." }
+      }
+    },
+    "delete_schedule": {
+      "name": "நிரலை நீக்கு",
+      "description": "சுடல் நிரலை நீக்குகிறது.",
+      "fields": {
+        "device_id": { "name": "சூளை", "description": "சூளை சாதனம்." },
+        "kiln_id": { "name": "சூளை ID", "description": "சாதனத்திற்கு மாற்று." },
+        "sched_num": { "name": "நிரல் எண்", "description": "நீக்க வேண்டிய நிரல்." },
+        "schedule_name": { "name": "நிரல் பெயர்", "description": "நீக்க வேண்டிய நிரல், பெயர் மூலம்." }
+      }
+    }
+  }
+}

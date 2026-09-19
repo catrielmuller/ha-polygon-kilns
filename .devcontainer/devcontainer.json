@@ -1,0 +1,28 @@
+{
+  "name": "Polygon Kilns - Home Assistant dev",
+  "image": "mcr.microsoft.com/devcontainers/python:3.13",
+  "postCreateCommand": "bash scripts/setup",
+  "forwardPorts": [8123],
+  "portsAttributes": {
+    "8123": {
+      "label": "Home Assistant",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "charliermarsh.ruff"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": ".venv/bin/python",
+        "python.testing.pytestEnabled": true,
+        "python.testing.pytestArgs": ["tests"]
+      }
+    }
+  },
+  "remoteUser": "vscode",
+  "updateRemoteUserUID": false
+}

@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Polygon से कनेक्ट करें",
+        "description": "अपने Polygon ऐप खाते का ईमेल और पासवर्ड उपयोग करें। जो खाते केवल Google या Apple Sign-In का उपयोग करते हैं, उन्हें पहले पासवर्ड सेट करना होगा।",
+        "data": {
+          "email": "ईमेल",
+          "password": "पासवर्ड"
+        }
+      },
+      "reauth_confirm": {
+        "title": "सत्र नवीनीकृत करें",
+        "description": "Polygon सत्र समाप्त हो गया। अपनी साख फिर से दर्ज करें।",
+        "data": {
+          "email": "ईमेल",
+          "password": "पासवर्ड"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "कनेक्ट करने में विफल",
+      "invalid_auth": "अमान्य प्रमाणीकरण",
+      "unknown": "अज्ञात त्रुटि हुई"
+    },
+    "abort": {
+      "already_configured": "खाता पहले से कॉन्फ़िगर किया गया है",
+      "reauth_successful": "पुनः प्रमाणीकरण सफल रहा"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns विकल्प",
+        "data": {
+          "poll_interval": "अपडेट अंतराल (सेकंड)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "तापमान" },
+      "setpoint": { "name": "सेटपॉइंट" },
+      "state": { "name": "स्थिति" },
+      "stage": { "name": "चरण" },
+      "segment_phase": { "name": "खंड चरण" },
+      "progress": { "name": "प्रगति" },
+      "eta": { "name": "अनुमानित पूर्णता" },
+      "elapsed": { "name": "बीता हुआ समय" },
+      "energy": { "name": "ऊर्जा" },
+      "cost": { "name": "लागत" },
+      "wifi_signal": { "name": "WiFi सिग्नल" },
+      "last_seen": { "name": "अंतिम संपर्क" },
+      "last_firing": { "name": "अंतिम फ़ायरिंग" }
+    },
+    "binary_sensor": {
+      "online": { "name": "ऑनलाइन" },
+      "thermocouple_error": { "name": "थर्मोकपल त्रुटि" },
+      "sensor_fault": { "name": "सेंसर खराबी" },
+      "overheat_fault": { "name": "अधिक ताप" }
+    },
+    "select": {
+      "program": { "name": "शुरू करने के लिए प्रोग्राम" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "निर्धारित प्रारंभ" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "निर्धारित प्रारंभ सक्रिय" }
+    },
+    "button": {
+      "start": { "name": "प्रोग्राम शुरू करें" },
+      "stop": { "name": "भट्ठी बंद करें" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "प्रोग्राम शुरू करें",
+      "description": "भट्ठी पर फ़ायरिंग प्रोग्राम शुरू करता है, अभी या भविष्य की तिथि/समय पर।",
+      "fields": {
+        "device_id": { "name": "भट्ठी", "description": "भट्ठी डिवाइस।" },
+        "kiln_id": { "name": "भट्ठी ID", "description": "डिवाइस का विकल्प: भट्ठी दस्तावेज़ ID (जैसे K1117)।" },
+        "sched_num": { "name": "प्रोग्राम संख्या", "description": "प्रोग्राम संख्या (schedNum)।" },
+        "schedule_name": { "name": "प्रोग्राम नाम", "description": "प्रोग्राम नाम, संख्या का विकल्प।" },
+        "start_time": { "name": "प्रारंभ समय", "description": "यदि सेट किया गया हो, तो प्रारंभ उस तिथि/समय के लिए निर्धारित होता है, अभी चलने के बजाय।" }
+      }
+    },
+    "stop_schedule": {
+      "name": "भट्ठी बंद करें",
+      "description": "चल रही फ़ायरिंग को रोकने का अनुरोध करता है।",
+      "fields": {
+        "device_id": { "name": "भट्ठी", "description": "भट्ठी डिवाइस।" },
+        "kiln_id": { "name": "भट्ठी ID", "description": "डिवाइस का विकल्प।" }
+      }
+    },
+    "create_schedule": {
+      "name": "प्रोग्राम बनाएँ",
+      "description": "भट्ठी के संग्रह में फ़ायरिंग प्रोग्राम बनाता है।",
+      "fields": {
+        "device_id": { "name": "भट्ठी", "description": "भट्ठी डिवाइस।" },
+        "kiln_id": { "name": "भट्ठी ID", "description": "डिवाइस का विकल्प।" },
+        "schedule_name": { "name": "नाम", "description": "प्रोग्राम का नाम।" },
+        "sched_num": { "name": "प्रोग्राम संख्या", "description": "वह संख्या जिसका उपयोग भट्ठी प्रोग्राम की पहचान के लिए करती है।" },
+        "stages": { "name": "चरण", "description": "रैंप (°C/घंटा), तापमान (°C) और होल्ड (मिनट) वाले चरणों की सूची।" }
+      }
+    },
+    "update_schedule": {
+      "name": "प्रोग्राम अपडेट करें",
+      "description": "मौजूदा प्रोग्राम का नाम और/या चरण संशोधित करता है।",
+      "fields": {
+        "device_id": { "name": "भट्ठी", "description": "भट्ठी डिवाइस।" },
+        "kiln_id": { "name": "भट्ठी ID", "description": "डिवाइस का विकल्प।" },
+        "sched_num": { "name": "प्रोग्राम संख्या", "description": "संशोधित करने के लिए प्रोग्राम।" },
+        "schedule_name": { "name": "प्रोग्राम नाम", "description": "संशोधित करने के लिए प्रोग्राम, नाम से।" },
+        "name": { "name": "नया नाम", "description": "प्रोग्राम का नया नाम।" },
+        "stages": { "name": "चरण", "description": "रैंप, तापमान और होल्ड वाले चरणों की नई सूची।" }
+      }
+    },
+    "delete_schedule": {
+      "name": "प्रोग्राम हटाएँ",
+      "description": "फ़ायरिंग प्रोग्राम हटाता है।",
+      "fields": {
+        "device_id": { "name": "भट्ठी", "description": "भट्ठी डिवाइस।" },
+        "kiln_id": { "name": "भट्ठी ID", "description": "डिवाइस का विकल्प।" },
+        "sched_num": { "name": "प्रोग्राम संख्या", "description": "हटाने के लिए प्रोग्राम।" },
+        "schedule_name": { "name": "प्रोग्राम नाम", "description": "हटाने के लिए प्रोग्राम, नाम से।" }
+      }
+    }
+  }
+}

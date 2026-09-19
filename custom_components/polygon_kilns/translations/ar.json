@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "الاتصال بـ Polygon",
+        "description": "استخدم البريد الإلكتروني وكلمة المرور الخاصين بحساب تطبيق Polygon. يجب على الحسابات التي تستخدم تسجيل الدخول عبر Google أو Apple فقط تعيين كلمة مرور أولاً.",
+        "data": {
+          "email": "البريد الإلكتروني",
+          "password": "كلمة المرور"
+        }
+      },
+      "reauth_confirm": {
+        "title": "تجديد الجلسة",
+        "description": "انتهت صلاحية جلسة Polygon. أدخل بيانات الاعتماد مرة أخرى.",
+        "data": {
+          "email": "البريد الإلكتروني",
+          "password": "كلمة المرور"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "فشل الاتصال",
+      "invalid_auth": "مصادقة غير صالحة",
+      "unknown": "حدث خطأ غير معروف"
+    },
+    "abort": {
+      "already_configured": "الحساب مهيأ بالفعل",
+      "reauth_successful": "تمت إعادة المصادقة بنجاح"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "خيارات Polygon Kilns",
+        "data": {
+          "poll_interval": "فاصل التحديث (بالثواني)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "درجة الحرارة" },
+      "setpoint": { "name": "القيمة المستهدفة" },
+      "state": { "name": "الحالة" },
+      "stage": { "name": "المرحلة" },
+      "segment_phase": { "name": "مرحلة المقطع" },
+      "progress": { "name": "التقدم" },
+      "eta": { "name": "الاكتمال المقدّر" },
+      "elapsed": { "name": "الوقت المنقضي" },
+      "energy": { "name": "الطاقة" },
+      "cost": { "name": "التكلفة" },
+      "wifi_signal": { "name": "إشارة WiFi" },
+      "last_seen": { "name": "آخر اتصال" },
+      "last_firing": { "name": "آخر حرق" }
+    },
+    "binary_sensor": {
+      "online": { "name": "متصل" },
+      "thermocouple_error": { "name": "خطأ في المزدوجة الحرارية" },
+      "sensor_fault": { "name": "عطل في المستشعر" },
+      "overheat_fault": { "name": "ارتفاع درجة الحرارة" }
+    },
+    "select": {
+      "program": { "name": "البرنامج المراد بدء تشغيله" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "البدء المجدول" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "تفعيل البدء المجدول" }
+    },
+    "button": {
+      "start": { "name": "بدء البرنامج" },
+      "stop": { "name": "إيقاف الفرن" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "بدء البرنامج",
+      "description": "يبدأ برنامج حرق على فرن، الآن أو في تاريخ/وقت مستقبلي.",
+      "fields": {
+        "device_id": { "name": "الفرن", "description": "جهاز الفرن." },
+        "kiln_id": { "name": "معرّف الفرن", "description": "بديل عن الجهاز: معرّف مستند الفرن (مثل K1117)." },
+        "sched_num": { "name": "رقم البرنامج", "description": "رقم البرنامج (schedNum)." },
+        "schedule_name": { "name": "اسم البرنامج", "description": "اسم البرنامج، بديل عن الرقم." },
+        "start_time": { "name": "وقت البدء", "description": "إذا تم تعيينه، تتم جدولة البدء لذلك التاريخ/الوقت بدلاً من التشغيل الآن." }
+      }
+    },
+    "stop_schedule": {
+      "name": "إيقاف الفرن",
+      "description": "يطلب إيقاف الحرق الجاري.",
+      "fields": {
+        "device_id": { "name": "الفرن", "description": "جهاز الفرن." },
+        "kiln_id": { "name": "معرّف الفرن", "description": "بديل عن الجهاز." }
+      }
+    },
+    "create_schedule": {
+      "name": "إنشاء برنامج",
+      "description": "ينشئ برنامج حرق في مجموعة الفرن.",
+      "fields": {
+        "device_id": { "name": "الفرن", "description": "جهاز الفرن." },
+        "kiln_id": { "name": "معرّف الفرن", "description": "بديل عن الجهاز." },
+        "schedule_name": { "name": "الاسم", "description": "اسم البرنامج." },
+        "sched_num": { "name": "رقم البرنامج", "description": "الرقم الذي يستخدمه الفرن لتعريف البرنامج." },
+        "stages": { "name": "المراحل", "description": "قائمة المراحل مع المنحدر (°C/ساعة) ودرجة الحرارة (°C) والتثبيت (بالدقائق)." }
+      }
+    },
+    "update_schedule": {
+      "name": "تحديث البرنامج",
+      "description": "يعدّل اسم و/أو مراحل برنامج موجود.",
+      "fields": {
+        "device_id": { "name": "الفرن", "description": "جهاز الفرن." },
+        "kiln_id": { "name": "معرّف الفرن", "description": "بديل عن الجهاز." },
+        "sched_num": { "name": "رقم البرنامج", "description": "البرنامج المراد تعديله." },
+        "schedule_name": { "name": "اسم البرنامج", "description": "البرنامج المراد تعديله، بالاسم." },
+        "name": { "name": "الاسم الجديد", "description": "اسم البرنامج الجديد." },
+        "stages": { "name": "المراحل", "description": "قائمة جديدة من المراحل مع المنحدر ودرجة الحرارة والتثبيت." }
+      }
+    },
+    "delete_schedule": {
+      "name": "حذف البرنامج",
+      "description": "يحذف برنامج حرق.",
+      "fields": {
+        "device_id": { "name": "الفرن", "description": "جهاز الفرن." },
+        "kiln_id": { "name": "معرّف الفرن", "description": "بديل عن الجهاز." },
+        "sched_num": { "name": "رقم البرنامج", "description": "البرنامج المراد حذفه." },
+        "schedule_name": { "name": "اسم البرنامج", "description": "البرنامج المراد حذفه، بالاسم." }
+      }
+    }
+  }
+}

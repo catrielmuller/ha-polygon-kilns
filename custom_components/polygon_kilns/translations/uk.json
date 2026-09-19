@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Підключення до Polygon",
+        "description": "Використовуйте електронну пошту та пароль облікового запису застосунку Polygon. Облікові записи, які використовують лише вхід через Google або Apple, повинні спочатку встановити пароль.",
+        "data": {
+          "email": "Електронна пошта",
+          "password": "Пароль"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Оновити сеанс",
+        "description": "Сеанс Polygon завершився. Введіть свої облікові дані ще раз.",
+        "data": {
+          "email": "Електронна пошта",
+          "password": "Пароль"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Не вдалося підключитися",
+      "invalid_auth": "Недійсна автентифікація",
+      "unknown": "Сталася невідома помилка"
+    },
+    "abort": {
+      "already_configured": "Обліковий запис уже налаштовано",
+      "reauth_successful": "Повторна автентифікація успішна"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Параметри Polygon Kilns",
+        "data": {
+          "poll_interval": "Інтервал оновлення (секунди)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Температура" },
+      "setpoint": { "name": "Задане значення" },
+      "state": { "name": "Стан" },
+      "stage": { "name": "Етап" },
+      "segment_phase": { "name": "Фаза сегмента" },
+      "progress": { "name": "Прогрес" },
+      "eta": { "name": "Орієнтовне завершення" },
+      "elapsed": { "name": "Минулий час" },
+      "energy": { "name": "Енергія" },
+      "cost": { "name": "Вартість" },
+      "wifi_signal": { "name": "Сигнал Wi-Fi" },
+      "last_seen": { "name": "Останній контакт" },
+      "last_firing": { "name": "Останній випал" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Онлайн" },
+      "thermocouple_error": { "name": "Помилка термопари" },
+      "sensor_fault": { "name": "Несправність датчика" },
+      "overheat_fault": { "name": "Перегрів" }
+    },
+    "select": {
+      "program": { "name": "Програма для запуску" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Запланований запуск" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Запланований запуск увімкнено" }
+    },
+    "button": {
+      "start": { "name": "Запустити програму" },
+      "stop": { "name": "Зупинити піч" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Запустити програму",
+      "description": "Запускає програму випалу на печі зараз або в майбутню дату/час.",
+      "fields": {
+        "device_id": { "name": "Піч", "description": "Пристрій печі." },
+        "kiln_id": { "name": "ID печі", "description": "Альтернатива пристрою: ID документа печі (напр., K1117)." },
+        "sched_num": { "name": "Номер програми", "description": "Номер програми (schedNum)." },
+        "schedule_name": { "name": "Назва програми", "description": "Назва програми, альтернатива номеру." },
+        "start_time": { "name": "Час запуску", "description": "Якщо встановлено, запуск буде заплановано на цю дату/час замість негайного виконання." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Зупинити піч",
+      "description": "Надсилає запит на зупинку поточного випалу.",
+      "fields": {
+        "device_id": { "name": "Піч", "description": "Пристрій печі." },
+        "kiln_id": { "name": "ID печі", "description": "Альтернатива пристрою." }
+      }
+    },
+    "create_schedule": {
+      "name": "Створити програму",
+      "description": "Створює програму випалу в колекції печі.",
+      "fields": {
+        "device_id": { "name": "Піч", "description": "Пристрій печі." },
+        "kiln_id": { "name": "ID печі", "description": "Альтернатива пристрою." },
+        "schedule_name": { "name": "Назва", "description": "Назва програми." },
+        "sched_num": { "name": "Номер програми", "description": "Номер, який піч використовує для ідентифікації програми." },
+        "stages": { "name": "Етапи", "description": "Список етапів із швидкістю нагрівання (°C/год), температурою (°C) і витримкою (хвилини)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Оновити програму",
+      "description": "Змінює назву та/або етапи наявної програми.",
+      "fields": {
+        "device_id": { "name": "Піч", "description": "Пристрій печі." },
+        "kiln_id": { "name": "ID печі", "description": "Альтернатива пристрою." },
+        "sched_num": { "name": "Номер програми", "description": "Програма, яку потрібно змінити." },
+        "schedule_name": { "name": "Назва програми", "description": "Програма, яку потрібно змінити, за назвою." },
+        "name": { "name": "Нова назва", "description": "Нова назва програми." },
+        "stages": { "name": "Етапи", "description": "Новий список етапів із швидкістю нагрівання, температурою і витримкою." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Видалити програму",
+      "description": "Видаляє програму випалу.",
+      "fields": {
+        "device_id": { "name": "Піч", "description": "Пристрій печі." },
+        "kiln_id": { "name": "ID печі", "description": "Альтернатива пристрою." },
+        "sched_num": { "name": "Номер програми", "description": "Програма, яку потрібно видалити." },
+        "schedule_name": { "name": "Назва програми", "description": "Програма, яку потрібно видалити, за назвою." }
+      }
+    }
+  }
+}

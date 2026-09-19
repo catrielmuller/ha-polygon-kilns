@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Polygon'a bağlan",
+        "description": "Polygon uygulama hesabınızın e-posta adresini ve şifresini kullanın. Yalnızca Google veya Apple ile giriş kullanan hesapların önce bir şifre belirlemesi gerekir.",
+        "data": {
+          "email": "E-posta",
+          "password": "Şifre"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Oturumu yenile",
+        "description": "Polygon oturumunun süresi doldu. Kimlik bilgilerinizi yeniden girin.",
+        "data": {
+          "email": "E-posta",
+          "password": "Şifre"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Bağlanılamadı",
+      "invalid_auth": "Geçersiz kimlik doğrulama",
+      "unknown": "Bilinmeyen bir hata oluştu"
+    },
+    "abort": {
+      "already_configured": "Hesap zaten yapılandırılmış",
+      "reauth_successful": "Yeniden kimlik doğrulama başarılı oldu"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polygon Kilns seçenekleri",
+        "data": {
+          "poll_interval": "Güncelleme aralığı (saniye)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Sıcaklık" },
+      "setpoint": { "name": "Ayar değeri" },
+      "state": { "name": "Durum" },
+      "stage": { "name": "Aşama" },
+      "segment_phase": { "name": "Segment aşaması" },
+      "progress": { "name": "İlerleme" },
+      "eta": { "name": "Tahmini tamamlanma" },
+      "elapsed": { "name": "Geçen süre" },
+      "energy": { "name": "Enerji" },
+      "cost": { "name": "Maliyet" },
+      "wifi_signal": { "name": "WiFi sinyali" },
+      "last_seen": { "name": "Son iletişim" },
+      "last_firing": { "name": "Son pişirim" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Çevrimiçi" },
+      "thermocouple_error": { "name": "Termokupl hatası" },
+      "sensor_fault": { "name": "Sensör arızası" },
+      "overheat_fault": { "name": "Aşırı ısınma" }
+    },
+    "select": {
+      "program": { "name": "Başlatılacak program" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Programlanmış başlangıç" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Programlanmış başlangıç etkin" }
+    },
+    "button": {
+      "start": { "name": "Programı başlat" },
+      "stop": { "name": "Fırını durdur" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Programı başlat",
+      "description": "Bir fırında pişirim programını şimdi veya ileri bir tarih/saatte başlatır.",
+      "fields": {
+        "device_id": { "name": "Fırın", "description": "Fırın cihazı." },
+        "kiln_id": { "name": "Fırın kimliği", "description": "Cihaza alternatif: fırın belge kimliği (örn. K1117)." },
+        "sched_num": { "name": "Program numarası", "description": "Program numarası (schedNum)." },
+        "schedule_name": { "name": "Program adı", "description": "Numaraya alternatif olarak program adı." },
+        "start_time": { "name": "Başlangıç zamanı", "description": "Ayarlanırsa, başlangıç hemen çalıştırmak yerine o tarih/saate programlanır." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Fırını durdur",
+      "description": "Devam eden pişirimin durdurulmasını ister.",
+      "fields": {
+        "device_id": { "name": "Fırın", "description": "Fırın cihazı." },
+        "kiln_id": { "name": "Fırın kimliği", "description": "Cihaza alternatif." }
+      }
+    },
+    "create_schedule": {
+      "name": "Program oluştur",
+      "description": "Fırının koleksiyonunda bir pişirim programı oluşturur.",
+      "fields": {
+        "device_id": { "name": "Fırın", "description": "Fırın cihazı." },
+        "kiln_id": { "name": "Fırın kimliği", "description": "Cihaza alternatif." },
+        "schedule_name": { "name": "Ad", "description": "Program adı." },
+        "sched_num": { "name": "Program numarası", "description": "Fırının programı tanımlamak için kullandığı numara." },
+        "stages": { "name": "Aşamalar", "description": "Rampa (°C/h), sıcaklık (°C) ve bekleme (dakika) içeren aşamaların listesi." }
+      }
+    },
+    "update_schedule": {
+      "name": "Programı güncelle",
+      "description": "Mevcut bir programın adını ve/veya aşamalarını değiştirir.",
+      "fields": {
+        "device_id": { "name": "Fırın", "description": "Fırın cihazı." },
+        "kiln_id": { "name": "Fırın kimliği", "description": "Cihaza alternatif." },
+        "sched_num": { "name": "Program numarası", "description": "Değiştirilecek program." },
+        "schedule_name": { "name": "Program adı", "description": "Ada göre değiştirilecek program." },
+        "name": { "name": "Yeni ad", "description": "Yeni program adı." },
+        "stages": { "name": "Aşamalar", "description": "Rampa, sıcaklık ve bekleme içeren yeni aşama listesi." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Programı sil",
+      "description": "Bir pişirim programını siler.",
+      "fields": {
+        "device_id": { "name": "Fırın", "description": "Fırın cihazı." },
+        "kiln_id": { "name": "Fırın kimliği", "description": "Cihaza alternatif." },
+        "sched_num": { "name": "Program numarası", "description": "Silinecek program." },
+        "schedule_name": { "name": "Program adı", "description": "Ada göre silinecek program." }
+      }
+    }
+  }
+}

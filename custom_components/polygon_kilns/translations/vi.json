@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Kết nối với Polygon",
+        "description": "Sử dụng email và mật khẩu của tài khoản ứng dụng Polygon. Các tài khoản chỉ dùng đăng nhập bằng Google hoặc Apple phải đặt mật khẩu trước.",
+        "data": {
+          "email": "Email",
+          "password": "Mật khẩu"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Gia hạn phiên",
+        "description": "Phiên Polygon đã hết hạn. Nhập lại thông tin đăng nhập của bạn.",
+        "data": {
+          "email": "Email",
+          "password": "Mật khẩu"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Không thể kết nối",
+      "invalid_auth": "Xác thực không hợp lệ",
+      "unknown": "Đã xảy ra lỗi không xác định"
+    },
+    "abort": {
+      "already_configured": "Tài khoản đã được cấu hình",
+      "reauth_successful": "Xác thực lại thành công"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Tùy chọn Polygon Kilns",
+        "data": {
+          "poll_interval": "Khoảng thời gian cập nhật (giây)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Nhiệt độ" },
+      "setpoint": { "name": "Điểm đặt" },
+      "state": { "name": "Trạng thái" },
+      "stage": { "name": "Giai đoạn" },
+      "segment_phase": { "name": "Pha của đoạn" },
+      "progress": { "name": "Tiến độ" },
+      "eta": { "name": "Hoàn thành dự kiến" },
+      "elapsed": { "name": "Thời gian đã trôi qua" },
+      "energy": { "name": "Năng lượng" },
+      "cost": { "name": "Chi phí" },
+      "wifi_signal": { "name": "Tín hiệu WiFi" },
+      "last_seen": { "name": "Liên hệ lần cuối" },
+      "last_firing": { "name": "Lần nung cuối" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Trực tuyến" },
+      "thermocouple_error": { "name": "Lỗi cặp nhiệt điện" },
+      "sensor_fault": { "name": "Lỗi cảm biến" },
+      "overheat_fault": { "name": "Quá nhiệt" }
+    },
+    "select": {
+      "program": { "name": "Chương trình cần khởi động" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Khởi động theo lịch" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Đã bật khởi động theo lịch" }
+    },
+    "button": {
+      "start": { "name": "Khởi động chương trình" },
+      "stop": { "name": "Dừng lò nung" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Khởi động chương trình",
+      "description": "Khởi động chương trình nung trên lò, ngay bây giờ hoặc vào một ngày/giờ trong tương lai.",
+      "fields": {
+        "device_id": { "name": "Lò nung", "description": "Thiết bị lò nung." },
+        "kiln_id": { "name": "ID lò nung", "description": "Thay thế cho thiết bị: ID tài liệu của lò nung (vd. K1117)." },
+        "sched_num": { "name": "Số chương trình", "description": "Số chương trình (schedNum)." },
+        "schedule_name": { "name": "Tên chương trình", "description": "Tên chương trình, thay thế cho số." },
+        "start_time": { "name": "Thời gian bắt đầu", "description": "Nếu được đặt, việc khởi động sẽ được lên lịch vào ngày/giờ đó thay vì chạy ngay." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Dừng lò nung",
+      "description": "Yêu cầu dừng đợt nung đang diễn ra.",
+      "fields": {
+        "device_id": { "name": "Lò nung", "description": "Thiết bị lò nung." },
+        "kiln_id": { "name": "ID lò nung", "description": "Thay thế cho thiết bị." }
+      }
+    },
+    "create_schedule": {
+      "name": "Tạo chương trình",
+      "description": "Tạo chương trình nung trong bộ sưu tập của lò.",
+      "fields": {
+        "device_id": { "name": "Lò nung", "description": "Thiết bị lò nung." },
+        "kiln_id": { "name": "ID lò nung", "description": "Thay thế cho thiết bị." },
+        "schedule_name": { "name": "Tên", "description": "Tên chương trình." },
+        "sched_num": { "name": "Số chương trình", "description": "Số mà lò nung dùng để nhận dạng chương trình." },
+        "stages": { "name": "Các giai đoạn", "description": "Danh sách các giai đoạn gồm tốc độ tăng nhiệt (°C/h), nhiệt độ mục tiêu (°C) và thời gian giữ (phút)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Cập nhật chương trình",
+      "description": "Sửa đổi tên và/hoặc các giai đoạn của chương trình hiện có.",
+      "fields": {
+        "device_id": { "name": "Lò nung", "description": "Thiết bị lò nung." },
+        "kiln_id": { "name": "ID lò nung", "description": "Thay thế cho thiết bị." },
+        "sched_num": { "name": "Số chương trình", "description": "Chương trình cần sửa đổi." },
+        "schedule_name": { "name": "Tên chương trình", "description": "Chương trình cần sửa đổi, theo tên." },
+        "name": { "name": "Tên mới", "description": "Tên chương trình mới." },
+        "stages": { "name": "Các giai đoạn", "description": "Danh sách giai đoạn mới gồm tốc độ tăng nhiệt, nhiệt độ mục tiêu và thời gian giữ." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Xóa chương trình",
+      "description": "Xóa một chương trình nung.",
+      "fields": {
+        "device_id": { "name": "Lò nung", "description": "Thiết bị lò nung." },
+        "kiln_id": { "name": "ID lò nung", "description": "Thay thế cho thiết bị." },
+        "sched_num": { "name": "Số chương trình", "description": "Chương trình cần xóa." },
+        "schedule_name": { "name": "Tên chương trình", "description": "Chương trình cần xóa, theo tên." }
+      }
+    }
+  }
+}

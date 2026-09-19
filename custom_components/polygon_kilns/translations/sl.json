@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Povezava s Polygon",
+        "description": "Uporabite e-pošto in geslo svojega računa v aplikaciji Polygon. Računi, ki uporabljajo samo prijavo z Google ali Apple, morajo najprej nastaviti geslo.",
+        "data": {
+          "email": "E-pošta",
+          "password": "Geslo"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Podaljšanje seje",
+        "description": "Seja Polygon je potekla. Znova vnesite svoje poverilnice.",
+        "data": {
+          "email": "E-pošta",
+          "password": "Geslo"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Povezava ni uspela",
+      "invalid_auth": "Neveljavna avtentikacija",
+      "unknown": "Prišlo je do neznane napake"
+    },
+    "abort": {
+      "already_configured": "Račun je že konfiguriran",
+      "reauth_successful": "Ponovna avtentikacija je bila uspešna"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Možnosti Polygon Kilns",
+        "data": {
+          "poll_interval": "Interval posodabljanja (sekunde)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperatura" },
+      "setpoint": { "name": "Nastavljena vrednost" },
+      "state": { "name": "Stanje" },
+      "stage": { "name": "Faza" },
+      "segment_phase": { "name": "Faza segmenta" },
+      "progress": { "name": "Napredek" },
+      "eta": { "name": "Predviden zaključek" },
+      "elapsed": { "name": "Pretečeni čas" },
+      "energy": { "name": "Energija" },
+      "cost": { "name": "Strošek" },
+      "wifi_signal": { "name": "Signal Wi-Fi" },
+      "last_seen": { "name": "Zadnji stik" },
+      "last_firing": { "name": "Zadnje žganje" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Na spletu" },
+      "thermocouple_error": { "name": "Napaka termoelementa" },
+      "sensor_fault": { "name": "Okvara senzorja" },
+      "overheat_fault": { "name": "Pregrevanje" }
+    },
+    "select": {
+      "program": { "name": "Program za zagon" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Načrtovani zagon" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Načrtovani zagon aktiviran" }
+    },
+    "button": {
+      "start": { "name": "Zaženi program" },
+      "stop": { "name": "Ustavi peč" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Zaženi program",
+      "description": "Zažene program žganja na peči, zdaj ali v prihodnjem datumu/času.",
+      "fields": {
+        "device_id": { "name": "Peč", "description": "Naprava peči." },
+        "kiln_id": { "name": "ID peči", "description": "Alternativa napravi: ID dokumenta peči (npr. K1117)." },
+        "sched_num": { "name": "Številka programa", "description": "Številka programa (schedNum)." },
+        "schedule_name": { "name": "Ime programa", "description": "Ime programa, alternativa številki." },
+        "start_time": { "name": "Čas zagona", "description": "Če je nastavljen, se zagon načrtuje za ta datum/čas namesto takojšnjega izvajanja." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Ustavi peč",
+      "description": "Zahteva ustavitev tekočega žganja.",
+      "fields": {
+        "device_id": { "name": "Peč", "description": "Naprava peči." },
+        "kiln_id": { "name": "ID peči", "description": "Alternativa napravi." }
+      }
+    },
+    "create_schedule": {
+      "name": "Ustvari program",
+      "description": "Ustvari program žganja v zbirki peči.",
+      "fields": {
+        "device_id": { "name": "Peč", "description": "Naprava peči." },
+        "kiln_id": { "name": "ID peči", "description": "Alternativa napravi." },
+        "schedule_name": { "name": "Ime", "description": "Ime programa." },
+        "sched_num": { "name": "Številka programa", "description": "Številka, ki jo peč uporablja za identifikacijo programa." },
+        "stages": { "name": "Faze", "description": "Seznam faz z rampo (°C/h), temperaturo (°C) in zadrževanjem (minute)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Posodobi program",
+      "description": "Spremeni ime in/ali faze obstoječega programa.",
+      "fields": {
+        "device_id": { "name": "Peč", "description": "Naprava peči." },
+        "kiln_id": { "name": "ID peči", "description": "Alternativa napravi." },
+        "sched_num": { "name": "Številka programa", "description": "Program za spremembo." },
+        "schedule_name": { "name": "Ime programa", "description": "Program za spremembo, po imenu." },
+        "name": { "name": "Novo ime", "description": "Novo ime programa." },
+        "stages": { "name": "Faze", "description": "Nov seznam faz z rampo, temperaturo in zadrževanjem." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Izbriši program",
+      "description": "Izbriše program žganja.",
+      "fields": {
+        "device_id": { "name": "Peč", "description": "Naprava peči." },
+        "kiln_id": { "name": "ID peči", "description": "Alternativa napravi." },
+        "sched_num": { "name": "Številka programa", "description": "Program za izbris." },
+        "schedule_name": { "name": "Ime programa", "description": "Program za izbris, po imenu." }
+      }
+    }
+  }
+}

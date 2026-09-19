@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "اتصال به Polygon",
+        "description": "از ایمیل و رمز عبور حساب کاربری برنامه Polygon خود استفاده کنید. حساب‌هایی که فقط از ورود با گوگل یا اپل استفاده می‌کنند، ابتدا باید رمز عبور تعیین کنند.",
+        "data": {
+          "email": "ایمیل",
+          "password": "رمز عبور"
+        }
+      },
+      "reauth_confirm": {
+        "title": "تمدید نشست",
+        "description": "نشست Polygon منقضی شد. اطلاعات کاربری خود را دوباره وارد کنید.",
+        "data": {
+          "email": "ایمیل",
+          "password": "رمز عبور"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "اتصال برقرار نشد",
+      "invalid_auth": "احراز هویت نامعتبر",
+      "unknown": "خطای ناشناخته رخ داد"
+    },
+    "abort": {
+      "already_configured": "حساب قبلاً پیکربندی شده است",
+      "reauth_successful": "احراز هویت مجدد با موفقیت انجام شد"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "گزینه‌های Polygon Kilns",
+        "data": {
+          "poll_interval": "فاصله به‌روزرسانی (ثانیه)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "دما" },
+      "setpoint": { "name": "نقطه تنظیم" },
+      "state": { "name": "وضعیت" },
+      "stage": { "name": "مرحله" },
+      "segment_phase": { "name": "فاز قطعه" },
+      "progress": { "name": "پیشرفت" },
+      "eta": { "name": "زمان تخمینی اتمام" },
+      "elapsed": { "name": "زمان سپری‌شده" },
+      "energy": { "name": "انرژی" },
+      "cost": { "name": "هزینه" },
+      "wifi_signal": { "name": "سیگنال WiFi" },
+      "last_seen": { "name": "آخرین تماس" },
+      "last_firing": { "name": "آخرین پخت" }
+    },
+    "binary_sensor": {
+      "online": { "name": "آنلاین" },
+      "thermocouple_error": { "name": "خطای ترموکوپل" },
+      "sensor_fault": { "name": "خرابی حسگر" },
+      "overheat_fault": { "name": "گرمای بیش از حد" }
+    },
+    "select": {
+      "program": { "name": "برنامه برای شروع" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "شروع زمان‌بندی‌شده" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "شروع زمان‌بندی‌شده فعال" }
+    },
+    "button": {
+      "start": { "name": "شروع برنامه" },
+      "stop": { "name": "توقف کوره" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "شروع برنامه",
+      "description": "یک برنامه پخت را روی کوره شروع می‌کند، هم‌اکنون یا در تاریخ/زمانی در آینده.",
+      "fields": {
+        "device_id": { "name": "کوره", "description": "دستگاه کوره." },
+        "kiln_id": { "name": "شناسه کوره", "description": "جایگزین دستگاه: شناسه سند کوره (مثلاً K1117)." },
+        "sched_num": { "name": "شماره برنامه", "description": "شماره برنامه (schedNum)." },
+        "schedule_name": { "name": "نام برنامه", "description": "نام برنامه، جایگزین شماره." },
+        "start_time": { "name": "زمان شروع", "description": "اگر تنظیم شود، شروع برای آن تاریخ/زمان زمان‌بندی می‌شود به جای اجرای فوری." }
+      }
+    },
+    "stop_schedule": {
+      "name": "توقف کوره",
+      "description": "توقف پخت در حال انجام را درخواست می‌کند.",
+      "fields": {
+        "device_id": { "name": "کوره", "description": "دستگاه کوره." },
+        "kiln_id": { "name": "شناسه کوره", "description": "جایگزین دستگاه." }
+      }
+    },
+    "create_schedule": {
+      "name": "ایجاد برنامه",
+      "description": "یک برنامه پخت در مجموعه کوره ایجاد می‌کند.",
+      "fields": {
+        "device_id": { "name": "کوره", "description": "دستگاه کوره." },
+        "kiln_id": { "name": "شناسه کوره", "description": "جایگزین دستگاه." },
+        "schedule_name": { "name": "نام", "description": "نام برنامه." },
+        "sched_num": { "name": "شماره برنامه", "description": "شماره‌ای که کوره برای شناسایی برنامه استفاده می‌کند." },
+        "stages": { "name": "مراحل", "description": "فهرست مراحل با شیب (°C/h)، دما (°C) و نگه‌داشت (دقیقه)." }
+      }
+    },
+    "update_schedule": {
+      "name": "به‌روزرسانی برنامه",
+      "description": "نام و/یا مراحل یک برنامه موجود را تغییر می‌دهد.",
+      "fields": {
+        "device_id": { "name": "کوره", "description": "دستگاه کوره." },
+        "kiln_id": { "name": "شناسه کوره", "description": "جایگزین دستگاه." },
+        "sched_num": { "name": "شماره برنامه", "description": "برنامه‌ای که باید تغییر کند." },
+        "schedule_name": { "name": "نام برنامه", "description": "برنامه‌ای که باید تغییر کند، بر اساس نام." },
+        "name": { "name": "نام جدید", "description": "نام جدید برنامه." },
+        "stages": { "name": "مراحل", "description": "فهرست جدید مراحل با شیب، دما و نگه‌داشت." }
+      }
+    },
+    "delete_schedule": {
+      "name": "حذف برنامه",
+      "description": "یک برنامه پخت را حذف می‌کند.",
+      "fields": {
+        "device_id": { "name": "کوره", "description": "دستگاه کوره." },
+        "kiln_id": { "name": "شناسه کوره", "description": "جایگزین دستگاه." },
+        "sched_num": { "name": "شماره برنامه", "description": "برنامه‌ای که باید حذف شود." },
+        "schedule_name": { "name": "نام برنامه", "description": "برنامه‌ای که باید حذف شود، بر اساس نام." }
+      }
+    }
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Połącz z Polygon",
+        "description": "Użyj adresu e-mail i hasła swojego konta w aplikacji Polygon. Konta korzystające wyłącznie z logowania Google lub Apple muszą najpierw ustawić hasło.",
+        "data": {
+          "email": "E-mail",
+          "password": "Hasło"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Odnów sesję",
+        "description": "Sesja Polygon wygasła. Wprowadź ponownie swoje dane logowania.",
+        "data": {
+          "email": "E-mail",
+          "password": "Hasło"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nie można nawiązać połączenia",
+      "invalid_auth": "Nieprawidłowe uwierzytelnienie",
+      "unknown": "Wystąpił nieznany błąd"
+    },
+    "abort": {
+      "already_configured": "Konto jest już skonfigurowane",
+      "reauth_successful": "Ponowne uwierzytelnienie zakończyło się pomyślnie"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opcje Polygon Kilns",
+        "data": {
+          "poll_interval": "Interwał aktualizacji (sekundy)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperatura" },
+      "setpoint": { "name": "Wartość zadana" },
+      "state": { "name": "Stan" },
+      "stage": { "name": "Etap" },
+      "segment_phase": { "name": "Faza segmentu" },
+      "progress": { "name": "Postęp" },
+      "eta": { "name": "Szacowany czas zakończenia" },
+      "elapsed": { "name": "Czas, który upłynął" },
+      "energy": { "name": "Energia" },
+      "cost": { "name": "Koszt" },
+      "wifi_signal": { "name": "Sygnał WiFi" },
+      "last_seen": { "name": "Ostatni kontakt" },
+      "last_firing": { "name": "Ostatni wypał" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Online" },
+      "thermocouple_error": { "name": "Błąd termopary" },
+      "sensor_fault": { "name": "Usterka czujnika" },
+      "overheat_fault": { "name": "Przegrzanie" }
+    },
+    "select": {
+      "program": { "name": "Program do uruchomienia" }
+    },
+    "datetime": {
+      "scheduled_start": { "name": "Zaplanowany start" }
+    },
+    "switch": {
+      "scheduled_start_armed": { "name": "Zaplanowany start aktywny" }
+    },
+    "button": {
+      "start": { "name": "Uruchom program" },
+      "stop": { "name": "Zatrzymaj piec" }
+    }
+  },
+  "services": {
+    "start_schedule": {
+      "name": "Uruchom program",
+      "description": "Uruchamia program wypału w piecu, teraz lub o przyszłej dacie/godzinie.",
+      "fields": {
+        "device_id": { "name": "Piec", "description": "Urządzenie pieca." },
+        "kiln_id": { "name": "ID pieca", "description": "Alternatywa dla urządzenia: ID dokumentu pieca (np. K1117)." },
+        "sched_num": { "name": "Numer programu", "description": "Numer programu (schedNum)." },
+        "schedule_name": { "name": "Nazwa programu", "description": "Nazwa programu, alternatywa dla numeru." },
+        "start_time": { "name": "Czas rozpoczęcia", "description": "Jeśli ustawiono, start zostanie zaplanowany na tę datę/godzinę zamiast uruchomienia teraz." }
+      }
+    },
+    "stop_schedule": {
+      "name": "Zatrzymaj piec",
+      "description": "Żąda zatrzymania trwającego wypału.",
+      "fields": {
+        "device_id": { "name": "Piec", "description": "Urządzenie pieca." },
+        "kiln_id": { "name": "ID pieca", "description": "Alternatywa dla urządzenia." }
+      }
+    },
+    "create_schedule": {
+      "name": "Utwórz program",
+      "description": "Tworzy program wypału w kolekcji pieca.",
+      "fields": {
+        "device_id": { "name": "Piec", "description": "Urządzenie pieca." },
+        "kiln_id": { "name": "ID pieca", "description": "Alternatywa dla urządzenia." },
+        "schedule_name": { "name": "Nazwa", "description": "Nazwa programu." },
+        "sched_num": { "name": "Numer programu", "description": "Numer, którego piec używa do identyfikacji programu." },
+        "stages": { "name": "Etapy", "description": "Lista etapów z rampą (°C/h), temperaturą (°C) i podtrzymaniem (minuty)." }
+      }
+    },
+    "update_schedule": {
+      "name": "Aktualizuj program",
+      "description": "Modyfikuje nazwę i/lub etapy istniejącego programu.",
+      "fields": {
+        "device_id": { "name": "Piec", "description": "Urządzenie pieca." },
+        "kiln_id": { "name": "ID pieca", "description": "Alternatywa dla urządzenia." },
+        "sched_num": { "name": "Numer programu", "description": "Program do modyfikacji." },
+        "schedule_name": { "name": "Nazwa programu", "description": "Program do modyfikacji, według nazwy." },
+        "name": { "name": "Nowa nazwa", "description": "Nowa nazwa programu." },
+        "stages": { "name": "Etapy", "description": "Nowa lista etapów z rampą, temperaturą i podtrzymaniem." }
+      }
+    },
+    "delete_schedule": {
+      "name": "Usuń program",
+      "description": "Usuwa program wypału.",
+      "fields": {
+        "device_id": { "name": "Piec", "description": "Urządzenie pieca." },
+        "kiln_id": { "name": "ID pieca", "description": "Alternatywa dla urządzenia." },
+        "sched_num": { "name": "Numer programu", "description": "Program do usunięcia." },
+        "schedule_name": { "name": "Nazwa programu", "description": "Program do usunięcia, według nazwy." }
+      }
+    }
+  }
+}
